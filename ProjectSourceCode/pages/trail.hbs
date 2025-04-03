@@ -18,9 +18,13 @@
                 <p class="card-text"><strong>Average Rating:</strong> {{trails.avg_rating}}</p>
                 <p class="card-text"><strong>Weather Forecast:</strong></p>
                 <p class="card-text"><strong>Business:</strong></p>
-                <a href="/" class="btn btn-secondary">Back to Home</a>
+                <a href="/home" class="btn btn-secondary">Back to Home</a>
             </div>
         </div>
+    </div>
+
+    <div class="text-center mt-4">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Leave a Review</button>
     </div>
     
     <div class="container mt-4">
@@ -33,6 +37,51 @@
                 <p class="card-text"><strong>Business:</strong> {{reviews.rating}}</p>
                 <p class="card-text"><strong>Review:</strong>{{reviews.text}}</p>
                 <p class="card-text"><strong>Date:</strong>{{reviews.date}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reviewModalLabel">Leave a Review</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="reviewTitle" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="reviewTitle"required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reviewText" class="form-label">Your Review</label>
+                                <textarea class="form-control" id="reviewText" rows="4" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reviewRating" class="form-label">Rating</label>
+                                <select class="form-select" id="reviewRating" required>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Very Good</option>
+                                    <option value="3">3 - Good</option>
+                                    <option value="2">2 - Fair</option>
+                                    <option value="1">1 - Poor</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reviewBusiness" class="form-label">Business</label>
+                                <select class="form-select" id="reviewBusiness" required>
+                                    <option value="5">5 - Lifts were basically empty</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2 </option>
+                                    <option value="1">1 - Took 15 minutes to get on a lift</option>
+                                </select>
+                            </div>
+                            <a href="/review" class="btn btn-secondary">Submit Review</a>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

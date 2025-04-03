@@ -195,6 +195,18 @@ app.get('/trail', auth, async (req, res) => {
     }
 });
 
+app.put('/review', auth, async (req, res) => {
+    try {
+        const { username, text, rating, business, title, date} = req.body;
+        
+        const query = await t.none('INSERT INTO reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
+
+        res.render('pages/review_left');
+    } catch {
+        console.error("Error adding review:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
 
 app.listen(3000);
 console.log('Server is listening on port 3000');
