@@ -1,0 +1,9 @@
+User Acceptance Testing Plan
+============================
+Ratings/Reviews:
+    How we will test:
+    Data:
+    User Data:
+    Test Data:
+    Expected Results:
+    Testers:
