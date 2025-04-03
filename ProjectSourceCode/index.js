@@ -176,7 +176,18 @@ app.get('/trail', auth, async (req, res) => {
             location: trails.location
         }));
 
-        res.render('pages/trail', { trails });
+        const reviewsData = response_2.data|| [];
+
+        const reviews = reviewsData.map(reviewsData => ({
+            username: reviews.username,
+            title: reviews.title,
+            rating: reviews.rating,
+            business: reviews.business,
+            text: reviews.text,
+            date: reviews.date
+        }));
+
+        res.render('pages/trail', { trails }, { reviews });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
