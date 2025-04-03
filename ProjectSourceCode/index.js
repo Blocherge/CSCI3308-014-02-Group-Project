@@ -61,8 +61,15 @@ app.use(
   })
 );
 
+const auth = (req, res, next) => {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+    next();
+};
+
+
 //rough login/register API routes will have to be updated by group
-// TODO - Include your API routes here
 app.get('/', (req, res) => {
     res.redirect('/login'); 
 });
@@ -137,13 +144,46 @@ app.get('/home', auth, async (req, res) => {
 
         const trails = trailsData.map(trailsData => ({
             name: trails.name,
+            trail_id: trails.id,
+            trail_image: trails.trail_image,
+            avg_rating: trails.avg_rating
         }));
 
         res.render('pages/discover', { trails });
 
     } catch (error) {
-        console.error("Error fetching events:", error);
-        res.render('discover', { trails: [], message: 'Failed to load events. Please try again later.' });
+        console.error("Error fetching trail data:", error);
+        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
     }
 });
 
+app.get('/trail', auth, async (req, res) => {
+    try {
+        const query = 'SELECT * FROM trails WHERE trail_id = $1 LIMIT 1'
+        const response = await db.query([trail_id]);
+
+        const query_2 = 'SELECT * FROM reviews RIGHT JOIN reviews_to_trails ON trail_id = $1'
+        const response_2 = await db.query_2([trail_id]);
+
+        const trailsData = response.data|| [];
+
+        const trails = trailsData.map(trailsData => ({
+            name: trails.name,
+            trail_id: trails.id,
+            trail_image: trails.trail_image,
+            avg_rating: trails.avg_rating,
+            description: trails.description,
+            location: trails.location
+        }));
+
+        res.render('pages/trail', { trails });
+
+    } catch (error) {
+        console.error("Error fetching trail data:", error);
+        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+    }
+});
+
+
+app.listen(3000);
+console.log('Server is listening on port 3000');
