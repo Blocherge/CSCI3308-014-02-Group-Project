@@ -1,9 +1,5 @@
 User Acceptance Testing Plan
 ============================
 Ratings/Reviews:
-    How we will test:
-    Data:
-    User Data:
-    Test Data:
-    Expected Results:
+    To test the ratings and reviews system a user will attempt to leave a review which should be added to the reviews table and appear on other users pages. We will have to test through the cloud as the ultimate goal of the feature is to be able to see other user's real reviews.
     Testers:
