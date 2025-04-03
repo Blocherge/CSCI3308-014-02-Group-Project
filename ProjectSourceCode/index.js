@@ -13,9 +13,9 @@ const axios = require('axios');
 //hbs build
 const hbs = handlebars.create({
     extname: 'hbs',
-    layoutsDir: __dirname + '/layouts',
-    partialsDir: __dirname + '/pages',
-  });
+    layoutsDir: __dirname + '/views/layouts',
+    partialsDir: __dirname + '/views/partials',
+});
 
 //db config will have to be updated when database is actually built
 // database configuration
