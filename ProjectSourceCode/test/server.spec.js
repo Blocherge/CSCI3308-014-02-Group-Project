@@ -29,4 +29,21 @@ describe('Server!', () => {
 
 // *********************** TODO: WRITE 2 UNIT TESTCASES **************************
 
+describe('Testing Add User API', () => {
+  
+  //Negative test case: Sends a password to register that is under the required length
+  it('Negative : /register. Checking for short password', done => {
+    chai
+      .request(server)
+      .post('/register')
+      .send({username: 'ldeloureiro', Password: 'abcdef', email: 'abc@gmail.com'})
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.message).to.equals('Invalid input: Password is too short');
+        done();
+      });
+  });
+
+});
+
 // ********************************************************************************
