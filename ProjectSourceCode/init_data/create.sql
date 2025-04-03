@@ -24,7 +24,7 @@ CREATE TABLE reviews (
     business DECIMAL NOT NULL,
     title VARCHAR(100) NOT NULL,
     text VARCHAR(500) NOT NULL,
-    date VARCHAR(20) NOT NULL
+    date VARCHAR(20)
 );
 
 DROP TABLE IF EXISTS trails_to_reviews;

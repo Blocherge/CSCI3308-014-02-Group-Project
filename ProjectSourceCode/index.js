@@ -82,20 +82,24 @@ app.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username || !password || !email) {
-        return res.render('pages/register', { message: 'All fields are required' });
+        return res.status(400).json({ status: 'error', message: 'All fields are required' });
     }
 
     try {
-
         const hashedPassword = await bcrypt.hash(password, 10);
-        //both username and email should be unique keys in database
         const query = 'INSERT INTO users (username, email, password) VALUES ($1, $2, $3)';
         await db.query(query, [username, email, hashedPassword]);
 
-        res.redirect('/login'); 
+        res.status(200).json({ status: 'success', message: 'success' });
+
     } catch (error) {
         console.error('Error inserting user:', error);
-        res.render('pages/register', { message: 'Error registering user. Try again.' });
+
+        if (error.code === '23505') { // Unique key violation
+            return res.status(400).json({ status: 'error', message: 'Username or email already exists' });
+        }
+
+        res.status(500).json({ status: 'error', message: 'Error registering user. Try again.' });
     }
 });
 
