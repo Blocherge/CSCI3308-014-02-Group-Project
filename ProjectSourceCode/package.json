@@ -1,6 +1,6 @@
 {
     "name": "liftabilitiy",
-    "main": "src/index.js",
+    "main": "./index.js",
     "dependencies": {
       "express": "^4.6.1",
       "pg-promise": "^10.11.1",
