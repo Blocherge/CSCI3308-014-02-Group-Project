@@ -30,13 +30,26 @@ describe('Server!', () => {
 // *********************** TODO: WRITE 2 UNIT TESTCASES **************************
 //We are checking POST /add_user API by passing the user info in in incorrect manner (name cannot be an integer). This test case should pass and return a status 400 along with a "Invalid input" message.
 
+// Positive Testcase :
+// API: /register
+// Input: {email: 'grbl2566@colorado.edu', username: 'Blocherge', password: '12345678'}
+// Expect res.status = 'success' and res.body.message == 'success'
 describe('Testing Add User API', () => {
-  it('positive : /register', done => {
-    // Refer above for the positive testcase implementation
+    it('positive : /register', done => {
+      chai
+        .request(server)
+        .post('/register')
+        .send({email: 'grbl2566@colorado.edu', username: 'Blocherge', password: '12345678'})
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.body.message).to.equals('success');
+          done();
+        });
+    });
   });
 
   // Example Negative Testcase :
-  // API: /add_user
+  // API: /register
   // Input: {id: 5, name: 10, dob: '2020-02-20'}
   // Expect: res.status == 400 and res.body.message == 'Invalid input'
   // Result: This test case should pass and return a status 400 along with a "Invalid input" message.
@@ -53,5 +66,4 @@ describe('Testing Add User API', () => {
         done();
       });
   });
-});
 // ********************************************************************************
