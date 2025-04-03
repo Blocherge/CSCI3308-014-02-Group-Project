@@ -55,11 +55,11 @@ describe('Testing Add User API', () => {
   // Result: This test case should pass and return a status 400 along with a "Invalid input" message.
   // Explanation: The testcase will call the /add_user API with the following invalid inputs
   // and expects the API to return a status of 400 along with the "Invalid input" message.
-  it('Negative : /add_user. Checking invalid name', done => {
+  it('Negative : /register. Checking invalid username', done => {
     chai
       .request(server)
       .post('/register')
-      .send({id: '5', name: 10, dob: '2020-02-20'})
+      .send({email: '1234@mail.com', password: '12345678'})
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.message).to.equals('Invalid input');
@@ -67,3 +67,29 @@ describe('Testing Add User API', () => {
       });
   });
 // ********************************************************************************
+
+describe('Testing Add User API', () => {
+    it('positive : /review', done => {
+      chai
+        .request(server)
+        .post('/review')
+        .send({username: 'blocherge', rating: 3, business: 2, title: 'copper mountain review', text: 'twas an alright mountain'})
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.body.message).to.equals('success');
+          done();
+        });
+    });
+  });
+
+  it('Negative : /review. Checking no rating', done => {
+    chai
+      .request(server)
+      .post('/review')
+      .send({username: 'blocherge', business: 2, title: 'copper mountain review', text: 'twas an alright mountain'})
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.message).to.equals('Invalid input');
+        done();
+      });
+  });
