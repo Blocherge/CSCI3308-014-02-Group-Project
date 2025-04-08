@@ -2,7 +2,7 @@
 #pip install requests-cache retry-requests numpy pandas
 
 import openmeteo_requests
-
+import os
 import requests_cache
 import pandas as pd
 from retry_requests import retry
@@ -91,6 +91,7 @@ daily_data["wind_gusts_10m_max"] = daily_wind_gusts_10m_max
 daily_dataframe = pd.DataFrame(data = daily_data)
 print(daily_dataframe)
 
-hourly_dataframe.to_csv("hourly_weather.csv", index=False)
-daily_dataframe.to_csv("daily_weather.csv", index=False)
+folder_path = os.path.join("CSCI3308-014-02-Group-Project", "ProjectSourceCode", "Api_Implementation", "output")
+hourly_dataframe.to_csv(folder_path + "hourly_weather.csv", index=False)
+daily_dataframe.to_csv(folder_path + "daily_weather.csv", index=False)
 
