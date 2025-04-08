@@ -91,7 +91,8 @@ daily_data["wind_gusts_10m_max"] = daily_wind_gusts_10m_max
 daily_dataframe = pd.DataFrame(data = daily_data)
 print(daily_dataframe)
 
-folder_path = os.path.join("CSCI3308-014-02-Group-Project", "ProjectSourceCode", "Api_Implementation", "output")
-hourly_dataframe.to_csv(folder_path + "hourly_weather.csv", index=False)
-daily_dataframe.to_csv(folder_path + "daily_weather.csv", index=False)
+hour_folder_path = os.path.join("CSCI3308-014-02-Group-Project", "ProjectSourceCode", "Api_Implementation", "output","hourly_weather.csv")
+daily_folder_path = os.path.join("CSCI3308-014-02-Group-Project", "ProjectSourceCode", "Api_Implementation", "output","daily_weather.csv")
+hourly_dataframe.to_csv(hour_folder_path, index=False)
+daily_dataframe.to_csv(daily_folder_path, index=False)
 
