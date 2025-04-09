@@ -1,0 +1,4 @@
+Users can select optional weather attributes such as wind speed, temperature, snow, and precipitation to be retrieved from a weather API.
+test 1: no input data, If a user wants no information from our weather stats, the api will return default or none information, can be tested by docker, the test will be verified by json output
+test 2: all input data, If a user wants all information from our weather stats, the api will return all information, can be tested by docker, the test will be verified by json output
+test 3: some input data, If a user wants some information from our weather stats, the api will return some information, can be tested by docker, the test will be verified by json output to see if the correcty se;lected data is return by api.
