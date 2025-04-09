@@ -13,7 +13,8 @@ from datetime import datetime
 api_urls = {
     "Copper": "https://api.coppercolorado.com/api/v1/dor/lift-trail-report",
     "Winter_Park": "https://mtnpowder.com/feed/v3.json?bearer_token=cku0FJeF71XjrOKXAHWA1wfNfcUr8vqyAWbIwp4v3SQ&resortId%5B%5D=5",
-    "Steamboat": "https://mtnpowder.com/feed/v3.json?bearer_token=cku0FJeF71XjrOKXAHWA1wfNfcUr8vqyAWbIwp4v3SQ&resortId%5B%5D=6"
+    "Steamboat": "https://mtnpowder.com/feed/v3.json?bearer_token=cku0FJeF71XjrOKXAHWA1wfNfcUr8vqyAWbIwp4v3SQ&resortId%5B%5D=6",
+    "Eldora": "https://api.eldora.com/api/v1/dor/lift-trail-report"
 }
 lift_headers = ["resort", "name", "open", "type"]
 run_headers = ["resort", "name", "open", "groomed", "difficultly"]
@@ -115,3 +116,53 @@ def get_winter_park_data():
             ])
     write_to_lift_csv("Winter_Park", lift_data)
     write_to_run_csv("Winter_Park", run_data)
+
+def get_eldora_data():
+    response = fetch_resort_data(api_urls["Eldora"])
+    lift_data = []
+    for lift in response["lift"]:
+        lift_data.append([
+            "Eldora",
+            lift['name'],
+            lift['status'],
+            lift['type']
+        ])
+    write_to_lift_csv("Eldora", lift_data)
+    run_data = []
+    for run in response["trail"]:
+        run_data.append([
+            "Eldora",
+            run['name'],
+            run['status'],
+            run['groom_status'],
+            run['difficulty']
+        ])
+    write_to_run_csv("Eldora", run_data)
+
+def get_eldora_data():
+    response = fetch_resort_data(api_urls["Eldora"])
+    lift_data = []
+    for lift in response["lift"]:
+        lift_data.append([
+            "Eldora",
+            lift['name'],
+            lift['status'],
+            lift['type']
+        ])
+    write_to_lift_csv("Eldora", lift_data)
+    run_data = []
+    for run in response["trail"]:
+        run_data.append([
+            "Eldora",
+            run['name'],
+            run['status'],
+            run['groom_status'],
+            run['difficulty']
+        ])
+    write_to_run_csv("Eldora", run_data)
+
+def get_all_mountains_data():
+    get_copper_data()
+    get_steamboat_data()
+    get_winter_park_data()
+    get_eldora_data()
