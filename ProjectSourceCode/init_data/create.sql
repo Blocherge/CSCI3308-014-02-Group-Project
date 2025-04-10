@@ -16,8 +16,41 @@ CREATE TABLE trails (
   description VARCHAR(500) NOT NULL
 );
 
-DROP TABLE IF EXISTS reviews;
-CREATE TABLE reviews (
+DROP TABLE IF EXISTS copper_reviews;
+CREATE TABLE copper_reviews (
+    review_id SERIAL PRIMARY KEY NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    rating DECIMAL NOT NULL,
+    business DECIMAL NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    text VARCHAR(500) NOT NULL,
+    date VARCHAR(20)
+);
+
+DROP TABLE IF EXISTS eldora_reviews;
+CREATE TABLE eldora_eviews (
+    review_id SERIAL PRIMARY KEY NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    rating DECIMAL NOT NULL,
+    business DECIMAL NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    text VARCHAR(500) NOT NULL,
+    date VARCHAR(20)
+);
+
+DROP TABLE IF EXISTS steamboat_reviews;
+CREATE TABLE steamboat_reviews (
+    review_id SERIAL PRIMARY KEY NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    rating DECIMAL NOT NULL,
+    business DECIMAL NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    text VARCHAR(500) NOT NULL,
+    date VARCHAR(20)
+);
+
+DROP TABLE IF EXISTS winter_park_reviews;
+CREATE TABLE winter_park_reviews (
     review_id SERIAL PRIMARY KEY NOT NULL,
     username VARCHAR(50) NOT NULL,
     rating DECIMAL NOT NULL,

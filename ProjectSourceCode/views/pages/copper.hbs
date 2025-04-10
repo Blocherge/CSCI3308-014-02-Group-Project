@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="mb-4 text-center">{{trails.name}}</h2>
+        <div class="card">
+            <img src="{{trails.image}}" class="card-img-top" alt="{{trails.name}}">
+            <div class="card-body">
+                <h5 class="card-title">{{trails.name}}</h5>
+                <p class="card-text"><strong>Location:</strong> {{trails.location}}</p>
+                <p class="card-text"><strong>Description:</strong> {{trails.description}}</p>
+                <p class="card-text"><strong>Average Rating:</strong> {{trails.avg_rating}}</p>
+                <p class="card-text"><strong>Weather Forecast:</strong></p>
+                <p class="card-text"><strong>Business:</strong></p>
+                <a href="/home" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+    <h3 class="mb-3 text-center">Runs</h3>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Run Name</th>
+                <th scope="col">Groomed</th>
+                <th scope="col">Open</th>
+                <th scope="col">Difficulty</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each copper_runs}}
+            <tr>
+                <td>{{copper_runs.name}}</td>
+                <td>{{copper_runs.groomed}}</td>
+                <td>{{copper_runs.open_close}}</td>
+                <td>{{copper_runs.difficulty}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    </div>
+
+    <div class="container mt-5">
+        <h3 class="mb-3 text-center">Lifts</h3>
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Lift Name</th>
+                    <th scope="col">Open</th>
+                    <th scope="col">Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each copper_lifts}}
+                <tr>
+                    <td>{{copper_lifts.name}}</td>
+                    <td>{{copper_lifts.open}}</td>
+                    <td>{{copper_lifts.type}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Leave a Review</button>
+    </div>
+    
+    <div class="container mt-4">
+        <h2 class="mb-4 text-center">Reviews</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{copper_reviews.title}}</h5>
+                <p class="card-text"><strong>User:</strong> {{copper_reviews.username}}</p>
+                <p class="card-text"><strong>Rating:</strong> {{copper_reviews.rating}}</p>
+                <p class="card-text"><strong>Business:</strong> {{copper_reviews.rating}}</p>
+                <p class="card-text"><strong>Review:</strong>{{copper_reviews.text}}</p>
+                <p class="card-text"><strong>Date:</strong>{{copper_reviews.date}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reviewModalLabel">Leave a Review</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="reviewTitle" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="reviewTitle"required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reviewText" class="form-label">Your Review</label>
+                                <textarea class="form-control" id="reviewText" rows="4" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reviewRating" class="form-label">Rating</label>
+                                <select class="form-select" id="reviewRating" required>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Very Good</option>
+                                    <option value="3">3 - Good</option>
+                                    <option value="2">2 - Fair</option>
+                                    <option value="1">1 - Poor</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reviewBusiness" class="form-label">Business</label>
+                                <select class="form-select" id="reviewBusiness" required>
+                                    <option value="5">5 - Lifts were basically empty</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2 </option>
+                                    <option value="1">1 - Took 15 minutes to get on a lift</option>
+                                </select>
+                            </div>
+                            <a href="/review" class="btn btn-secondary">Submit Review</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
