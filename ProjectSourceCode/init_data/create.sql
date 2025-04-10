@@ -106,3 +106,36 @@ CREATE TABLE winter_park_runs (
     groomed VARCHAR(20) NOT NULL,
     difficulty VARCHAR(20) NOT NULL
 );
+
+DROP TABLE IF EXISTS eldora_weather;
+CREATE TABLE eldora_weather (
+    date DATE PRIMARY KEY NOT NULL,
+    temperature_max INT NOT NULL,
+    temperature_min INT NOT NULL,
+    wind_speed_max INT NOT NULL,
+    snowfall_sum FLOAT(2,2) NOT NULL,
+    uv_index INT NOT NULL,
+    weather_code INT NOT NULL
+);
+
+DROP TABLE IF EXISTS copper_weather;
+CREATE TABLE winter_park_weather (
+    date DATE PRIMARY KEY NOT NULL,
+    temperature_max INT NOT NULL,
+    temperature_min INT NOT NULL,
+    wind_speed_max INT NOT NULL,
+    snowfall_sum FLOAT(2,2) NOT NULL,
+    uv_index INT NOT NULL,
+    weather_code INT NOT NULL
+);
+
+DROP TABLE IF EXISTS steamboat_weather;
+CREATE TABLE winter_park_weather (
+    date DATE PRIMARY KEY NOT NULL,
+    temperature_max INT NOT NULL,
+    temperature_min INT NOT NULL,
+    wind_speed_max INT NOT NULL,
+    snowfall_sum FLOAT(2,2) NOT NULL,
+    uv_index INT NOT NULL,
+    weather_code INT NOT NULL
+);
