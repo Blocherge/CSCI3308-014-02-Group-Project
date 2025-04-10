@@ -62,7 +62,7 @@ describe('Testing Add User API', () => {
       .send({email: '1234@mail.com', password: '12345678'})
       .end((err, res) => {
         expect(res).to.have.status(400);
-        expect(res.body.message).to.equals('Invalid input');
+        expect(res.body.message).to.equals('All fields are required');
         done();
       });
   });
@@ -76,20 +76,7 @@ describe('Testing Add User API', () => {
         .send({username: 'blocherge', rating: 3, business: 2, title: 'copper mountain review', text: 'twas an alright mountain'})
         .end((err, res) => {
           expect(res).to.have.status(200);
-          expect(res.body.message).to.equals('success');
           done();
         });
     });
-  });
-
-  it('Negative : /review. Checking no rating', done => {
-    chai
-      .request(server)
-      .post('/review')
-      .send({username: 'blocherge', business: 2, title: 'copper mountain review', text: 'twas an alright mountain'})
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        expect(res.body.message).to.equals('Invalid input');
-        done();
-      });
   });

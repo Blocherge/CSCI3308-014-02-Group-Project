@@ -204,12 +204,19 @@ app.get('/trail', auth, async (req, res) => {
     }
 });
 
-app.put('/review', auth, async (req, res) => {
+app.post('/review', auth, async (req, res) => {
+    const { username, text, rating, business, title, date} = req.body;
+
+    console.log("RATING", rating)
+
+    if (!username || rating == undefined || !business || !title || !date) {
+        return res.status(400).json({ status: 'error', message: 'All fields are required' });
+    }
+
     try {
-        const { username, text, rating, business, title, date} = req.body;
-        
         const query = await t.none('INSERT INTO reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
 
+        res.status(200);
         res.render('pages/review_left');
     } catch {
         console.error("Error adding review:", error);
