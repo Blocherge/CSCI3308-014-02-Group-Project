@@ -90,7 +90,7 @@ app.post('/register', async (req, res) => {
         const query = 'INSERT INTO users (username, email, password) VALUES ($1, $2, $3)';
         await db.query(query, [username, email, hashedPassword]);
 
-        res.status(200).json({ status: 'success', message: 'success' });
+        res.redirect('/login'); 
 
     } catch (error) {
         console.error('Error inserting user:', error);
