@@ -128,13 +128,18 @@ app.post('/login', async (req, res) => {
 
         req.session.user = query.username;
         req.session.save(() => {
-            res.redirect('/discover');
+            res.redirect('/trail'); // ORIGINALLY WAS '/discover'
         });
 
     } catch (error) {
         console.error('Login error:', error);
         res.render('pages/login', { message: 'Incorrect username or password' });
     }
+});
+
+//redirecting the login to trails TEMPORARY
+app.get('/trail', (req, res) => {
+    res.render('pages/trail', { message: req.session.message });
 });
 
 
