@@ -23,6 +23,52 @@
         </div>
     </div>
 
+    <div class="container mt-5">
+    <h3 class="mb-3 text-center">Runs</h3>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Run Name</th>
+                <th scope="col">Groomed</th>
+                <th scope="col">Open</th>
+                <th scope="col">Difficulty</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each copper_runs}}
+            <tr>
+                <td>{{copper_runs.name}}</td>
+                <td>{{copper_runs.groomed}}</td>
+                <td>{{copper_runs.open_close}}</td>
+                <td>{{copper_runs.difficulty}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    </div>
+
+    <div class="container mt-5">
+        <h3 class="mb-3 text-center">Lifts</h3>
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Lift Name</th>
+                    <th scope="col">Open</th>
+                    <th scope="col">Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each copper_lifts}}
+                <tr>
+                    <td>{{copper_lifts.name}}</td>
+                    <td>{{copper_lifts.open}}</td>
+                    <td>{{copper_lifts.type}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
     <div class="text-center mt-4">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Leave a Review</button>
     </div>
@@ -31,12 +77,12 @@
         <h2 class="mb-4 text-center">Reviews</h2>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{reviews.title}}</h5>
-                <p class="card-text"><strong>User:</strong> {{reviews.username}}</p>
-                <p class="card-text"><strong>Rating:</strong> {{reviews.rating}}</p>
-                <p class="card-text"><strong>Business:</strong> {{reviews.rating}}</p>
-                <p class="card-text"><strong>Review:</strong>{{reviews.text}}</p>
-                <p class="card-text"><strong>Date:</strong>{{reviews.date}}</p>
+                <h5 class="card-title">{{copper_reviews.title}}</h5>
+                <p class="card-text"><strong>User:</strong> {{copper_reviews.username}}</p>
+                <p class="card-text"><strong>Rating:</strong> {{copper_reviews.rating}}</p>
+                <p class="card-text"><strong>Business:</strong> {{copper_reviews.rating}}</p>
+                <p class="card-text"><strong>Review:</strong>{{copper_reviews.text}}</p>
+                <p class="card-text"><strong>Date:</strong>{{copper_reviews.date}}</p>
             </div>
         </div>
     </div>
