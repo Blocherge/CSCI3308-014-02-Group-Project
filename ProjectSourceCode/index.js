@@ -128,7 +128,7 @@ app.post('/login', async (req, res) => {
 
         req.session.user = query.username;
         req.session.save(() => {
-            res.redirect('/trail'); // ORIGINALLY WAS '/discover'
+            res.redirect('/home'); // ORIGINALLY WAS '/discover'
         });
 
     } catch (error) {
