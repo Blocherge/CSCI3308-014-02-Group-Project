@@ -128,7 +128,7 @@ app.post('/login', async (req, res) => {
 
         req.session.user = query.username;
         req.session.save(() => {
-            res.redirect('/home'); // ORIGINALLY WAS '/discover'
+        res.redirect('/home'); // ORIGINALLY WAS '/discover'
         });
 
     } catch (error) {
@@ -136,12 +136,6 @@ app.post('/login', async (req, res) => {
         res.render('pages/login', { message: 'Incorrect username or password' });
     }
 });
-
-//redirecting the login to trails TEMPORARY
-app.get('/trail', (req, res) => {
-    res.render('pages/trail', { message: req.session.message });
-});
-
 
 //main page data
 app.get('/home', auth, async (req, res) => {
@@ -158,49 +152,11 @@ app.get('/home', auth, async (req, res) => {
             avg_rating: trails.avg_rating
         }));
 
-        res.render('pages/discover', { trails });
+        res.render('pages/home', { trails });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
-    }
-});
-
-app.get('/trail', auth, async (req, res) => {
-    try {
-        const query = 'SELECT * FROM trails WHERE trail_id = $1 LIMIT 1'
-        const response = await db.query([trail_id]);
-
-        const query_2 = 'SELECT * FROM reviews RIGHT JOIN reviews_to_trails ON trail_id = $1'
-        const response_2 = await db.query_2([trail_id]);
-
-        const trailsData = response.data|| [];
-
-        const trails = trailsData.map(trailsData => ({
-            name: trails.name,
-            trail_id: trails.id,
-            trail_image: trails.trail_image,
-            avg_rating: trails.avg_rating,
-            description: trails.description,
-            location: trails.location
-        }));
-
-        const reviewsData = response_2.data|| [];
-
-        const reviews = reviewsData.map(reviewsData => ({
-            username: reviews.username,
-            title: reviews.title,
-            rating: reviews.rating,
-            business: reviews.business,
-            text: reviews.text,
-            date: reviews.date
-        }));
-
-        res.render('pages/trail', { trails }, { reviews });
-
-    } catch (error) {
-        console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+        res.render('pages/home', { trails: [], message: 'Failed to load trail data. Please try again later.' });
     }
 });
 
