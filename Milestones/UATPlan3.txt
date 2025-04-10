@@ -1,0 +1,3 @@
+Allows new users to register with username, email, and password, then log in to access information
+test 1: valid signup, user will input username, email, and password. user will go to home page, and the user info will be in the db
+test 2: invalid signup, user will input username, email, and password. invalid missing password, will lead re attempot to sign up on same page, and the user info will not be in the db

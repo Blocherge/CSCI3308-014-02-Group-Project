@@ -1,0 +1,23 @@
+TA meeting 4-4-25
+
+Make sure to have 2-3 commits every week, to show more regular consistent work on the project.
+
+Create a separate branch for each story ticket
+
+TODO:
+Update database wireframe so that it has more specifics on mountain data
+Create a better discover page wireframe and add story for it
+Break down user story for the trail page to be 5-5-3 layout or something similar to that
+Have a 30 minute meeting to finalize user stories and realize 
+
+Jack- Did not attend
+
+Xavier- looked at API's got specifics on stats for snowfall and wind speed including daily and hourly information. Got a .csv file so it can be populated onto the database when it is needed. Showed .csv file printout.
+
+Caleb- python script for weather API that pulls data from the winter park, copper, and steamboat mountains and prints a .csv with the relevant data. Is looking to add the other mountains.
+
+Graham-Base setups for trail page and some index.js work
+
+Cole-fixed SQL errors, looking at js errors for correction
+
+Logan-test cases and UAT
