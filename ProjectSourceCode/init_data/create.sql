@@ -1,3 +1,6 @@
+CREATE DATABASE weather_db;
+USE weather_db;
+
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY NOT NULL,
@@ -114,28 +117,39 @@ CREATE TABLE eldora_weather (
     temperature_min INT NOT NULL,
     wind_speed_max INT NOT NULL,
     snowfall_sum FLOAT(2,2) NOT NULL,
-    uv_index INT NOT NULL,
+    uv_index_max INT NOT NULL,
     weather_code INT NOT NULL
 );
 
 DROP TABLE IF EXISTS copper_weather;
+CREATE TABLE copper_weather (
+    date DATE PRIMARY KEY NOT NULL,
+    temperature_max INT NOT NULL,
+    temperature_min INT NOT NULL,
+    wind_speed_max INT NOT NULL,
+    snowfall_sum FLOAT(2,2) NOT NULL,
+    uv_index_max INT NOT NULL,
+    weather_code INT NOT NULL
+);
+
+DROP TABLE IF EXISTS winter_park_weather;
 CREATE TABLE winter_park_weather (
     date DATE PRIMARY KEY NOT NULL,
     temperature_max INT NOT NULL,
     temperature_min INT NOT NULL,
     wind_speed_max INT NOT NULL,
     snowfall_sum FLOAT(2,2) NOT NULL,
-    uv_index INT NOT NULL,
+    uv_index_max INT NOT NULL,
     weather_code INT NOT NULL
 );
 
 DROP TABLE IF EXISTS steamboat_weather;
-CREATE TABLE winter_park_weather (
+CREATE TABLE steamboat_weather (
     date DATE PRIMARY KEY NOT NULL,
     temperature_max INT NOT NULL,
     temperature_min INT NOT NULL,
     wind_speed_max INT NOT NULL,
     snowfall_sum FLOAT(2,2) NOT NULL,
-    uv_index INT NOT NULL,
+    uv_index_max INT NOT NULL,
     weather_code INT NOT NULL
 );

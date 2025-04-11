@@ -37,9 +37,9 @@ print(f"Timezone difference to GMT+0 {response.UtcOffsetSeconds()} s")
 daily = response.Daily()
 daily_temperature_2m_max = daily.Variables(0).ValuesAsNumpy()
 daily_temperature_2m_min = daily.Variables(1).ValuesAsNumpy()
-daily_wind_speed_10m_max = daily.Variables(4).ValuesAsNumpy()
-daily_snowfall_sum = daily.Variables(2).ValuesAsNumpy()
-daily_uv_index_max = daily.Variables(3).ValuesAsNumpy()
+daily_wind_speed_10m_max = daily.Variables(2).ValuesAsNumpy()
+daily_snowfall_sum = daily.Variables(3).ValuesAsNumpy()
+daily_uv_index_max = daily.Variables(4).ValuesAsNumpy()
 daily_weather_code = daily.Variables(5).ValuesAsNumpy()
 
 daily_data = {"date": pd.date_range(
@@ -49,9 +49,9 @@ daily_data = {"date": pd.date_range(
 	inclusive = "left"
 )}
 
-daily_data["temperature_2m_max"] = daily_temperature_2m_max
-daily_data["temperature_2m_min"] = daily_temperature_2m_min
-daily_data["wind_speed_10m_max"] = daily_wind_speed_10m_max
+daily_data["temperature_max"] = daily_temperature_2m_max
+daily_data["temperature_min"] = daily_temperature_2m_min
+daily_data["wind_speed_max"] = daily_wind_speed_10m_max
 daily_data["snowfall_sum"] = daily_snowfall_sum
 daily_data["uv_index_max"] = daily_uv_index_max
 daily_data["weather_code"] = daily_weather_code
@@ -59,9 +59,9 @@ daily_data["weather_code"] = daily_weather_code
 daily_dataframe = pd.DataFrame(data = daily_data)
 print(daily_dataframe)
 
-#hour_folder_path = os.path.join("CSCI3308-014-02-Group-Project", "ProjectSourceCode", "Api_Implementation", "output","hourly_weather.csv")
-#daily_folder_path = os.path.join("CSCI3308-014-02-Group-Project", "ProjectSourceCode", "Api_Implementation", "output","daily_weather.csv")
 
+daily_folder_path = os.path.join("CSCI3308-014-02-Group-Project", "ProjectSourceCode", "Api_Implementation", "output","eldora_daily_weather.csv")
+daily_dataframe.to_csv(daily_folder_path, index=False)
 #copy full path to folder for your enviroment if above not working
-daily_dataframe.to_csv("/Users/xavierrudnick/Desktop/softDev/CSCI3308-014-02-Group-Project/ProjectSourceCode/Api_Implementation/output/eldora_daily_weather.csv", index=False)
+#daily_dataframe.to_csv("full_path/eldora_daily_weather.csv", index=False)
 
