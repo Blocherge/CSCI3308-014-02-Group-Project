@@ -137,6 +137,12 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.get('/logout', (req, res) => {
+  req.session.destroy(function(err) {
+    res.render('pages/logout', {message: 'logged out successfully'});
+  });
+});
+
 //main page data
 app.get('/home', auth, async (req, res) => {
     try {

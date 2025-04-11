@@ -22,6 +22,6 @@ services:
     volumes:
       - ./:/repository
     # command: 'npm start' #TODO: change the command to `npm run testandrun` to run mocha
-    command: 'npm run testandrun'
+    command: 'npm start'
 volumes:
   CSCI3308-014-02-Group-Project:
