@@ -1,0 +1,14 @@
+TA meeting 4-11-25
+
+TO DO:
+Finish API for lifts and trails populating
+Connect google directions for each mountain
+Add sorting functionality to rate lifts by business, type, and other ratings
+
+Completed:
+page layouts
+
+
+Changed:
+Adjusted the part of the project goal that was considering getting to lifts
+Removed Arapahoe basin since they have html side data
