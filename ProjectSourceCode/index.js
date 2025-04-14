@@ -241,7 +241,7 @@ app.get('/copper', auth, async (req, res) => {
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+        res.render('pages/copper', { trails: [], message: 'Failed to load trail data. Please try again later.' });
     }
 });
 
@@ -302,7 +302,7 @@ app.get('/eldora', auth, async (req, res) => {
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+        res.render('pages/eldora', { trails: [], message: 'Failed to load trail data. Please try again later.' });
     }
 });
 
@@ -363,7 +363,7 @@ app.get('/steamboat', auth, async (req, res) => {
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+        res.render('pages/steamboat', { trails: [], message: 'Failed to load trail data. Please try again later.' });
     }
 });
 
@@ -424,7 +424,7 @@ app.get('/winter_park', auth, async (req, res) => {
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+        res.render('page/winter_park', { trails: [], message: 'Failed to load trail data. Please try again later.' });
     }
 });
 
