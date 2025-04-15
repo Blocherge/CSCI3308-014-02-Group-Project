@@ -1,11 +1,11 @@
-resort,name,open,type
-Eldora,Caribou,True,double
-Eldora,Little Hawk,False,double
-Eldora,Sundance,True,double
-Eldora,Corona,True,quad
-Eldora,Alpenglow,True,six_person
-Eldora,Sunkid,True,carpet
-Eldora,Indian Peaks,True,quad
-Eldora,Race,False,surface
-Eldora,EZ,True,triple
-Eldora,Tenderfoot,True,carpet
+lift_name,open_closed,lift_type
+Caribou,True,double
+Little Hawk,False,double
+Sundance,True,double
+Corona,True,quad
+Alpenglow,True,six_person
+Sunkid,True,carpet
+Indian Peaks,True,quad
+Race,False,surface
+EZ,True,triple
+Tenderfoot,True,carpet

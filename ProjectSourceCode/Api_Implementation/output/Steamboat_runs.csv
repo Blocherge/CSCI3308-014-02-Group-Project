@@ -1,195 +1,195 @@
-resort,name,open,groomed,difficultly
-Steamboat,Alarm Clock,False,False,4
-Steamboat,Ambush,False,False,4
-Steamboat,Arc,True,False,1
-Steamboat,Baby Powder,True,False,2
-Steamboat,Bail Out,False,False,2
-Steamboat,Bashor,True,False,2
-Steamboat,BC Lift Line,True,False,4
-Steamboat,BC Ski Way,True,False,1
-Steamboat,Bear Claw,False,False,3
-Steamboat,Between,True,False,2
-Steamboat,Betwixt,True,False,2
-Steamboat,Big Foot,True,False,2
-Steamboat,Big Meadow,True,False,2
-Steamboat,Bird's Beak,False,False,5
-Steamboat,Biscuits,False,False,4
-Steamboat,Black Powder,False,False,4
-Steamboat,Blizzard,True,False,2
-Steamboat,Boulder Field,False,False,5
-Steamboat,Boulevard,True,False,1
-Steamboat,Broadway,True,False,1
-Steamboat,Buckshot,True,False,2
-Steamboat,Buddy's Run,True,False,2
-Steamboat,Bugs' Run,True,False,4
-Steamboat,Cabin Fever,False,False,4
-Steamboat,Calf Roper,True,False,2
-Steamboat,Chaps,False,False,3
-Steamboat,Cheesy Grits,False,False,4
-Steamboat,Christmas Tree Bowl,True,False,5
-Steamboat,Chuckwagon,True,False,4
-Steamboat,Chute 1,True,False,5
-Steamboat,Chute 2,True,False,5
-Steamboat,Chute 3,True,False,5
-Steamboat,Closets,True,False,4
-Steamboat,Concentration,True,False,4
-Steamboat,Corridor,True,False,4
-Steamboat,Cowboy Coffee,False,False,2
-Steamboat,Crowtrack,True,False,4
-Steamboat,Cub,True,False,2
-Steamboat,Cyclone,True,False,4
-Steamboat,Dawn,True,False,4
-Steamboat,Daybreak,True,False,2
-Steamboat,Diamond Hitch,False,False,4
-Steamboat,Distraction,False,False,4
-Steamboat,Drop Out,True,False,4
-Steamboat,Dusk,True,False,2
-Steamboat,Eagles Nest,True,False,2
-Steamboat,East Face,True,False,5
-Steamboat,Eclipse,True,False,3
-Steamboat,Edge of the World,False,False,4
-Steamboat,Ego,True,False,2
-Steamboat,Endless Gully,False,False,5
-Steamboat,Fairway,False,False,4
-Steamboat,Fawn,True,False,2
-Steamboat,Fetcher Glade,False,False,4
-Steamboat,First Chance,True,False,4
-Steamboat,Flatout,True,False,1
-Steamboat,Flintlock,True,False,2
-Steamboat,Flying Z,True,False,4
-Steamboat,Flying Z Gulch,True,False,3
-Steamboat,Fools Gold,False,False,4
-Steamboat,Four Points Lift Line,True,False,4
-Steamboat,Frying Pan,False,False,4
-Steamboat,Giggle Gulch,True,False,1
-Steamboat,Granola Bowl,False,False,5
-Steamboat,Gravy,False,False,4
-Steamboat,Half Hitch,False,False,3
-Steamboat,Headwall,True,False,2
-Steamboat,Heavenly Daze,True,False,2
-Steamboat,Highline,True,False,2
-Steamboat,High Noon,True,False,2
-Steamboat,Hot Cakes,False,False,4
-Steamboat,Huevos,False,False,4
-Steamboat,Huffman's,True,False,2
-Steamboat,Hurricane,True,False,4
-Steamboat,Jess' Cut-Off,True,False,2
-Steamboat,Jump Start,False,False,4
-Steamboat,Kit,True,False,2
-Steamboat,Kuus' Cruise,True,False,4
-Steamboat,Lariat,False,False,2
-Steamboat,Last Chance,True,False,4
-Steamboat,Legends Trees,False,False,4
-Steamboat,Lightning,True,False,2
-Steamboat,Lights Out,True,False,4
-Steamboat,Longhorn,False,False,3
-Steamboat,Lower Concentration ,True,False,2
-Steamboat,Lower High Noon,True,False,2
-Steamboat,Lower Valley View,False,False,4
-Steamboat,Mahogany Ridge Lift Line,False,False,4
-Steamboat,Meadow Lane,True,False,2
-Steamboat,Middle Rib,False,False,4
-Steamboat,Milk Run,False,False,5
-Steamboat,Moonlight,True,False,2
-Steamboat,Morningside Liftline,False,False,4
-Steamboat,Mother Nature,True,False,4
-Steamboat,Nash Junction,True,False,4
-Steamboat,Nelson's Run,True,False,4
-Steamboat,No Names,True,False,5
-Steamboat,Norther,True,False,2
-Steamboat,North St. Pats,True,False,5
-Steamboat,Nostrils,False,False,5
-Steamboat,One O'Clock,True,False,2
-Steamboat,Oops,True,False,4
-Steamboat,Outlaw,False,False,4
-Steamboat,Over Easy,True,False,2
-Steamboat,Park Lane,True,False,1
-Steamboat,Perry Park,False,False,4
-Steamboat,Pony Express Liftline,False,False,4
-Steamboat,Pressure Drop,True,False,4
-Steamboat,Pup,True,False,2
-Steamboat,Quickdraw,True,False,2
-Steamboat,Rainbow,True,False,2
-Steamboat,Ramrod,True,False,2
-Steamboat,Rendezvous Way,True,False,1
-Steamboat,Right-O-Way,True,False,1
-Steamboat,Rolex,True,False,4
-Steamboat,Rooster,False,False,2
-Steamboat,Rough Rider,False,False,1
-Steamboat,Rowel,True,False,2
-Steamboat,Royal Flush,False,False,4
-Steamboat,Rudi's Run,True,False,2
-Steamboat,See Me,False,False,4
-Steamboat,Shadows,True,False,4
-Steamboat,Short Cut,True,False,1
-Steamboat,Sideburn,True,False,4
-Steamboat,Sitz,True,False,2
-Steamboat,Sitzback,True,False,1
-Steamboat,Skeeter's Run,True,False,3
-Steamboat,Skidaddle,True,False,2
-Steamboat,Skyline,True,False,2
-Steamboat,Snooze Bar,False,False,2
-Steamboat,South Peak Flats,True,False,1
-Steamboat,So What,True,False,1
-Steamboat,Spike,True,False,2
-Steamboat,Spur Run,True,False,1
-Steamboat,Stampede,True,False,1
-Steamboat,Storm Peak Catwalk,True,False,4
-Steamboat,Storm Peak North,True,False,4
-Steamboat,Storm Peak South,True,False,4
-Steamboat,Sundial,True,False,1
-Steamboat,Sundown Liftline,True,False,4
-Steamboat,Sunnyside,False,False,3
-Steamboat,Sunset,True,False,3
-Steamboat,Sunshine Lift Line,True,False,2
-Steamboat,Surprise,True,False,3
-Steamboat,Swinger,True,False,1
-Steamboat,Ted's Ridge,True,False,4
-Steamboat,The Gully,True,False,5
-Steamboat,The Ridge,True,False,4
-Steamboat,Thick of It,False,False,4
-Steamboat,Three O'Clock,True,False,4
-Steamboat,Tomahawk,True,False,1
-Steamboat,Tomahawk Face,True,False,2
-Steamboat,Tornado,True,False,4
-Steamboat,Tornado Lane,True,False,2
-Steamboat,Tower,True,False,2
-Steamboat,Traverse,True,False,2
-Steamboat,Triangle 3,True,False,4
-Steamboat,Trick Roper,True,False,2
-Steamboat,Twilight,True,False,4
-Steamboat,Twister,True,False,4
-Steamboat,Two O'Clock,True,False,3
-Steamboat,Two Step,False,False,5
-Steamboat,Typhoon,True,False,4
-Steamboat,Ultimate Glades,False,False,5
-Steamboat,Vagabond Lower,True,False,2
-Steamboat,Vagabond Upper,True,False,2
-Steamboat,Valley View ,False,False,4
-Steamboat,Velvet,True,False,2
-Steamboat,Vertigo,True,False,4
-Steamboat,Vogue,True,False,2
-Steamboat,Voo Doo,True,False,4
-Steamboat,Vortex,True,False,4
-Steamboat,Wake Up Call,False,False,4
-Steamboat,Wapiti,True,False,2
-Steamboat,West Side,True,False,4
-Steamboat,White Out,True,False,4
-Steamboat,Why Not,True,False,1
-Steamboat,Wild Blue Way,True,False,1
-Steamboat,WJW,True,False,4
-Steamboat,Yoo Hoo,True,False,1
-Steamboat,Chisholm Trail,True,False,0
-Steamboat,Duster,True,False,0
-Steamboat,Lil' Rodeo Park,True,False,0
-Steamboat,Maverick's Half Pipe,True,False,0
-Steamboat,Rabbit Ears Terrain Park,True,False,0
-Steamboat,Gate 1,True,False,5
-Steamboat,Gate 2,True,False,5
-Steamboat,Gate 3,True,False,5
-Steamboat,Gate 4,True,False,5
-Steamboat,Gate 5,True,False,5
-Steamboat,Gate 6,True,False,5
-Steamboat,Gate 7,True,False,5
-Steamboat,Gate 8,True,False,5
-Steamboat,Hogan Park,True,False,5
+run_name,open_closed,groomed,difficulty
+Alarm Clock,False,False,4
+Ambush,False,False,4
+Arc,True,False,1
+Baby Powder,True,False,2
+Bail Out,False,False,2
+Bashor,True,False,2
+BC Lift Line,True,False,4
+BC Ski Way,True,False,1
+Bear Claw,False,False,3
+Between,True,False,2
+Betwixt,True,False,2
+Big Foot,True,False,2
+Big Meadow,True,False,2
+Bird's Beak,False,False,5
+Biscuits,False,False,4
+Black Powder,False,False,4
+Blizzard,True,False,2
+Boulder Field,False,False,5
+Boulevard,True,False,1
+Broadway,True,False,1
+Buckshot,True,False,2
+Buddy's Run,True,False,2
+Bugs' Run,True,False,4
+Cabin Fever,False,False,4
+Calf Roper,True,False,2
+Chaps,False,False,3
+Cheesy Grits,False,False,4
+Christmas Tree Bowl,True,False,5
+Chuckwagon,True,False,4
+Chute 1,True,False,5
+Chute 2,True,False,5
+Chute 3,True,False,5
+Closets,True,False,4
+Concentration,True,False,4
+Corridor,True,False,4
+Cowboy Coffee,False,False,2
+Crowtrack,True,False,4
+Cub,True,False,2
+Cyclone,True,False,4
+Dawn,True,False,4
+Daybreak,True,False,2
+Diamond Hitch,False,False,4
+Distraction,False,False,4
+Drop Out,True,False,4
+Dusk,True,False,2
+Eagles Nest,True,False,2
+East Face,True,False,5
+Eclipse,True,False,3
+Edge of the World,False,False,4
+Ego,True,False,2
+Endless Gully,False,False,5
+Fairway,False,False,4
+Fawn,True,False,2
+Fetcher Glade,False,False,4
+First Chance,True,False,4
+Flatout,True,False,1
+Flintlock,True,False,2
+Flying Z,True,False,4
+Flying Z Gulch,True,False,3
+Fools Gold,False,False,4
+Four Points Lift Line,True,False,4
+Frying Pan,False,False,4
+Giggle Gulch,True,False,1
+Granola Bowl,False,False,5
+Gravy,False,False,4
+Half Hitch,False,False,3
+Headwall,True,False,2
+Heavenly Daze,True,False,2
+Highline,True,False,2
+High Noon,True,False,2
+Hot Cakes,False,False,4
+Huevos,False,False,4
+Huffman's,True,False,2
+Hurricane,True,False,4
+Jess' Cut-Off,True,False,2
+Jump Start,False,False,4
+Kit,True,False,2
+Kuus' Cruise,True,False,4
+Lariat,False,False,2
+Last Chance,True,False,4
+Legends Trees,False,False,4
+Lightning,True,False,2
+Lights Out,True,False,4
+Longhorn,False,False,3
+Lower Concentration ,True,False,2
+Lower High Noon,True,False,2
+Lower Valley View,False,False,4
+Mahogany Ridge Lift Line,False,False,4
+Meadow Lane,True,False,2
+Middle Rib,False,False,4
+Milk Run,False,False,5
+Moonlight,True,False,2
+Morningside Liftline,False,False,4
+Mother Nature,True,False,4
+Nash Junction,True,False,4
+Nelson's Run,True,False,4
+No Names,True,False,5
+Norther,True,False,2
+North St. Pats,True,False,5
+Nostrils,False,False,5
+One O'Clock,True,False,2
+Oops,True,False,4
+Outlaw,False,False,4
+Over Easy,True,False,2
+Park Lane,True,False,1
+Perry Park,False,False,4
+Pony Express Liftline,False,False,4
+Pressure Drop,True,False,4
+Pup,True,False,2
+Quickdraw,True,False,2
+Rainbow,True,False,2
+Ramrod,True,False,2
+Rendezvous Way,True,False,1
+Right-O-Way,True,False,1
+Rolex,True,False,4
+Rooster,False,False,2
+Rough Rider,False,False,1
+Rowel,True,False,2
+Royal Flush,False,False,4
+Rudi's Run,True,False,2
+See Me,False,False,4
+Shadows,True,False,4
+Short Cut,True,False,1
+Sideburn,True,False,4
+Sitz,True,False,2
+Sitzback,True,False,1
+Skeeter's Run,True,False,3
+Skidaddle,True,False,2
+Skyline,True,False,2
+Snooze Bar,False,False,2
+South Peak Flats,True,False,1
+So What,True,False,1
+Spike,True,False,2
+Spur Run,True,False,1
+Stampede,True,False,1
+Storm Peak Catwalk,True,False,4
+Storm Peak North,True,False,4
+Storm Peak South,True,False,4
+Sundial,True,False,1
+Sundown Liftline,True,False,4
+Sunnyside,False,False,3
+Sunset,True,False,3
+Sunshine Lift Line,True,False,2
+Surprise,True,False,3
+Swinger,True,False,1
+Ted's Ridge,True,False,4
+The Gully,True,False,5
+The Ridge,True,False,4
+Thick of It,False,False,4
+Three O'Clock,True,False,4
+Tomahawk,True,False,1
+Tomahawk Face,True,False,2
+Tornado,True,False,4
+Tornado Lane,True,False,2
+Tower,True,False,2
+Traverse,True,False,2
+Triangle 3,True,False,4
+Trick Roper,True,False,2
+Twilight,True,False,4
+Twister,True,False,4
+Two O'Clock,True,False,3
+Two Step,False,False,5
+Typhoon,True,False,4
+Ultimate Glades,False,False,5
+Vagabond Lower,True,False,2
+Vagabond Upper,True,False,2
+Valley View ,False,False,4
+Velvet,True,False,2
+Vertigo,True,False,4
+Vogue,True,False,2
+Voo Doo,True,False,4
+Vortex,True,False,4
+Wake Up Call,False,False,4
+Wapiti,True,False,2
+West Side,True,False,4
+White Out,True,False,4
+Why Not,True,False,1
+Wild Blue Way,True,False,1
+WJW,True,False,4
+Yoo Hoo,True,False,1
+Chisholm Trail,True,False,0
+Duster,True,False,0
+Lil' Rodeo Park,True,False,0
+Maverick's Half Pipe,True,False,0
+Rabbit Ears Terrain Park,True,False,0
+Gate 1,True,False,5
+Gate 2,True,False,5
+Gate 3,True,False,5
+Gate 4,True,False,5
+Gate 5,True,False,5
+Gate 6,True,False,5
+Gate 7,True,False,5
+Gate 8,True,False,5
+Hogan Park,True,False,5

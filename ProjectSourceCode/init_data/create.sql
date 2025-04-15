@@ -75,67 +75,67 @@ CREATE TABLE users_to_reviews (
 DROP TABLE IF EXISTS copper_lifts;
 CREATE TABLE copper_lifts (
     lift_id SERIAL PRIMARY KEY NOT NULL,
-    lift_name VARCHAR(20) NOT NULL,
+    lift_name VARCHAR(100) NOT NULL,
     open_closed VARCHAR(20) NOT NULL,
-    lift_type VARCHAR(20) NOT NULL
+    lift_type VARCHAR(100) NOT NULL
 );
 
 DROP TABLE IF EXISTS eldora_lifts;
 CREATE TABLE eldora_lifts (
     lift_id SERIAL PRIMARY KEY NOT NULL,
-    lift_name VARCHAR(20) NOT NULL,
+    lift_name VARCHAR(100) NOT NULL,
     open_closed VARCHAR(20) NOT NULL,
-    lift_type VARCHAR(20) NOT NULL
+    lift_type VARCHAR(100) NOT NULL
 );
 
 DROP TABLE IF EXISTS steamboat_lifts;
 CREATE TABLE steamboat_lifts (
     lift_id SERIAL PRIMARY KEY NOT NULL,
-    lift_name VARCHAR(20) NOT NULL,
+    lift_name VARCHAR(100) NOT NULL,
     open_closed VARCHAR(20) NOT NULL,
-    lift_type VARCHAR(20) NOT NULL
+    lift_type VARCHAR(100) NOT NULL
 );
 
 DROP TABLE IF EXISTS winter_park_lifts;
 CREATE TABLE winter_park_lifts (
     lift_id SERIAL PRIMARY KEY NOT NULL,
-    lift_name VARCHAR(20) NOT NULL,
+    lift_name VARCHAR(100) NOT NULL,
     open_closed VARCHAR(20) NOT NULL,
-    lift_type VARCHAR(20) NOT NULL
+    lift_type VARCHAR(100) NOT NULL
 );
 
 DROP TABLE IF EXISTS copper_runs;
 CREATE TABLE copper_runs (
     run_id SERIAL PRIMARY KEY NOT NULL,
-    run_name VARCHAR(20) NOT NULL,
+    run_name VARCHAR(100) NOT NULL,
     open_closed VARCHAR(20) NOT NULL,
     groomed VARCHAR(20) NOT NULL,
-    difficulty VARCHAR(20) NOT NULL
+    difficulty VARCHAR(10) NOT NULL
 );
 
 DROP TABLE IF EXISTS eldora_runs;
 CREATE TABLE eldora_runs (
     run_id SERIAL PRIMARY KEY NOT NULL,
-    run_name VARCHAR(20) NOT NULL,
+    run_name VARCHAR(100) NOT NULL,
     open_closed VARCHAR(20) NOT NULL,
     groomed VARCHAR(20) NOT NULL,
-    difficulty VARCHAR(20) NOT NULL
+    difficulty VARCHAR(10) NOT NULL
 );
 
 DROP TABLE IF EXISTS steamboat_runs;
 CREATE TABLE steamboat_runs (
     run_id SERIAL PRIMARY KEY NOT NULL,
-    run_name VARCHAR(20) NOT NULL,
+    run_name VARCHAR(100) NOT NULL,
     open_closed VARCHAR(20) NOT NULL,
     groomed VARCHAR(20) NOT NULL,
-    difficulty VARCHAR(20) NOT NULL
+    difficulty VARCHAR(10) NOT NULL
 );
 
 DROP TABLE IF EXISTS winter_park_runs;
 CREATE TABLE winter_park_runs (
     run_id SERIAL PRIMARY KEY NOT NULL,
-    run_name VARCHAR(20) NOT NULL,
+    run_name VARCHAR(100) NOT NULL,
     open_closed VARCHAR(20) NOT NULL,
     groomed VARCHAR(20) NOT NULL,
-    difficulty VARCHAR(20) NOT NULL
+    difficulty VARCHAR(10) NOT NULL
 );
