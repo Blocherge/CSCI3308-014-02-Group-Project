@@ -16,7 +16,7 @@ Eldora,Powderhorn,True,True,2
 Eldora,Mary's Way,True,True,3
 Eldora,La Belle Dame,True,True,2
 Eldora,Klondike,True,True,2
-Eldora,Jolly Jug Glades,True,True,4
+Eldora,Jolly Jug Glades,False,True,4
 Eldora,Jolly Jug,True,True,2
 Eldora,International,True,True,2
 Eldora,Hot Dog Alley,True,True,2
@@ -69,7 +69,7 @@ Eldora,Antelope Creek,False,True,3
 Eldora,Annie B,False,True,2
 Eldora,Ryder's,True,True,1
 Eldora,Corona Traverse,True,True,2
-Eldora,Challenge,True,True,3
+Eldora,Challenge,False,True,3
 Eldora,Cannonball Run,False,True,3
 Eldora,Bonanza,True,True,2
 Eldora,4 O'Clock,True,True,2

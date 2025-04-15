@@ -1,20 +1,20 @@
 resort,name,open,groomed,difficultly
-Steamboat,Alarm Clock,True,False,4
-Steamboat,Ambush,True,False,4
+Steamboat,Alarm Clock,False,False,4
+Steamboat,Ambush,False,False,4
 Steamboat,Arc,True,False,1
 Steamboat,Baby Powder,True,False,2
-Steamboat,Bail Out,True,False,2
+Steamboat,Bail Out,False,False,2
 Steamboat,Bashor,True,False,2
 Steamboat,BC Lift Line,True,False,4
 Steamboat,BC Ski Way,True,False,1
-Steamboat,Bear Claw,True,False,3
+Steamboat,Bear Claw,False,False,3
 Steamboat,Between,True,False,2
 Steamboat,Betwixt,True,False,2
 Steamboat,Big Foot,True,False,2
 Steamboat,Big Meadow,True,False,2
 Steamboat,Bird's Beak,False,False,5
-Steamboat,Biscuits,True,False,4
-Steamboat,Black Powder,True,False,4
+Steamboat,Biscuits,False,False,4
+Steamboat,Black Powder,False,False,4
 Steamboat,Blizzard,True,False,2
 Steamboat,Boulder Field,False,False,5
 Steamboat,Boulevard,True,False,1
@@ -22,10 +22,10 @@ Steamboat,Broadway,True,False,1
 Steamboat,Buckshot,True,False,2
 Steamboat,Buddy's Run,True,False,2
 Steamboat,Bugs' Run,True,False,4
-Steamboat,Cabin Fever,True,False,4
+Steamboat,Cabin Fever,False,False,4
 Steamboat,Calf Roper,True,False,2
-Steamboat,Chaps,True,False,3
-Steamboat,Cheesy Grits,True,False,4
+Steamboat,Chaps,False,False,3
+Steamboat,Cheesy Grits,False,False,4
 Steamboat,Christmas Tree Bowl,True,False,5
 Steamboat,Chuckwagon,True,False,4
 Steamboat,Chute 1,True,False,5
@@ -34,14 +34,14 @@ Steamboat,Chute 3,True,False,5
 Steamboat,Closets,True,False,4
 Steamboat,Concentration,True,False,4
 Steamboat,Corridor,True,False,4
-Steamboat,Cowboy Coffee,True,False,2
+Steamboat,Cowboy Coffee,False,False,2
 Steamboat,Crowtrack,True,False,4
 Steamboat,Cub,True,False,2
 Steamboat,Cyclone,True,False,4
 Steamboat,Dawn,True,False,4
 Steamboat,Daybreak,True,False,2
-Steamboat,Diamond Hitch,True,False,4
-Steamboat,Distraction,True,False,4
+Steamboat,Diamond Hitch,False,False,4
+Steamboat,Distraction,False,False,4
 Steamboat,Drop Out,True,False,4
 Steamboat,Dusk,True,False,2
 Steamboat,Eagles Nest,True,False,2
@@ -52,29 +52,29 @@ Steamboat,Ego,True,False,2
 Steamboat,Endless Gully,False,False,5
 Steamboat,Fairway,False,False,4
 Steamboat,Fawn,True,False,2
-Steamboat,Fetcher Glade,True,False,4
+Steamboat,Fetcher Glade,False,False,4
 Steamboat,First Chance,True,False,4
 Steamboat,Flatout,True,False,1
 Steamboat,Flintlock,True,False,2
 Steamboat,Flying Z,True,False,4
 Steamboat,Flying Z Gulch,True,False,3
-Steamboat,Fools Gold,True,False,4
+Steamboat,Fools Gold,False,False,4
 Steamboat,Four Points Lift Line,True,False,4
-Steamboat,Frying Pan,True,False,4
+Steamboat,Frying Pan,False,False,4
 Steamboat,Giggle Gulch,True,False,1
 Steamboat,Granola Bowl,False,False,5
-Steamboat,Gravy,True,False,4
-Steamboat,Half Hitch,True,False,3
+Steamboat,Gravy,False,False,4
+Steamboat,Half Hitch,False,False,3
 Steamboat,Headwall,True,False,2
 Steamboat,Heavenly Daze,True,False,2
 Steamboat,Highline,True,False,2
 Steamboat,High Noon,True,False,2
-Steamboat,Hot Cakes,True,False,4
-Steamboat,Huevos,True,False,4
+Steamboat,Hot Cakes,False,False,4
+Steamboat,Huevos,False,False,4
 Steamboat,Huffman's,True,False,2
 Steamboat,Hurricane,True,False,4
 Steamboat,Jess' Cut-Off,True,False,2
-Steamboat,Jump Start,True,False,4
+Steamboat,Jump Start,False,False,4
 Steamboat,Kit,True,False,2
 Steamboat,Kuus' Cruise,True,False,4
 Steamboat,Lariat,False,False,2
@@ -82,16 +82,16 @@ Steamboat,Last Chance,True,False,4
 Steamboat,Legends Trees,False,False,4
 Steamboat,Lightning,True,False,2
 Steamboat,Lights Out,True,False,4
-Steamboat,Longhorn,True,False,3
+Steamboat,Longhorn,False,False,3
 Steamboat,Lower Concentration ,True,False,2
 Steamboat,Lower High Noon,True,False,2
-Steamboat,Lower Valley View,True,False,4
+Steamboat,Lower Valley View,False,False,4
 Steamboat,Mahogany Ridge Lift Line,False,False,4
 Steamboat,Meadow Lane,True,False,2
-Steamboat,Middle Rib,True,False,4
+Steamboat,Middle Rib,False,False,4
 Steamboat,Milk Run,False,False,5
 Steamboat,Moonlight,True,False,2
-Steamboat,Morningside Liftline,True,False,4
+Steamboat,Morningside Liftline,False,False,4
 Steamboat,Mother Nature,True,False,4
 Steamboat,Nash Junction,True,False,4
 Steamboat,Nelson's Run,True,False,4
@@ -104,8 +104,8 @@ Steamboat,Oops,True,False,4
 Steamboat,Outlaw,False,False,4
 Steamboat,Over Easy,True,False,2
 Steamboat,Park Lane,True,False,1
-Steamboat,Perry Park,True,False,4
-Steamboat,Pony Express Liftline,True,False,4
+Steamboat,Perry Park,False,False,4
+Steamboat,Pony Express Liftline,False,False,4
 Steamboat,Pressure Drop,True,False,4
 Steamboat,Pup,True,False,2
 Steamboat,Quickdraw,True,False,2
@@ -114,12 +114,12 @@ Steamboat,Ramrod,True,False,2
 Steamboat,Rendezvous Way,True,False,1
 Steamboat,Right-O-Way,True,False,1
 Steamboat,Rolex,True,False,4
-Steamboat,Rooster,True,False,2
-Steamboat,Rough Rider,True,False,1
+Steamboat,Rooster,False,False,2
+Steamboat,Rough Rider,False,False,1
 Steamboat,Rowel,True,False,2
-Steamboat,Royal Flush,True,False,4
+Steamboat,Royal Flush,False,False,4
 Steamboat,Rudi's Run,True,False,2
-Steamboat,See Me,True,False,4
+Steamboat,See Me,False,False,4
 Steamboat,Shadows,True,False,4
 Steamboat,Short Cut,True,False,1
 Steamboat,Sideburn,True,False,4
@@ -128,7 +128,7 @@ Steamboat,Sitzback,True,False,1
 Steamboat,Skeeter's Run,True,False,3
 Steamboat,Skidaddle,True,False,2
 Steamboat,Skyline,True,False,2
-Steamboat,Snooze Bar,True,False,2
+Steamboat,Snooze Bar,False,False,2
 Steamboat,South Peak Flats,True,False,1
 Steamboat,So What,True,False,1
 Steamboat,Spike,True,False,2
@@ -139,7 +139,7 @@ Steamboat,Storm Peak North,True,False,4
 Steamboat,Storm Peak South,True,False,4
 Steamboat,Sundial,True,False,1
 Steamboat,Sundown Liftline,True,False,4
-Steamboat,Sunnyside,True,False,3
+Steamboat,Sunnyside,False,False,3
 Steamboat,Sunset,True,False,3
 Steamboat,Sunshine Lift Line,True,False,2
 Steamboat,Surprise,True,False,3
@@ -165,13 +165,13 @@ Steamboat,Typhoon,True,False,4
 Steamboat,Ultimate Glades,False,False,5
 Steamboat,Vagabond Lower,True,False,2
 Steamboat,Vagabond Upper,True,False,2
-Steamboat,Valley View ,True,False,4
+Steamboat,Valley View ,False,False,4
 Steamboat,Velvet,True,False,2
 Steamboat,Vertigo,True,False,4
 Steamboat,Vogue,True,False,2
 Steamboat,Voo Doo,True,False,4
 Steamboat,Vortex,True,False,4
-Steamboat,Wake Up Call,True,False,4
+Steamboat,Wake Up Call,False,False,4
 Steamboat,Wapiti,True,False,2
 Steamboat,West Side,True,False,4
 Steamboat,White Out,True,False,4

@@ -56,7 +56,7 @@ Copper,Jackstraw Trees,True,True,2
 Copper,Jacque's Pique,True,True,2
 Copper,Kokomo Glade,True,True,1
 Copper,Little Burn,True,True,2
-Copper,Log Chute,True,True,1
+Copper,Log Chute,False,True,1
 Copper,Loverly Lane,True,True,1
 Copper,Lyman Lane,True,True,1
 Copper,Minor Matter,True,True,1
@@ -86,7 +86,7 @@ Copper,Free Fall Glade,True,True,4
 Copper,Home Run,True,True,2
 Copper,Oh No (L),True,True,2
 Copper,Oh No (U),True,True,2
-Copper,Ore Deal,False,True,3
+Copper,Ore Deal,True,True,3
 Copper,Overlode,True,True,3
 Copper,Rosi's Run,True,True,3
 Copper,Slot Car Track,True,True,2
@@ -130,7 +130,7 @@ Copper,Pacific Cornice,False,True,4
 Copper,Park Place,True,True,3
 Copper,Patrol Chute,True,True,4
 Copper,Sawtooth,True,True,3
-Copper,So Fine,True,True,4
+Copper,So Fine,False,True,4
 Copper,Spaulding Glades,True,True,3
 Copper,Spaulding Ridge,True,True,3
 Copper,Triple Zero,True,True,4
@@ -149,9 +149,9 @@ Copper,Western Slope,True,True,5
 Copper,Alicante,True,True,3
 Copper,Bradley's Plunge,False,True,5
 Copper,Colorado Boulevard,True,True,2
-Copper,Golden Crest,True,True,3
-Copper,Iron Mask,True,True,5
-Copper,Julie's Vision,True,True,3
+Copper,Golden Crest,False,True,3
+Copper,Iron Mask,False,True,5
+Copper,Julie's Vision,False,True,3
 Copper,Lallarookn,False,True,4
 Copper,Lillie G (L),False,True,3
 Copper,Matchless,True,True,3
@@ -172,7 +172,7 @@ Copper,Superpipe on Main Vein,True,True,1
 Copper,Farleys (L),True,True,2
 Copper,Farleys (U),True,True,2
 Copper,Farleys Connect,True,True,2
-Copper,Golf Course Loops,True,True,1
+Copper,Golf Course Loops,False,True,1
 Copper,Guller Creek,True,True,1
 Copper,West Ten Mile,True,True,1
 Copper,Aerie/PHQ (Route 1),True,True,2

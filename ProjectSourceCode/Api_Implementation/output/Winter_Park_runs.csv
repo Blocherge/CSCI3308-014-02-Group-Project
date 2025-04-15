@@ -112,22 +112,22 @@ Winter Park,Tie Siding,True,False,1
 Winter Park,Trestle,True,False,4
 Winter Park,Village Way - Switchyard,True,False,1
 Winter Park,Wildwood Glade,True,False,2
-Winter Park,Aces & Eights,True,False,4
-Winter Park,Big Valley,True,False,1
-Winter Park,Buckaroo,True,False,2
-Winter Park,Chuck Wagon,True,False,3
+Winter Park,Aces & Eights,False,False,4
+Winter Park,Big Valley,False,False,1
+Winter Park,Buckaroo,False,False,2
+Winter Park,Chuck Wagon,False,False,3
 Winter Park,Dilly Dally Alley,True,False,2
-Winter Park,Gambler,True,False,4
-Winter Park,Gunbarrel,True,False,1
-Winter Park,Lower Egress,True,False,3
-Winter Park,Quickdraw,True,False,2
-Winter Park,Shootout,True,False,2
-Winter Park,Stagecoach,True,False,2
-Winter Park,Sundance,True,False,2
-Winter Park,Tinhorn,True,False,1
-Winter Park,Wagon Train,True,False,1
-Winter Park,Wild Spur Trail Lower,True,False,3
-Winter Park,Wild Spur Trail Upper,True,False,4
+Winter Park,Gambler,False,False,4
+Winter Park,Gunbarrel,False,False,1
+Winter Park,Lower Egress,False,False,3
+Winter Park,Quickdraw,False,False,2
+Winter Park,Shootout,False,False,2
+Winter Park,Stagecoach,False,False,2
+Winter Park,Sundance,False,False,2
+Winter Park,Tinhorn,False,False,1
+Winter Park,Wagon Train,False,False,1
+Winter Park,Wild Spur Trail Lower,False,False,3
+Winter Park,Wild Spur Trail Upper,False,False,4
 Winter Park,Calypso,True,False,3
 Winter Park,Fireberry Glade,True,False,3
 Winter Park,Forever Eva,True,False,2
@@ -150,14 +150,14 @@ Winter Park,Lower Railyard,True,False,4
 Winter Park,"Rail Yard®, including Halfpipe",True,False,4
 Winter Park,Re-railer,True,False,4
 Winter Park,Starter Park,True,False,4
-Winter Park,Belle Fourche,True,False,4
-Winter Park,Black Coal,True,False,4
-Winter Park,Eagle Wind,True,False,4
-Winter Park,Left Hand,True,False,4
-Winter Park,Little Raven,True,False,4
-Winter Park,Medicine Man,True,False,4
-Winter Park,Sharpnose,True,False,4
-Winter Park,Thunderbird,True,False,4
+Winter Park,Belle Fourche,False,False,4
+Winter Park,Black Coal,False,False,4
+Winter Park,Eagle Wind,False,False,4
+Winter Park,Left Hand,False,False,4
+Winter Park,Little Raven,False,False,4
+Winter Park,Medicine Man,False,False,4
+Winter Park,Sharpnose,False,False,4
+Winter Park,Thunderbird,False,False,4
 Winter Park,Thunderbird Traverse,False,False,4
 Winter Park,100s,False,False,4
 Winter Park,Alphabet Chutes,False,False,5
