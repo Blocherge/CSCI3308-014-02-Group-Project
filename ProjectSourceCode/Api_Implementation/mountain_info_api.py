@@ -9,6 +9,8 @@ import csv
 import os
 from datetime import datetime
 
+from generate_sql_insert import generate_insert_sql
+
 # Replace these with actual API endpoints
 api_urls = {
     "Copper": "https://api.coppercolorado.com/api/v1/dor/lift-trail-report",
@@ -16,8 +18,8 @@ api_urls = {
     "Steamboat": "https://mtnpowder.com/feed/v3.json?bearer_token=cku0FJeF71XjrOKXAHWA1wfNfcUr8vqyAWbIwp4v3SQ&resortId%5B%5D=6",
     "Eldora": "https://api.eldora.com/api/v1/dor/lift-trail-report"
 }
-lift_headers = ["resort", "name", "open", "type"]
-run_headers = ["resort", "name", "open", "groomed", "difficultly"]
+lift_headers = ["lift_name", "open_closed", "lift_type"]
+run_headers = ["run_name", "open_closed", "groomed", "difficulty"]
 output_dir = "./output"
 
 ### Functions For All Resorts ###
@@ -51,31 +53,31 @@ def write_to_run_csv(resort, data):
 def standardize_run_data(run_data):
     for i in range(len(run_data)):
         # open
-        if "open" in run_data[i][2].lower():
+        if "open" in run_data[i][1].lower():
+            run_data[i][1] = True
+        else:
+            run_data[i][1] = False
+
+        # groomed
+        if "yes" in run_data[i][2] or "groomed" in run_data[i][3]:
             run_data[i][2] = True
         else:
             run_data[i][2] = False
 
-        # groomed
-        if "yes" in run_data[i][3] or "groomed" in run_data[i][3]:
-            run_data[i][3] = True
-        else:
-            run_data[i][3] = False
-
         # difficulty
-        match run_data[i][4]:
+        match run_data[i][3]:
             case "Easy" | "easiest":
-                run_data[i][4] = 1
+                run_data[i][3] = 1
             case "Intermediate" | "more_difficult":
-                run_data[i][4] = 2
+                run_data[i][3] = 2
             case "Advanced Intermediate" | "most_difficult":
-                run_data[i][4] = 3
+                run_data[i][3] = 3
             case "Expert" | "extreme":
-                run_data[i][4] = 4
+                run_data[i][3] = 4
             case "Extreme Terrain" | "extreme_terrain":
-                run_data[i][4] = 5
+                run_data[i][3] = 5
             case _:
-                run_data[i][4] = 0
+                run_data[i][3] = 0
 
     return run_data
 
@@ -83,10 +85,10 @@ def standardize_lift_data(lift_data):
     # Standardize output (lifts)
     for i in range(len(lift_data)):
         # open
-        if "open" in lift_data[i][2].lower():
-            lift_data[i][2] = True
+        if "open" in lift_data[i][1].lower():
+            lift_data[i][1] = True
         else:
-            lift_data[i][2] = False
+            lift_data[i][1] = False
 
     return lift_data
         
@@ -98,7 +100,6 @@ def get_copper_data():
     lift_data = []
     for lift in response["lift"]:
         lift_data.append([
-            "Copper",
             lift['name'],
             lift['status'],
             lift['type']
@@ -106,7 +107,6 @@ def get_copper_data():
     run_data = []
     for run in response["trail"]:
         run_data.append([
-            "Copper",
             run['name'],
             run['status'],
             run['groom_status'],
@@ -126,14 +126,12 @@ def get_steamboat_data():
     for area in response["Resorts"][0]["MountainAreas"]:
         for lift in area["Lifts"]:
             lift_data.append([
-                "Steamboat",
                 lift['Name'],
                 lift['StatusIcon'],
                 lift['LiftType']
             ])
         for run in area["Trails"]:
             run_data.append([
-                "Steamboat",
                 run['Name'],
                 run['Status'],
                 run['Grooming'],
@@ -143,10 +141,10 @@ def get_steamboat_data():
     lift_data = standardize_lift_data(lift_data)
     # For some reason, Extreme Terrain at steamboat is only called "Expert" and black diamonds are "Advanced"
     for i in range(len(run_data)):
-        if run_data[i][4] == "Expert":
-            run_data[i][4] = "Extreme Terrain"
-        elif run_data[i][4] == "Advanced":
-            run_data[i][4] = "Expert"
+        if run_data[i][3] == "Expert":
+            run_data[i][3] = "Extreme Terrain"
+        elif run_data[i][3] == "Advanced":
+            run_data[i][3] = "Expert"
     run_data = standardize_run_data(run_data)
 
     write_to_lift_csv("Steamboat", lift_data)
@@ -159,14 +157,12 @@ def get_winter_park_data():
     for area in response["Resorts"][0]["MountainAreas"]:
         for lift in area["Lifts"]:
             lift_data.append([
-                "Winter Park",
                 lift['Name'],
                 lift['StatusIcon'],
                 lift['LiftType']
             ])
         for run in area["Trails"]:
             run_data.append([
-                "Winter Park",
                 run['Name'],
                 run['Status'],
                 run['Grooming'],
@@ -184,7 +180,6 @@ def get_eldora_data():
     lift_data = []
     for lift in response["lift"]:
         lift_data.append([
-            "Eldora",
             lift['name'],
             lift['status'],
             lift['type']
@@ -192,7 +187,6 @@ def get_eldora_data():
     run_data = []
     for run in response["trail"]:
         run_data.append([
-            "Eldora",
             run['name'],
             run['status'],
             run['groom_status'],
@@ -210,3 +204,8 @@ def get_all_mountains_data():
     get_steamboat_data()
     get_winter_park_data()
     get_eldora_data()
+
+def get_data_and_generate_insert_file():
+    get_all_mountains_data()
+    # generate the sql file
+    generate_insert_sql()

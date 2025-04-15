@@ -1,91 +1,91 @@
-resort,name,open,groomed,difficultly
-Eldora,Powderhorn Glades,True,True,4
-Eldora,Sidewinder,True,True,2
-Eldora,Placer Glades,False,True,5
-Eldora,Lower Diamondback,True,True,2
-Eldora,Lower Ambush,True,True,2
-Eldora,Liftline,True,True,5
-Eldora,City Lights,True,True,2
-Eldora,Ambush,True,True,4
-Eldora,Windmill,True,True,2
-Eldora,Sunset,True,True,2
-Eldora,Summer Road,True,True,1
-Eldora,Psychopath,False,True,3
-Eldora,Upper Around the Horn,True,True,2
-Eldora,Powderhorn,True,True,2
-Eldora,Mary's Way,True,True,3
-Eldora,La Belle Dame,True,True,2
-Eldora,Klondike,True,True,2
-Eldora,Jolly Jug Glades,False,True,4
-Eldora,Jolly Jug,True,True,2
-Eldora,International,True,True,2
-Eldora,Hot Dog Alley,True,True,2
-Eldora,Hornblower,True,True,2
-Eldora,Dream & Scream,True,True,2
-Eldora,Pipeline,True,True,2
-Eldora,Reel It In,True,True,2
-Eldora,Pipeline Uphill Route,True,True,2
-Eldora,Frontside Uphill Route,True,True,2
-Eldora,Early Uphill Route,True,True,2
-Eldora,Backside Uphill Route,True,True,3
-Eldora,Wolf Tongue,True,True,3
-Eldora,West Ridge,True,True,5
-Eldora,Wayback,True,True,2
-Eldora,Salto Glades,True,True,5
-Eldora,Red Tail,True,True,3
-Eldora,Crewcut,True,True,2
-Eldora,Muleshoe,True,True,3
-Eldora,Moose Glades,True,True,5
-Eldora,Lower Around the Horn,True,True,2
-Eldora,Gully Glades,True,True,4
-Eldora,Corona Road,True,True,2
-Eldora,Corona,True,True,3
-Eldora,Cascade,True,True,3
-Eldora,Brian's Glades,True,True,4
-Eldora,Alpenhorn,True,True,3
-Eldora,Upper Diamondback,True,True,3
-Eldora,Ja Sure,False,True,2
-Eldora,Twin Twisted Tree,False,True,2
-Eldora,Stadium,False,True,1
-Eldora,Snowcat,False,True,1
-Eldora,Sawmill,False,True,3
-Eldora,Roller Coaster,False,True,2
-Eldora,Porcupine Park Loop,False,True,3
-Eldora,Phoebe Snow Loop,False,True,1
-Eldora,Peterson's Return,False,True,2
-Eldora,Mill Iron,False,True,2
-Eldora,Meadows Loop,False,True,1
-Eldora,Jenny Creek Loop,False,True,1
-Eldora,Woodcutter,False,True,3
-Eldora,Gandy Dancer,False,True,3
-Eldora,For Pete's Sake,False,True,2
-Eldora,Dixie,False,True,1
-Eldora,Deadman's Gulch,False,True,2
-Eldora,Cheaters Corner,False,True,2
-Eldora,Buckeye Basin Loop,False,True,2
-Eldora,Bogwaun,False,True,2
-Eldora,Beaver's Revenge,False,True,2
-Eldora,Antelope Creek,False,True,3
-Eldora,Annie B,False,True,2
-Eldora,Ryder's,True,True,1
-Eldora,Corona Traverse,True,True,2
-Eldora,Challenge,False,True,3
-Eldora,Cannonball Run,False,True,3
-Eldora,Bonanza,True,True,2
-Eldora,4 O'Clock,True,True,2
-Eldora,Upper Bunnyfair,True,True,2
-Eldora,Uncle Bob's,True,True,1
-Eldora,Trick Ditch,True,True,2
-Eldora,Sunkid,True,True,1
-Eldora,Sundance,True,True,2
-Eldora,17th Avenue,False,True,1
-Eldora,Little Hawk,True,True,1
-Eldora,Gabor's,True,True,2
-Eldora,Fun Zone,True,True,1
-Eldora,Fun Gully,True,True,1
-Eldora,Foxtail,True,True,1
-Eldora,Easyway,True,True,1
-Eldora,EZ LIftline,True,True,2
-Eldora,Chute,True,True,2
-Eldora,Bunnyfair,True,True,1
-Eldora,Zarlengo Loop,False,True,2
+run_name,open_closed,groomed,difficulty
+Powderhorn Glades,True,False,4
+Sidewinder,True,False,2
+Placer Glades,False,False,5
+Lower Diamondback,True,False,2
+Lower Ambush,True,False,2
+Liftline,True,False,5
+City Lights,True,False,2
+Ambush,True,False,4
+Windmill,True,False,2
+Sunset,True,False,2
+Summer Road,True,False,1
+Psychopath,False,False,3
+Upper Around the Horn,True,False,2
+Powderhorn,True,False,2
+Mary's Way,True,False,3
+La Belle Dame,True,False,2
+Klondike,True,False,2
+Jolly Jug Glades,False,False,4
+Jolly Jug,True,False,2
+International,True,False,2
+Hot Dog Alley,True,False,2
+Hornblower,True,False,2
+Dream & Scream,True,False,2
+Pipeline,True,False,2
+Reel It In,True,False,2
+Pipeline Uphill Route,True,False,2
+Frontside Uphill Route,True,False,2
+Early Uphill Route,True,False,2
+Backside Uphill Route,True,False,3
+Wolf Tongue,True,False,3
+West Ridge,True,False,5
+Wayback,True,False,2
+Salto Glades,True,False,5
+Red Tail,True,False,3
+Crewcut,True,False,2
+Muleshoe,True,False,3
+Moose Glades,True,False,5
+Lower Around the Horn,True,False,2
+Gully Glades,True,False,4
+Corona Road,True,False,2
+Corona,True,False,3
+Cascade,True,False,3
+Brian's Glades,True,False,4
+Alpenhorn,True,False,3
+Upper Diamondback,True,False,3
+Ja Sure,False,False,2
+Twin Twisted Tree,False,False,2
+Stadium,False,False,1
+Snowcat,False,False,1
+Sawmill,False,False,3
+Roller Coaster,False,False,2
+Porcupine Park Loop,False,False,3
+Phoebe Snow Loop,False,False,1
+Peterson's Return,False,False,2
+Mill Iron,False,False,2
+Meadows Loop,False,False,1
+Jenny Creek Loop,False,False,1
+Woodcutter,False,False,3
+Gandy Dancer,False,False,3
+For Pete's Sake,False,False,2
+Dixie,False,False,1
+Deadman's Gulch,False,False,2
+Cheaters Corner,False,False,2
+Buckeye Basin Loop,False,False,2
+Bogwaun,False,False,2
+Beaver's Revenge,False,False,2
+Antelope Creek,False,False,3
+Annie B,False,False,2
+Ryder's,True,False,1
+Corona Traverse,True,False,2
+Challenge,False,False,3
+Cannonball Run,False,False,3
+Bonanza,True,False,2
+4 O'Clock,True,False,2
+Upper Bunnyfair,True,False,2
+Uncle Bob's,True,False,1
+Trick Ditch,True,False,2
+Sunkid,True,False,1
+Sundance,True,False,2
+17th Avenue,False,False,1
+Little Hawk,True,False,1
+Gabor's,True,False,2
+Fun Zone,True,False,1
+Fun Gully,True,False,1
+Foxtail,True,False,1
+Easyway,True,False,1
+EZ LIftline,True,False,2
+Chute,True,False,2
+Bunnyfair,True,False,1
+Zarlengo Loop,False,False,2
