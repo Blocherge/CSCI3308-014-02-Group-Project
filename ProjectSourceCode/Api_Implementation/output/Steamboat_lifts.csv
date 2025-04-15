@@ -1,0 +1,25 @@
+resort,name,open,type
+Steamboat,Steamboat Gondola,True,Gondola
+Steamboat,Wild Blue Gondola Lower,True,Gondola
+Steamboat,Wild Blue Gondola Upper,True,Gondola
+Steamboat,Bar-UE,False,Double
+Steamboat,Bashor,True,Double
+Steamboat,Burgess Creek,True,Triple Chair
+Steamboat,Christie Peak Express,True,High-Speed 6 Chair
+Steamboat,Elkhead Express,True,High-Speed Quad
+Steamboat,Four Points,True,Triple Chair
+Steamboat,Greenhorn Ranch Express,False,High-Speed Quad
+Steamboat,Mahogany Ridge Express,False,High-Speed Quad
+Steamboat,Morningside,False,Triple Chair
+Steamboat,Pony Express,False,High-Speed Quad
+Steamboat,South Peak,True,Triple Chair
+Steamboat,Storm Peak Express,True,High-Speed Quad
+Steamboat,Sundown Express,True,High-Speed Quad
+Steamboat,Sunshine Express,True,High-Speed Quad
+Steamboat,Thunderhead Express,False,High-Speed Quad
+Steamboat,Wrangler Carpet,False,Magic Carpet
+Steamboat,Bonanza,False,Magic Carpet
+Steamboat,Buckaroo Carpet,False,Magic Carpet
+Steamboat,Easy Rider,False,Magic Carpet
+Steamboat,Two Whoops 1,True,Magic Carpet
+Steamboat,Two Whoops 2,True,Magic Carpet
