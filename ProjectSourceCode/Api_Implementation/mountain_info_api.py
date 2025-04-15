@@ -18,6 +18,7 @@ api_urls = {
 }
 lift_headers = ["resort", "name", "open", "type"]
 run_headers = ["resort", "name", "open", "groomed", "difficultly"]
+output_dir = "./output"
 
 ### Functions For All Resorts ###
 
@@ -33,7 +34,7 @@ def fetch_resort_data(url):
 
 # Takes a 2d array of lift data
 def write_to_lift_csv(resort, data):
-    file_path = f"{resort}_lifts.csv"
+    file_path = os.path.join(output_dir, f"{resort}_lifts.csv")
     with open(file_path, mode="w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(lift_headers)
@@ -41,11 +42,54 @@ def write_to_lift_csv(resort, data):
 
 # Takes a 2d array of run data
 def write_to_run_csv(resort, data):
-    file_path = f"{resort}_runs.csv"
+    file_path = os.path.join(output_dir, f"{resort}_runs.csv")
     with open(file_path, mode="w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(run_headers)
         writer.writerows(data)
+
+def standardize_run_data(run_data):
+    for i in range(len(run_data)):
+        # open
+        if "open" in run_data[i][2].lower():
+            run_data[i][2] = True
+        else:
+            run_data[i][2] = False
+
+        # groomed
+        if "yes" in run_data[i][3] or "groomed" in run_data[i][3]:
+            run_data[i][3] = True
+        else:
+            run_data[i][3] = False
+
+        # difficulty
+        match run_data[i][4]:
+            case "Easy" | "easiest":
+                run_data[i][4] = 1
+            case "Intermediate" | "more_difficult":
+                run_data[i][4] = 2
+            case "Advanced Intermediate" | "most_difficult":
+                run_data[i][4] = 3
+            case "Expert" | "extreme":
+                run_data[i][4] = 4
+            case "Extreme Terrain" | "extreme_terrain":
+                run_data[i][4] = 5
+            case _:
+                run_data[i][4] = 0
+
+    return run_data
+
+def standardize_lift_data(lift_data):
+    # Standardize output (lifts)
+    for i in range(len(lift_data)):
+        # open
+        if "open" in lift_data[i][2].lower():
+            lift_data[i][2] = True
+        else:
+            lift_data[i][2] = False
+
+    return lift_data
+        
     
 ### Individual Resort Formatting ###
 
@@ -59,7 +103,6 @@ def get_copper_data():
             lift['status'],
             lift['type']
         ])
-    write_to_lift_csv("Copper", lift_data)
     run_data = []
     for run in response["trail"]:
         run_data.append([
@@ -69,6 +112,11 @@ def get_copper_data():
             run['groom_status'],
             run['difficulty']
         ])
+
+    lift_data = standardize_lift_data(lift_data)
+    run_data = standardize_run_data(run_data)
+
+    write_to_lift_csv("Copper", lift_data)
     write_to_run_csv("Copper", run_data)
 
 def get_steamboat_data():
@@ -91,6 +139,16 @@ def get_steamboat_data():
                 run['Grooming'],
                 run['Difficulty']
             ])
+
+    lift_data = standardize_lift_data(lift_data)
+    # For some reason, Extreme Terrain at steamboat is only called "Expert" and black diamonds are "Advanced"
+    for i in range(len(run_data)):
+        if run_data[i][4] == "Expert":
+            run_data[i][4] = "Extreme Terrain"
+        elif run_data[i][4] == "Advanced":
+            run_data[i][4] = "Expert"
+    run_data = standardize_run_data(run_data)
+
     write_to_lift_csv("Steamboat", lift_data)
     write_to_run_csv("Steamboat", run_data)
 
@@ -114,6 +172,10 @@ def get_winter_park_data():
                 run['Grooming'],
                 run['Difficulty']
             ])
+
+    run_data = standardize_run_data(run_data)
+    lift_data = standardize_lift_data(lift_data)
+    
     write_to_lift_csv("Winter_Park", lift_data)
     write_to_run_csv("Winter_Park", run_data)
 
@@ -127,7 +189,6 @@ def get_eldora_data():
             lift['status'],
             lift['type']
         ])
-    write_to_lift_csv("Eldora", lift_data)
     run_data = []
     for run in response["trail"]:
         run_data.append([
@@ -137,28 +198,11 @@ def get_eldora_data():
             run['groom_status'],
             run['difficulty']
         ])
-    write_to_run_csv("Eldora", run_data)
 
-def get_eldora_data():
-    response = fetch_resort_data(api_urls["Eldora"])
-    lift_data = []
-    for lift in response["lift"]:
-        lift_data.append([
-            "Eldora",
-            lift['name'],
-            lift['status'],
-            lift['type']
-        ])
+    lift_data = standardize_lift_data(lift_data)
+    run_data = standardize_run_data(run_data)
+
     write_to_lift_csv("Eldora", lift_data)
-    run_data = []
-    for run in response["trail"]:
-        run_data.append([
-            "Eldora",
-            run['name'],
-            run['status'],
-            run['groom_status'],
-            run['difficulty']
-        ])
     write_to_run_csv("Eldora", run_data)
 
 def get_all_mountains_data():
