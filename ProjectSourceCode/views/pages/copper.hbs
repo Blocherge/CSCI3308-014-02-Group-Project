@@ -95,18 +95,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="/copper_review" method="POST">
                             <div class="mb-3">
                                 <label for="reviewTitle" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="reviewTitle"required>
+                                <input type="text" class="form-control" id="reviewTitle" name="title" required>
                             </div>
                             <div class="mb-3">
                                 <label for="reviewText" class="form-label">Your Review</label>
-                                <textarea class="form-control" id="reviewText" rows="4" required></textarea>
+                                <textarea class="form-control" id="reviewText" name="text" rows="4" required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="reviewRating" class="form-label">Rating</label>
-                                <select class="form-select" id="reviewRating" required>
+                                <select class="form-select" id="reviewRating" name="rating" required>
                                     <option value="5">5 - Excellent</option>
                                     <option value="4">4 - Very Good</option>
                                     <option value="3">3 - Good</option>
@@ -116,7 +116,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="reviewBusiness" class="form-label">Business</label>
-                                <select class="form-select" id="reviewBusiness" required>
+                                <select class="form-select" id="reviewBusiness" name="business" required>
                                     <option value="5">5 - Lifts were basically empty</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -124,7 +124,7 @@
                                     <option value="1">1 - Took 15 minutes to get on a lift</option>
                                 </select>
                             </div>
-                            <a href="/copper_review" class="btn btn-secondary">Submit Review</a>
+                            <button type="submit" class="btn btn-secondary">Submit Review</button>
                         </form>
                     </div>
                 </div>

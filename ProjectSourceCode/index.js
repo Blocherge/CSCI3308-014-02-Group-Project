@@ -232,20 +232,27 @@ app.get('/copper', auth, async (req, res) => {
 });
 
 app.post('/copper_review', auth, async (req, res) => {
-    const { username, text, rating, business, title, date} = req.body;
+    const currentDate = new Date();
+    const year = currentDate.getFullYear(); // Get the full year
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Get the month (zero-based, so add 1) and ensure two digits
+    const day = String(currentDate.getDate()).padStart(2, '0'); // Get the day and ensure two digits
+    
+    const formattedDate = `${year}-${month}-${day}`; // Format as YYYY-MM-DD    
 
-    console.log("RATING", rating)
+    const { username = req.session.user, text, rating, business, title, date = formattedDate} = req.body;
+
+    console.log("DATA:", username, text, rating, business, title, date);
 
     if (!username || rating == undefined || !business || !title || !date) {
         return res.status(400).json({ status: 'error', message: 'All fields are required' });
     }
 
     try {
-        const query = await t.none('INSERT INTO copper_reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
+        const query = await db.none('INSERT INTO copper_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
 
         res.status(200);
         res.render('pages/review_left');
-    } catch {
+    } catch (error) {
         console.error("Error adding review:", error);
         res.status(500).json({ error: "Internal server error" });
     }
