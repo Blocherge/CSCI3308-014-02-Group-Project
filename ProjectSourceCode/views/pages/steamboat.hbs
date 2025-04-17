@@ -8,14 +8,14 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h2 class="mb-4 text-center">{{trails.name}}</h2>
+        <h2 class="mb-4 text-center">{{trail.name}}</h2>
         <div class="card">
-            <img src="{{trails.image}}" class="card-img-top" alt="{{trails.name}}">
+            <img src="{{trail.image}}" class="card-img-top" alt="{{trail.name}}">
             <div class="card-body">
-                <h5 class="card-title">{{trails.name}}</h5>
-                <p class="card-text"><strong>Location:</strong> {{trails.location}}</p>
-                <p class="card-text"><strong>Description:</strong> {{trails.description}}</p>
-                <p class="card-text"><strong>Average Rating:</strong> {{trails.avg_rating}}</p>
+                <h5 class="card-title">{{trail.name}}</h5>
+                <p class="card-text"><strong>Location:</strong> {{trail.location}}</p>
+                <p class="card-text"><strong>Description:</strong> {{trail.description}}</p>
+                <p class="card-text"><strong>Average Rating:</strong> {{trail.avg_rating}}</p>
                 <p class="card-text"><strong>Weather Forecast:</strong></p>
                 <p class="card-text"><strong>Business:</strong></p>
                 <a href="/home" class="btn btn-secondary">Back to Home</a>
@@ -37,10 +37,10 @@
         <tbody>
             {{#each steamboat_runs}}
             <tr>
-                <td>{{steamboat_runs.name}}</td>
-                <td>{{steamboat_runs.groomed}}</td>
-                <td>{{steamboat_runs.open_close}}</td>
-                <td>{{steamboat_runs.difficulty}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.groomed}}</td>
+                <td>{{this.open_close}}</td>
+                <td>{{this.difficulty}}</td>
             </tr>
             {{/each}}
         </tbody>
@@ -60,9 +60,9 @@
             <tbody>
                 {{#each steamboat_lifts}}
                 <tr>
-                    <td>{{steamboat_lifts.name}}</td>
-                    <td>{{steamboat_lifts.open}}</td>
-                    <td>{{steamboat_lifts.type}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.open}}</td>
+                    <td>{{this.type}}</td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -77,12 +77,12 @@
         <h2 class="mb-4 text-center">Reviews</h2>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{steamboat_reviews.title}}</h5>
-                <p class="card-text"><strong>User:</strong> {{steamboat_reviews.username}}</p>
-                <p class="card-text"><strong>Rating:</strong> {{steamboat_reviews.rating}}</p>
-                <p class="card-text"><strong>Business:</strong> {{steamboat_reviews.rating}}</p>
-                <p class="card-text"><strong>Review:</strong>{{steamboat_reviews.text}}</p>
-                <p class="card-text"><strong>Date:</strong>{{steamboat_reviews.date}}</p>
+                <h5 class="card-title">{{reviews.title}}</h5>
+                <p class="card-text"><strong>User:</strong> {{reviews.username}}</p>
+                <p class="card-text"><strong>Rating:</strong> {{reviews.rating}}</p>
+                <p class="card-text"><strong>Business:</strong> {{reviews.rating}}</p>
+                <p class="card-text"><strong>Review:</strong>{{reviews.text}}</p>
+                <p class="card-text"><strong>Date:</strong>{{reviews.date}}</p>
             </div>
         </div>
     </div>
