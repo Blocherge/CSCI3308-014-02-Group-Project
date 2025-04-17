@@ -9,7 +9,12 @@ data_files = [
     "./output/Steamboat_lifts.csv",
     "./output/Steamboat_runs.csv",
     "./output/Winter_Park_lifts.csv",
-    "./output/Winter_Park_runs.csv"
+    "./output/Winter_Park_runs.csv",
+
+    "./output/copper_weather.csv",
+    "./output/eldora_weather.csv",
+    "./output/steamboat_weather.csv",
+    "./output/winter_park_weather.csv"
 ]
 output_file = "../init_data/insert_mountain_data.sql"
 

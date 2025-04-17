@@ -13,7 +13,7 @@ Carefree (L),True,False,2
 Carefree (U),True,False,1
 Collage (L),True,False,2
 Collage (U),True,False,2
-Copperopolis,True,False,2
+Copperopolis,False,False,2
 Coppertone,True,False,1
 Easy Road,True,False,1
 Easy Road Traverse,True,False,1
@@ -95,7 +95,7 @@ Treble Cliff,True,False,3
 Triple Treat,True,False,3
 West Encore,True,False,2
 EZ Rider/Learning Area,True,False,1
-Green Acres,True,False,1
+Green Acres,False,False,1
 Buzzard's Alley,True,False,4
 Colman's Retreat,True,False,3
 Endeavor,True,False,3
@@ -114,10 +114,10 @@ Union Peak,True,False,3
 Wheeler Creek,True,False,1
 Atlantic Cornice,False,False,4
 Bariloche,True,False,3
-Boardwalk,True,False,3
+Boardwalk,False,False,3
 Cabin Chute,True,False,3
-Calendar Chute,True,False,4
-Cornice Chute,True,False,4
+Calendar Chute,False,False,4
+Cornice Chute,False,False,4
 Double Zero,True,False,4
 Drain Pipe,True,False,4
 Hallelujah Ridge,True,False,3
@@ -125,17 +125,17 @@ Highline,True,False,3
 Hodson's Cut,True,False,3
 Lillie G (U),True,False,4
 Lillie G Traverse,True,False,3
-Marvin Garden,True,False,3
+Marvin Garden,False,False,3
 Pacific Cornice,False,False,4
-Park Place,True,False,3
-Patrol Chute,True,False,4
+Park Place,False,False,3
+Patrol Chute,False,False,4
 Sawtooth,True,False,3
 So Fine,False,False,4
-Spaulding Glades,True,False,3
+Spaulding Glades,False,False,3
 Spaulding Ridge,True,False,3
 Triple Zero,True,False,4
 Upper Enchanted Forest,True,False,4
-Boulderado,False,False,5
+Boulderado,True,False,5
 Buffalo Stampede,True,False,5
 Denverite,True,False,5
 Falcon Alley,True,False,5
@@ -144,14 +144,14 @@ Ram's Run,True,False,5
 Summit Stash,True,False,3
 The Springs,True,False,5
 The Taco/Curecanti,True,False,5
-Valentine's,False,False,5
+Valentine's,True,False,5
 Western Slope,True,False,5
 Alicante,True,False,3
-Bradley's Plunge,False,False,5
+Bradley's Plunge,True,False,5
 Colorado Boulevard,True,False,2
-Golden Crest,False,False,3
+Golden Crest,True,False,3
 Iron Mask,False,False,5
-Julie's Vision,False,False,3
+Julie's Vision,True,False,3
 Lallarookn,False,False,4
 Lillie G (L),False,False,3
 Matchless,True,False,3
@@ -162,19 +162,19 @@ Six Shooter,True,False,3
 Central Park on Loverly,True,False,1
 Miner’s Progression Park on Roundabout,True,False,1
 Family Cross on High Point,True,False,1
-Green Acres Progression Park,True,False,1
+Green Acres Progression Park,False,False,1
 Koko's Progression Park on Roundabout,True,False,1
 Peace Park on Vein Glory,True,False,1
 Pipe Dream on Vein Glory,True,False,1
 Red's Backyard on Loverly Lane,True,False,1
 Start Park at Easy Rider,True,False,1
 Superpipe on Main Vein,True,False,1
-Farleys (L),True,False,2
-Farleys (U),True,False,2
-Farleys Connect,True,False,2
+Farleys (L),False,False,2
+Farleys (U),False,False,2
+Farleys Connect,False,False,2
 Golf Course Loops,False,False,1
-Guller Creek,True,False,1
-West Ten Mile,True,False,1
+Guller Creek,False,False,1
+West Ten Mile,False,False,1
 Aerie/PHQ (Route 1),True,False,2
 Carefree/Highpoint (Route 2),True,False,1
 Chickaree Way (Route 3),True,False,1

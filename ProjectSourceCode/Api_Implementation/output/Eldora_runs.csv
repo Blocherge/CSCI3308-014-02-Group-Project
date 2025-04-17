@@ -1,5 +1,5 @@
 run_name,open_closed,groomed,difficulty
-Powderhorn Glades,True,False,4
+Powderhorn Glades,False,False,4
 Sidewinder,True,False,2
 Placer Glades,False,False,5
 Lower Diamondback,True,False,2
@@ -12,7 +12,7 @@ Sunset,True,False,2
 Summer Road,True,False,1
 Psychopath,False,False,3
 Upper Around the Horn,True,False,2
-Powderhorn,True,False,2
+Powderhorn,False,False,2
 Mary's Way,True,False,3
 La Belle Dame,True,False,2
 Klondike,True,False,2
@@ -79,7 +79,7 @@ Trick Ditch,True,False,2
 Sunkid,True,False,1
 Sundance,True,False,2
 17th Avenue,False,False,1
-Little Hawk,True,False,1
+Little Hawk,False,False,1
 Gabor's,True,False,2
 Fun Zone,True,False,1
 Fun Gully,True,False,1

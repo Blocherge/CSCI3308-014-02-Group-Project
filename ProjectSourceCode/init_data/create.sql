@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS trails;
 CREATE TABLE trails (
   trail_id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(100) NOT NULL,
-  location VARCHAR(100),
+  location VARCHAR(500),
   avg_rating DECIMAL,
   image INT,
   description VARCHAR(500) NOT NULL
@@ -138,4 +138,48 @@ CREATE TABLE winter_park_runs (
     open_closed VARCHAR(20) NOT NULL,
     groomed VARCHAR(20) NOT NULL,
     difficulty VARCHAR(10) NOT NULL
+);
+
+DROP TABLE IF EXISTS eldora_weather;
+CREATE TABLE eldora_weather (
+  date DATE PRIMARY KEY NOT NULL,
+  temperature_max VARCHAR(100) NOT NULL,
+  temperature_min VARCHAR(100) NOT NULL,
+  wind_speed_max VARCHAR(100) NOT NULL,
+  snowfall_sum VARCHAR(100) NOT NULL,
+  uv_index_max VARCHAR(100) NOT NULL,
+  weather_code VARCHAR(100) NOT NULL
+);
+
+DROP TABLE IF EXISTS copper_weather;
+CREATE TABLE copper_weather (
+  date DATE PRIMARY KEY NOT NULL,
+  temperature_max VARCHAR(100) NOT NULL,
+  temperature_min VARCHAR(100) NOT NULL,
+  wind_speed_max VARCHAR(100) NOT NULL,
+  snowfall_sum VARCHAR(100) NOT NULL,
+  uv_index_max VARCHAR(100) NOT NULL,
+  weather_code VARCHAR(100) NOT NULL
+);
+
+DROP TABLE IF EXISTS winter_park_weather;
+CREATE TABLE winter_park_weather (
+  date DATE PRIMARY KEY NOT NULL,
+  temperature_max VARCHAR(100) NOT NULL,
+  temperature_min VARCHAR(100) NOT NULL,
+  wind_speed_max VARCHAR(100) NOT NULL,
+  snowfall_sum VARCHAR(100) NOT NULL,
+  uv_index_max VARCHAR(100) NOT NULL,
+  weather_code VARCHAR(100) NOT NULL
+);
+
+DROP TABLE IF EXISTS steamboat_weather;
+CREATE TABLE steamboat_weather (
+  date DATE PRIMARY KEY NOT NULL,
+  temperature_max VARCHAR(100) NOT NULL,
+  temperature_min VARCHAR(100) NOT NULL,
+  wind_speed_max VARCHAR(100) NOT NULL,
+  snowfall_sum VARCHAR(100) NOT NULL,
+  uv_index_max VARCHAR(100) NOT NULL,
+  weather_code VARCHAR(100) NOT NULL
 );

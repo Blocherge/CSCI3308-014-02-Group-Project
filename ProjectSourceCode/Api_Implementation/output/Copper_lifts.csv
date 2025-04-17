@@ -8,8 +8,8 @@ Resolution,True,triple
 Sierra,True,triple
 Rendezvous,True,triple
 Celebrity Ridge,False,surface
-Pitchfork,True,double
-Gem,True,surface
+Pitchfork,False,double
+Gem,False,surface
 Easy Rider,True,carpet
 American Eagle,True,telemix
 Tubing Hill,True,carpet
