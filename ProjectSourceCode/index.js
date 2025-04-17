@@ -17,6 +17,10 @@ const hbs = handlebars.create({
     partialsDir: __dirname + '/views/partials',
 });
 
+hbs.handlebars.registerHelper('dashify', function(name) {
+  return name.toLowerCase().replace(/\s+/g, '_');
+});
+
 //db config will have to be updated when database is actually built
 // database configuration
 const dbConfig = {
@@ -25,9 +29,9 @@ const dbConfig = {
     database: process.env.POSTGRES_DB, // the database name
     user: process.env.POSTGRES_USER, // the user account to connect with
     password: process.env.POSTGRES_PASSWORD, // the password of the user account
-    ssl: {
-        rejectUnauthorized: false
-    }
+    //ssl: {
+    //    rejectUnauthorized: false
+    //}
   };
   
   const db = pgp(dbConfig);
@@ -152,13 +156,15 @@ app.get('/home', auth, async (req, res) => {
         const query = 'SELECT * FROM trails'
         const response = await db.query(query);
 
-        const trailsData = response.data|| [];
+        const trailsData = response;
 
-        const trails = trailsData.map(trailsData => ({
-            name: trails.name,
-            trail_id: trails.id,
-            trail_image: trails.trail_image,
-            avg_rating: trails.avg_rating
+        const trails = trailsData.map(trail => ({
+            name: trail.name,
+            trail_id: trail.id,
+            trail_image: trail.trail_image,
+            avg_rating: trail.avg_rating,
+            location: trail.location,
+            description: trail.description
         }));
 
         res.render('pages/home', { trails });

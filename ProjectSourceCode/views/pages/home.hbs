@@ -52,9 +52,21 @@
 
     .basic-info-row {
       display: flex;
-      justify-content: space-between;
-      padding: 2px 0;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 5px;
     }
+
+    .basic-info-row span:first-child {
+      font-weight: 600;
+      min-width: 100px;
+    }
+
+    .basic-info-row span:last-child {
+      flex: 1;
+    }
+
+
 
     .mountain.open .lifts {
       display: block;
@@ -67,73 +79,32 @@
 
   <h1>Mountains</h1>
 
-  <div class="mountain" id="copper">
+{{#each trails}}
+  <div class="mountain" id="{{name}}">
     <div class="header">
-      <span>Copper</span>
+      <span>{{name}}</span>
       <span>
-        <a href="/copper" class="info-button btn btn-primary">More Info</a>
-        <span class="arrow" onclick="toggleMountain('copper')">▼</span>
+        <a href="/{{dashify name}}" class="info-button btn btn-primary">More Info</a>
+        <span class="arrow" onclick="toggleMountain('{{name}}')">▼</span>
       </span>
     </div>
     <div class="lifts">
-      <div class="basic-info">
-      <div class="basic-info-row"><span>Rating</span><span>points</span></div>
-      <div class="basic-info-row"><span>Weather</span><span>degrees</span></div>
-      <div class="basic-info-row"><span>Wind Speen</span><span>mph</span></div>
-    </div>
+      <div class="basic-info-row">
+        <span>Rating:</span>
+        <span>{{avg_rating}} ★★★★★</span>
+      </div>
+      <div class="basic-info-row">
+        <span>Location:</span>
+        <span><a href="{{location}}" target="_blank">{{location}}</a></span>
+      </div>
+      <div class="basic-info-row">
+        <span>Description:</span>
+        <span>{{description}}</span>
+      </div>
     </div>
   </div>
+{{/each}}
 
-  <div class="mountain" id="winterpark">
-    <div class="header">
-      <span>Winter park</span>
-      <span>
-        <a href="/winter_park" class="info-button btn btn-primary">More Info</a>
-        <span class="arrow" onclick="toggleMountain('winterpark')">▼</span>
-      </span>
-    </div>
-    <div class="lifts">
-      <div class="basic-info">
-      <div class="basic-info-row"><span>Rating</span><span>points</span></div>
-      <div class="basic-info-row"><span>Weather</span><span>degrees</span></div>
-      <div class="basic-info-row"><span>Wind Speen</span><span>mph</span></div>
-    </div>
-    </div>
-  </div>
-
-  <div class="mountain" id="eldora">
-    <div class="header">
-      <span>Eldora</span>
-      <span>
-        <a href="/eldora" class="info-button btn btn-primary">More Info</a>
-        <span class="arrow" onclick="toggleMountain('eldora')">▼</span>
-      </span>
-    </div>
-    <div class="lifts">
-      <div class="basic-info">
-      <div class="basic-info-row"><span>Rating</span><span>points</span></div>
-      <div class="basic-info-row"><span>Weather</span><span>degrees</span></div>
-      <div class="basic-info-row"><span>Wind Speen</span><span>mph</span></div>
-    </div>
-    </div>
-  </div>
-  
-  <div class="mountain" id="steamboat">
-    <div class="header">
-      <span>Steamboat</span>
-      <span>
-        <a href="/steamboat" class="info-button btn btn-primary">More Info</a>
-        <span class="arrow" onclick="toggleMountain('steamboat')">▼</span>
-      </span>
-    </div>
-    <div class="lifts">
-      <div class="basic-info">
-      <div class="basic-info-row"><span>Rating</span><span>points</span></div>
-      <div class="basic-info-row"><span>Weather</span><span>degrees</span></div>
-      <div class="basic-info-row"><span>Wind Speen</span><span>mph</span></div>
-    </div>
-    </div>
-  </div>
 
   <script>
     function toggleMountain(id) {
