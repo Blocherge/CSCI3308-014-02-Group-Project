@@ -28,7 +28,7 @@ CREATE TABLE copper_reviews (
 );
 
 DROP TABLE IF EXISTS eldora_reviews;
-CREATE TABLE eldora_eviews (
+CREATE TABLE eldora_reviews (
     review_id SERIAL PRIMARY KEY NOT NULL,
     username VARCHAR(50) NOT NULL,
     rating DECIMAL NOT NULL,
