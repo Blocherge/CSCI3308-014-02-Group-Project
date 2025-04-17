@@ -147,7 +147,7 @@ app.get('/logout', (req, res) => {
 app.get('/home', auth, async (req, res) => {
     try {
         const query = 'SELECT * FROM trails'
-        const response = await db.query();
+        const response = await db.query(query);
 
         const trailsData = response.data|| [];
 
@@ -166,7 +166,72 @@ app.get('/home', auth, async (req, res) => {
     }
 });
 
-app.post('/review', auth, async (req, res) => {
+app.get('/welcome', (req, res) => {
+    res.json({status: 'success', message: 'Welcome!'});
+  });
+
+app.get('/copper', auth, async (req, res) => {
+    try {
+        const query = 'SELECT * FROM trails WHERE name = $1 LIMIT 1'
+        const response = await db.query(query, ['copper']);
+
+        const query_2 = 'SELECT * FROM copper_reviews'
+        const response_2 = await db.query(query_2);
+        
+        const query_3 = 'SELECT * FROM copper_lifts'
+        const response_3 = await db.query(query_3);
+
+        const query_4 = 'SELECT * FROM copper_runs'
+        const response_4 = await db.query(query_4);
+
+        const trailsData = response.data|| [];
+
+        const trails = trailsData.map(trailsData => ({
+            name: trail.name,
+            trail_id: trail.id,
+            trail_image: trail.trail_image,
+            avg_rating: trail.avg_rating,
+            description: trail.description,
+            location: trail.location
+        }));
+
+        const reviewsData = response_2.data|| [];
+
+        const copper_reviews = reviewsData.map(reviewsData => ({
+            username: reviews.username,
+            title: reviews.title,
+            rating: reviews.rating,
+            business: reviews.business,
+            text: reviews.text,
+            date: reviews.date
+        }));
+
+        const liftsData = response_3.data|| [];
+
+        const copper_lifts = liftsData.map(liftsData => ({
+            name: lifts.name,
+            open: lifts.open,
+            type: lifts.type,
+        }));
+
+        const runsData = response_4.data|| [];
+
+        const copper_runs = runsData.map(runsData => ({
+            name: runs.name,
+            open_closed: runs.open_closed,
+            groomed: runs.groomed,
+            difficulty: runs.difficulty
+        }));
+
+        res.render('pages/copper', { trail: trails[0] , copper_reviews , copper_lifts , copper_runs });
+
+    } catch (error) {
+        console.error("Error fetching trail data:", error);
+        res.render('pages/copper', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+    }
+});
+
+app.post('/copper_review', auth, async (req, res) => {
     const { username, text, rating, business, title, date} = req.body;
 
     console.log("RATING", rating)
@@ -176,7 +241,7 @@ app.post('/review', auth, async (req, res) => {
     }
 
     try {
-        const query = await t.none('INSERT INTO reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
+        const query = await t.none('INSERT INTO copper_reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
 
         res.status(200);
         res.render('pages/review_left');
@@ -186,251 +251,246 @@ app.post('/review', auth, async (req, res) => {
     }
 });
 
-app.get('/welcome', (req, res) => {
-    res.json({status: 'success', message: 'Welcome!'});
-  });
-
-app.get('/copper', auth, async (req, res) => {
-    try {
-        const query = 'SELECT * FROM trails WHERE trail_id = $1 LIMIT 1'
-        const response = await db.query([trail_id]);
-
-        const query_2 = 'SELECT * FROM copper_reviews'
-        const response_2 = await db.query_2();
-        
-        const query_3 = 'SELECT * FROM copper_lifts'
-        const response_3 = await db.query_3();
-
-        const query_4 = 'SELECT * FROM copper_runs'
-        const response_4 = await db.query_4();
-
-        const trailsData = response.data|| [];
-
-        const trails = trailsData.map(trailsData => ({
-            name: trails.name,
-            trail_id: trails.id,
-            trail_image: trails.trail_image,
-            avg_rating: trails.avg_rating,
-            description: trails.description,
-            location: trails.location
-        }));
-
-        const reviewsData = response_2.data|| [];
-
-        const copper_reviews = reviewsData.map(reviewsData => ({
-            username: copper_reviews.username,
-            title: copper_reviews.title,
-            rating: copper_reviews.rating,
-            business: copper_reviews.business,
-            text: copper_reviews.text,
-            date: copper_reviews.date
-        }));
-
-        const liftsData = response_3.data|| [];
-
-        const copper_lifts = liftsData.map(liftsData => ({
-            name: copper_lifts.name,
-            open: copper_lifts.open,
-            type: copper_lifts.type,
-        }));
-
-        const runsData = response_4.data|| [];
-
-        const copper_runs = runsData.map(runsData => ({
-            name: copper_runs.name,
-            open_closed: copper_runs.open_closed,
-            groomed: copper_runs.groomed,
-            difficulty: copper_runs.difficulty
-        }));
-
-        res.render('pages/copper', { trails }, { copper_reviews }, { copper_lifts }, { copper_runs });
-
-    } catch (error) {
-        console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
-    }
-});
-
 app.get('/eldora', auth, async (req, res) => {
     try {
-        const query = 'SELECT * FROM trails WHERE trail_id = $1 LIMIT 1'
-        const response = await db.query([trail_id]);
+        const query = 'SELECT * FROM trails WHERE name = $1 LIMIT 1'
+        const response = await db.query(query, ['eldora']);
 
         const query_2 = 'SELECT * FROM eldora_reviews'
-        const response_2 = await db.query_2();
+        const response_2 = await db.query(query_2);
         
         const query_3 = 'SELECT * FROM eldora_lifts'
-        const response_3 = await db.query_3();
+        const response_3 = await db.query(query_3);
 
         const query_4 = 'SELECT * FROM eldora_runs'
-        const response_4 = await db.query_4();
+        const response_4 = await db.query(query_4);
 
         const trailsData = response.data|| [];
 
         const trails = trailsData.map(trailsData => ({
-            name: trails.name,
-            trail_id: trails.id,
-            trail_image: trails.trail_image,
-            avg_rating: trails.avg_rating,
-            description: trails.description,
-            location: trails.location
+            name: trail.name,
+            trail_id: trail.id,
+            trail_image: trail.trail_image,
+            avg_rating: trail.avg_rating,
+            description: trail.description,
+            location: trail.location
         }));
 
         const reviewsData = response_2.data|| [];
 
         const eldora_reviews = reviewsData.map(reviewsData => ({
-            username: eldora_reviews.username,
-            title: eldora_reviews.title,
-            rating: eldora_reviews.rating,
-            business: eldora_reviews.business,
-            text: eldora_reviews.text,
-            date: eldora_reviews.date
+            username: reviews.username,
+            title: reviews.title,
+            rating: reviews.rating,
+            business: reviews.business,
+            text: reviews.text,
+            date: reviews.date
         }));
 
         const liftsData = response_3.data|| [];
 
         const eldora_lifts = liftsData.map(liftsData => ({
-            name: eldora_lifts.name,
-            open: eldora_lifts.open,
-            type: eldora_lifts.type,
+            name: lifts.name,
+            open: lifts.open,
+            type: lifts.type,
         }));
 
         const runsData = response_4.data|| [];
 
         const eldora_runs = runsData.map(runsData => ({
-            name: eldora_runs.name,
-            open_closed: eldora_runs.open_closed,
-            groomed: eldora_runs.groomed,
-            difficulty: eldora_runs.difficulty
+            name: runs.name,
+            open_closed: runs.open_closed,
+            groomed: runs.groomed,
+            difficulty: runs.difficulty
         }));
 
-        res.render('pages/eldora', { trails }, { eldora_reviews }, { eldora_lifts }, { eldora_runs });
+        res.render('pages/eldora', { trail: trails[0] , eldora_reviews , eldora_lifts , eldora_runs });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+        res.render('pages/eldora', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+    }
+});
+
+app.post('/eldora_review', auth, async (req, res) => {
+    const { username, text, rating, business, title, date} = req.body;
+
+    console.log("RATING", rating)
+
+    if (!username || rating == undefined || !business || !title || !date) {
+        return res.status(400).json({ status: 'error', message: 'All fields are required' });
+    }
+
+    try {
+        const query = await t.none('INSERT INTO edlora_reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
+
+        res.status(200);
+        res.render('pages/review_left');
+    } catch {
+        console.error("Error adding review:", error);
+        res.status(500).json({ error: "Internal server error" });
     }
 });
 
 app.get('/steamboat', auth, async (req, res) => {
     try {
-        const query = 'SELECT * FROM trails WHERE trail_id = $1 LIMIT 1'
-        const response = await db.query([trail_id]);
+        const query = 'SELECT * FROM trails WHERE name = $1 LIMIT 1'
+        const response = await db.query(query, ['steambooat']);
 
         const query_2 = 'SELECT * FROM steamboat_reviews'
-        const response_2 = await db.query_2();
+        const response_2 = await db.query(query_2);
         
         const query_3 = 'SELECT * FROM steamboat_lifts'
-        const response_3 = await db.query_3();
+        const response_3 = await db.query(query_3);
 
         const query_4 = 'SELECT * FROM steamboat_runs'
-        const response_4 = await db.query_4();
+        const response_4 = await db.query(query_4);
 
         const trailsData = response.data|| [];
 
         const trails = trailsData.map(trailsData => ({
-            name: trails.name,
-            trail_id: trails.id,
-            trail_image: trails.trail_image,
-            avg_rating: trails.avg_rating,
-            description: trails.description,
-            location: trails.location
+            name: trail.name,
+            trail_id: trail.id,
+            trail_image: trail.trail_image,
+            avg_rating: trail.avg_rating,
+            description: trail.description,
+            location: trail.location
         }));
 
         const reviewsData = response_2.data|| [];
 
         const steamboat_reviews = reviewsData.map(reviewsData => ({
-            username: steamboat_reviews.username,
-            title: steamboat_reviews.title,
-            rating: steamboat_reviews.rating,
-            business: steamboat_reviews.business,
-            text: steamboat_reviews.text,
-            date: steamboat_reviews.date
+            username: reviews.username,
+            title: reviews.title,
+            rating: reviews.rating,
+            business: reviews.business,
+            text: reviews.text,
+            date: reviews.date
         }));
 
         const liftsData = response_3.data|| [];
 
         const steamboat_lifts = liftsData.map(liftsData => ({
-            name: steamboat_lifts.name,
-            open: steamboat_lifts.open,
-            type: steamboat_lifts.type,
+            name: lifts.name,
+            open: lifts.open,
+            type: lifts.type,
         }));
 
         const runsData = response_4.data|| [];
 
         const steamboat_runs = runsData.map(runsData => ({
-            name: steamboat_runs.name,
-            open_closed: steamboat_runs.open_closed,
-            groomed: steamboat_runs.groomed,
-            difficulty: steamboat_runs.difficulty
+            name: runs.name,
+            open_closed: runs.open_closed,
+            groomed: runs.groomed,
+            difficulty: runs.difficulty
         }));
 
-        res.render('pages/steamboat', { trails }, { steamboat_reviews }, { steamboat_lifts }, { steamboat_runs });
+        res.render('pages/steamboat', { trail: trails[0] , steamboat_reviews , steamboat_lifts , steamboat_runs });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+        res.render('pages/steamboat', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+    }
+});
+
+app.post('/steamboat_review', auth, async (req, res) => {
+    const { username, text, rating, business, title, date} = req.body;
+
+    console.log("RATING", rating)
+
+    if (!username || rating == undefined || !business || !title || !date) {
+        return res.status(400).json({ status: 'error', message: 'All fields are required' });
+    }
+
+    try {
+        const query = await t.none('INSERT INTO steamboat_reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
+
+        res.status(200);
+        res.render('pages/review_left');
+    } catch {
+        console.error("Error adding review:", error);
+        res.status(500).json({ error: "Internal server error" });
     }
 });
 
 app.get('/winter_park', auth, async (req, res) => {
     try {
-        const query = 'SELECT * FROM trails WHERE trail_id = $1 LIMIT 1'
-        const response = await db.query([trail_id]);
+        const query = 'SELECT * FROM trails WHERE name = $1 LIMIT 1'
+        const response = await db.query(query, ['winter park']);
 
         const query_2 = 'SELECT * FROM winter_park_reviews'
-        const response_2 = await db.query_2();
+        const response_2 = await db.query(query_2);
         
         const query_3 = 'SELECT * FROM winter_park_lifts'
-        const response_3 = await db.query_3();
+        const response_3 = await db.query(query_3);
 
         const query_4 = 'SELECT * FROM winter_park_runs'
-        const response_4 = await db.query_4();
+        const response_4 = await db.query(query_4);
 
         const trailsData = response.data|| [];
 
         const trails = trailsData.map(trailsData => ({
-            name: trails.name,
-            trail_id: trails.id,
-            trail_image: trails.trail_image,
-            avg_rating: trails.avg_rating,
-            description: trails.description,
-            location: trails.location
+            name: trail.name,
+            trail_id: trail.id,
+            trail_image: trail.trail_image,
+            avg_rating: trail.avg_rating,
+            description: trail.description,
+            location: trail.location
         }));
 
         const reviewsData = response_2.data|| [];
 
         const winter_park_reviews = reviewsData.map(reviewsData => ({
-            username: winter_park_reviews.username,
-            title: winter_park_reviews.title,
-            rating: winter_park_reviews.rating,
-            business: winter_park_reviews.business,
-            text: winter_park_reviews.text,
-            date: winter_park_reviews.date
+            username: reviews.username,
+            title: reviews.title,
+            rating: reviews.rating,
+            business: reviews.business,
+            text: reviews.text,
+            date: reviews.date
         }));
 
         const liftsData = response_3.data|| [];
 
         const winter_park_lifts = liftsData.map(liftsData => ({
-            name: winter_park_lifts.name,
-            open: winter_park_lifts.open,
-            type: winter_park_lifts.type,
+            name: lifts.name,
+            open: lifts.open,
+            type: lifts.type,
         }));
 
         const runsData = response_4.data|| [];
 
         const winter_park_runs = runsData.map(runsData => ({
-            name: winter_park_runs.name,
-            open_closed: winter_park_runs.open_closed,
-            groomed: winter_park_runs.groomed,
-            difficulty: winter_park_runs.difficulty
+            name: runs.name,
+            open_closed: runs.open_closed,
+            groomed: runs.groomed,
+            difficulty: runs.difficulty
         }));
 
-        res.render('pages/winter_park', { trails }, { winter_park_reviews }, { winter_park_lifts }, { winter_park_runs });
+        res.render('pages/winter_park', { trail: trails[0], winter_park_reviews , winter_park_lifts , winter_park_runs });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
-        res.render('trails', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+        res.render('pages/winter_park', { trails: [], message: 'Failed to load trail data. Please try again later.' });
+    }
+});
+
+app.post('/winter_park_review', auth, async (req, res) => {
+    const { username, text, rating, business, title, date} = req.body;
+
+    console.log("RATING", rating)
+
+    if (!username || rating == undefined || !business || !title || !date) {
+        return res.status(400).json({ status: 'error', message: 'All fields are required' });
+    }
+
+    try {
+        const query = await t.none('INSERT INTO winter_park_reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
+
+        res.status(200);
+        res.render('pages/review_left');
+    } catch {
+        console.error("Error adding review:", error);
+        res.status(500).json({ error: "Internal server error" });
     }
 });
 
