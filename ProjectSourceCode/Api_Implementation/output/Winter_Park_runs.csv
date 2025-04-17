@@ -1,0 +1,173 @@
+run_name,open_closed,groomed,difficulty
+Allan Phipps,True,False,1
+Ambush,False,False,4
+Balch,True,False,4
+Bill Wilsons Way,True,False,1
+Bobcat,True,False,1
+Bradleys Bash,True,False,3
+Brians Run,True,False,4
+Butchs Breezeway,True,False,2
+Cheshire Cat,True,False,3
+Cranmer,True,False,2
+Dormouse,True,False,1
+Easy Way,True,False,1
+Engeldive,True,False,4
+High Lonesome Trail,True,False,1
+Hobo Alley,True,False,1
+Hook Up,True,False,1
+Hughes,True,False,3
+Jabberwocky,True,False,2
+Jack Kendrick,True,False,1
+Larry Sale,True,False,2
+Little Pierre,True,False,3
+Lonesome Whistle Lower,True,False,2
+Lonesome Whistle Upper,True,False,1
+Lower Hughes,True,False,3
+Lower Parkway,True,False,2
+Mad Tea Party,True,False,1
+March Hare,True,False,2
+March Hare Upper,True,False,1
+Marmot Flats,True,False,1
+Mock Turtle,True,False,1
+Mulligans Mile,True,False,4
+Norwegian,True,False,4
+Outrigger Trail,True,False,4
+Over n Underwood,True,False,3
+Parkway,True,False,1
+Porcupine,True,False,1
+Quick Getaway,True,False,2
+Rendezvous,True,False,2
+Rettas Run,True,False,4
+Ski Papa,True,False,1
+Sorensen Park,True,False,1
+Switchyard,True,False,1
+Turnpike,True,False,1
+Turnpike - Parkway Bypass,True,False,1
+Tweedle Dee,True,False,2
+Tweedle Dum,True,False,3
+Village Way - Mountain Road,True,False,1
+Village Way - Parkway Bypass,True,False,1
+Village Way - Switchyard to Mountain Road,True,False,1
+Village Way - Tunnel to Parkway,True,False,1
+Vista Dome,True,False,1
+Vista Dome Cutoff,True,False,3
+Whistlestop,True,False,1
+White Rabbit,True,False,2
+White Rabbit Lower,True,False,1
+Arrowhead Loop Lower,True,False,2
+Arrowhead Loop Upper,True,False,4
+Awe Chute,False,False,5
+Baldys Chute,False,False,5
+Bellmar Bowl,True,False,2
+Better Not,False,False,5
+Bluebell,True,False,2
+Boiler,True,False,4
+Brakeman,True,False,4
+Branch Line,True,False,4
+Cannonball,True,False,4
+Columbine Lower,True,False,4
+Columbine Upper,True,False,2
+Corona Way,True,False,2
+Corridor Mary Jane to Winter Park,True,False,1
+Coupler,True,False,4
+Derailer,True,False,4
+Drunken Frenchman,True,False,4
+Edelweiss,True,False,2
+Freeriders,True,False,4
+Gandy Dancer,True,False,3
+Golden Spike,True,False,4
+Hole in the Wall,False,False,5
+Iron Horse Trail,True,False,4
+Jeffs Chute,False,False,5
+Key Hole,False,False,5
+Little Ten,True,False,4
+Long Haul,True,False,4
+Mary Jane,True,False,2
+Mary Jane Upper,True,False,3
+Narrow Gauge,True,False,3
+Needles Eye,True,False,4
+Olympia Spur,True,False,1
+Outhouse,True,False,4
+Phantom Bridge,True,False,4
+Pine Cliffs,True,False,4
+Pony Express Trail,True,False,4
+Railbender,True,False,4
+Rainbow Cut,True,False,3
+Riflesight Notch,True,False,4
+Rollins Ridge,True,False,2
+Roundhouse,True,False,2
+Roundhouse Face,True,False,3
+Roundhouse Upper,True,False,2
+Runaway,True,False,4
+Shoo Fly,True,False,1
+Short Haul,True,False,4
+Sidetrack,True,False,3
+Sleeper,True,False,3
+Sleepy Hollow,True,False,3
+Sluice Box,True,False,4
+Sober Englishman,True,False,2
+Sterling Way,True,False,4
+Super Gauge Trail,True,False,4
+Tie Siding,True,False,1
+Trestle,True,False,4
+Village Way - Switchyard,True,False,1
+Wildwood Glade,True,False,2
+Aces & Eights,False,False,4
+Big Valley,False,False,1
+Buckaroo,False,False,2
+Chuck Wagon,False,False,3
+Dilly Dally Alley,True,False,2
+Gambler,False,False,4
+Gunbarrel,False,False,1
+Lower Egress,False,False,3
+Quickdraw,False,False,2
+Shootout,False,False,2
+Stagecoach,False,False,2
+Sundance,False,False,2
+Tinhorn,False,False,1
+Wagon Train,False,False,1
+Wild Spur Trail Lower,False,False,3
+Wild Spur Trail Upper,False,False,4
+Calypso,True,False,3
+Fireberry Glade,True,False,3
+Forever Eva,True,False,2
+Forget-Me-Not,True,False,2
+Johnstones Junction,True,False,3
+Juniper,True,False,2
+Kinnikinnic,True,False,3
+Larkspur,True,False,3
+Lupin,True,False,3
+Paintbrush,True,False,2
+Parrys Peek,True,False,2
+Primrose,True,False,2
+Sky Pilot,True,False,3
+Village Way - Bowl,True,False,2
+Willets Way,True,False,3
+Ashcat,True,False,4
+Bouncer,False,False,4
+Gangway,True,False,4
+Lower Railyard,True,False,4
+"Rail Yard®, including Halfpipe",True,False,4
+Re-railer,True,False,4
+Starter Park,True,False,4
+Belle Fourche,False,False,4
+Black Coal,False,False,4
+Eagle Wind,False,False,4
+Left Hand,False,False,4
+Little Raven,False,False,4
+Medicine Man,False,False,4
+Sharpnose,False,False,4
+Thunderbird,False,False,4
+Thunderbird Traverse,False,False,4
+100s,False,False,4
+Alphabet Chutes,False,False,5
+Eldorado,False,False,4
+Jelly Roll,False,False,5
+Jelly Roll Glades,False,False,4
+Rollover,False,False,4
+Shadow Chute,False,False,5
+South Basin,False,False,4
+South Headwall,False,False,5
+Upper Egress,False,False,3
+Waterfall,False,False,4
+West Headwall,False,False,5

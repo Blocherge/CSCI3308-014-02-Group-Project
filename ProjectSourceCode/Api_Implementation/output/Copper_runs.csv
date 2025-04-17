@@ -1,0 +1,195 @@
+run_name,open_closed,groomed,difficulty
+17 Glade,True,False,3
+American Flyer,True,False,2
+Bittersweet (L),True,False,2
+Bittersweet (U),True,False,2
+Bouncer (L),True,False,2
+Bouncer (U),True,False,2
+Brennan's Grin,True,False,3
+Bridgeway,True,False,1
+CDL's Trail #20,True,False,3
+Cache Glades,True,False,3
+Carefree (L),True,False,2
+Carefree (U),True,False,1
+Collage (L),True,False,2
+Collage (U),True,False,2
+Copperopolis,True,False,2
+Coppertone,True,False,1
+Easy Road,True,False,1
+Easy Road Traverse,True,False,1
+Fair Play,True,False,2
+Family Cross,True,False,1
+Foul Play,True,False,2
+Frank's Fave,True,False,2
+Hallelujah,True,False,3
+High Point,True,False,1
+High Point Bypass,True,False,1
+I-Dropper,True,False,2
+Indian Ridge,False,False,3
+Leap Frog (L),True,False,1
+Leap Frog (U),True,False,1
+Liberty,True,False,2
+Looking Glass,True,False,3
+Loverly,True,False,1
+Lower Enchanted Forest,True,False,4
+Main Vein,True,False,2
+Mine Dump,True,False,3
+Nastar,False,False,2
+Ptarmigan,True,False,2
+Rhapsody,True,False,2
+Sail Away Glades,True,False,3
+See and Ski,True,False,1
+Skid Road,True,False,2
+Slip Not,True,False,3
+Sluice,True,False,1
+Upper Looking Glass,True,False,3
+Upper Sluice,True,False,2
+Ute Overlook,True,False,3
+Bucksaw,True,False,2
+Clear Cut,True,False,2
+Copperfield,True,False,2
+Easy Feelin',True,False,1
+Fairway,True,False,1
+Hidden Vein,True,False,1
+I-Way,True,False,1
+Jackstraw Trees,True,False,2
+Jacque's Pique,True,False,2
+Kokomo Glade,True,False,1
+Little Burn,True,False,2
+Log Chute,False,False,1
+Loverly Lane,True,False,1
+Lyman Lane,True,False,1
+Minor Matter,True,False,1
+Pinecone Alley,True,False,2
+Prospector,True,False,1
+Roundabout (L),True,False,1
+Roundabout (U),True,False,1
+Scooter,True,False,1
+Snodeal,True,False,2
+Soliloquy,True,False,1
+Tempo,True,False,2
+The Moz,True,False,2
+Timber Road,True,False,1
+Vein Glory (L),True,False,1
+Vein Glory (U),True,False,1
+West Ten Mile,True,False,1
+Windsong,True,False,2
+Woodwinds,True,False,1
+Woodwinds Traverse,True,False,1
+Andy's Encore (L),True,False,2
+Andy's Encore (U),True,False,2
+Bee Traverse,True,False,3
+Black Bear Glade,True,False,4
+Far East,True,False,3
+Formidable,True,False,3
+Free Fall Glade,True,False,4
+Home Run,True,False,2
+Oh No (L),True,False,2
+Oh No (U),True,False,2
+Ore Deal,True,False,3
+Overlode,True,False,3
+Rosi's Run,True,False,3
+Slot Car Track,True,False,2
+Too Much,True,False,3
+Treble Cliff,True,False,3
+Triple Treat,True,False,3
+West Encore,True,False,2
+EZ Rider/Learning Area,True,False,1
+Green Acres,True,False,1
+Buzzard's Alley,True,False,4
+Colman's Retreat,True,False,3
+Endeavor,True,False,3
+Far West,True,False,3
+Gold Digger,True,False,3
+Guthrie’s Chute,True,False,3
+Kaboom,True,False,3
+Little Trees,False,False,3
+Revenge (L),True,False,3
+Revenge (U),True,False,3
+Timber Ridge,True,False,2
+Union Gap,True,False,2
+Union Meadows,True,False,3
+Union Park,True,False,1
+Union Peak,True,False,3
+Wheeler Creek,True,False,1
+Atlantic Cornice,False,False,4
+Bariloche,True,False,3
+Boardwalk,True,False,3
+Cabin Chute,True,False,3
+Calendar Chute,True,False,4
+Cornice Chute,True,False,4
+Double Zero,True,False,4
+Drain Pipe,True,False,4
+Hallelujah Ridge,True,False,3
+Highline,True,False,3
+Hodson's Cut,True,False,3
+Lillie G (U),True,False,4
+Lillie G Traverse,True,False,3
+Marvin Garden,True,False,3
+Pacific Cornice,False,False,4
+Park Place,True,False,3
+Patrol Chute,True,False,4
+Sawtooth,True,False,3
+So Fine,False,False,4
+Spaulding Glades,True,False,3
+Spaulding Ridge,True,False,3
+Triple Zero,True,False,4
+Upper Enchanted Forest,True,False,4
+Boulderado,False,False,5
+Buffalo Stampede,True,False,5
+Denverite,True,False,5
+Falcon Alley,True,False,5
+Lower Boulderado Hike Back,False,False,5
+Ram's Run,True,False,5
+Summit Stash,True,False,3
+The Springs,True,False,5
+The Taco/Curecanti,True,False,5
+Valentine's,False,False,5
+Western Slope,True,False,5
+Alicante,True,False,3
+Bradley's Plunge,False,False,5
+Colorado Boulevard,True,False,2
+Golden Crest,False,False,3
+Iron Mask,False,False,5
+Julie's Vision,False,False,3
+Lallarookn,False,False,4
+Lillie G (L),False,False,3
+Matchless,True,False,3
+Otto Bahn,True,False,2
+Rattler,True,False,3
+Schaefer's,False,False,5
+Six Shooter,True,False,3
+Central Park on Loverly,True,False,1
+Miner’s Progression Park on Roundabout,True,False,1
+Family Cross on High Point,True,False,1
+Green Acres Progression Park,True,False,1
+Koko's Progression Park on Roundabout,True,False,1
+Peace Park on Vein Glory,True,False,1
+Pipe Dream on Vein Glory,True,False,1
+Red's Backyard on Loverly Lane,True,False,1
+Start Park at Easy Rider,True,False,1
+Superpipe on Main Vein,True,False,1
+Farleys (L),True,False,2
+Farleys (U),True,False,2
+Farleys Connect,True,False,2
+Golf Course Loops,False,False,1
+Guller Creek,True,False,1
+West Ten Mile,True,False,1
+Aerie/PHQ (Route 1),True,False,2
+Carefree/Highpoint (Route 2),True,False,1
+Chickaree Way (Route 3),True,False,1
+Copperfield (Route 5),True,False,2
+Lewis Ranch (Route 4),True,False,1
+Soliloquy (Route 6),True,False,1
+Union Meadows (Route 7),True,False,3
+West Ten Mile (Route 8),True,False,1
+2 Bucks,False,False,3
+Blue Oso,False,False,2
+Gopher It,False,False,2
+Loose Moose,False,False,2
+Lower Red Tail,False,False,2
+Pump Track,False,False,1
+Red Tail,False,False,2
+Upper Fawn-tastic,False,False,1
+Upper Red Tail,False,False,2
+Kid’s Arena,True,False,1

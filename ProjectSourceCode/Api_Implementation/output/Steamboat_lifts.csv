@@ -1,0 +1,25 @@
+lift_name,open_closed,lift_type
+Steamboat Gondola,True,Gondola
+Wild Blue Gondola Lower,True,Gondola
+Wild Blue Gondola Upper,True,Gondola
+Bar-UE,False,Double
+Bashor,True,Double
+Burgess Creek,True,Triple Chair
+Christie Peak Express,True,High-Speed 6 Chair
+Elkhead Express,True,High-Speed Quad
+Four Points,True,Triple Chair
+Greenhorn Ranch Express,False,High-Speed Quad
+Mahogany Ridge Express,False,High-Speed Quad
+Morningside,False,Triple Chair
+Pony Express,False,High-Speed Quad
+South Peak,True,Triple Chair
+Storm Peak Express,True,High-Speed Quad
+Sundown Express,True,High-Speed Quad
+Sunshine Express,True,High-Speed Quad
+Thunderhead Express,False,High-Speed Quad
+Wrangler Carpet,False,Magic Carpet
+Bonanza,False,Magic Carpet
+Buckaroo Carpet,False,Magic Carpet
+Easy Rider,False,Magic Carpet
+Two Whoops 1,True,Magic Carpet
+Two Whoops 2,True,Magic Carpet

@@ -1,0 +1,24 @@
+lift_name,open_closed,lift_type
+Super Bee,True,six_person
+Mountain Chief,True,double
+Black Jack,True,double
+Three Bears,True,triple
+Storm King,True,surface
+Resolution,True,triple
+Sierra,True,triple
+Rendezvous,True,triple
+Celebrity Ridge,False,surface
+Pitchfork,True,double
+Gem,True,surface
+Easy Rider,True,carpet
+American Eagle,True,telemix
+Tubing Hill,True,carpet
+Alpine,True,double
+Woodward Express,True,quad
+Timberline Express,True,six_person
+Slingshot/Glide,True,carpet
+Rugrat,True,carpet
+Lumberjack,True,triple
+Kokomo Express,True,quad
+Excelerator,True,quad
+American Flyer,True,six_person

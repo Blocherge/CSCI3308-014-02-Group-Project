@@ -1,0 +1,27 @@
+lift_name,open_closed,lift_type
+Arrow,False,Triple Chair
+Cabriolet,True,Cabriolet
+Comet,True,Magic Carpet
+Discovery,True,Double
+Endeavour,False,Triple Chair
+Explorer Express,True,Quad Chair
+Gemini Express,True,Quad Chair
+Gondola,True,Gondola
+Hi-Lonesome Express,False,Quad Chair
+Looking Glass,True,Double
+Meteor,True,Magic Carpet
+Olympia Express,True,Quad Chair
+Prospector Express,True,Quad Chair
+Spirit,False,Magic Carpet
+Challenger,False,Double
+Galloping Goose,True,Double
+Iron Horse,False,Double
+Lariat,True,Rope Tow
+Pony Express,False,Double
+Sunnyside Express,True,6 Chair
+Super Gauge Express,True,6 Chair
+Wild Spur Express,False,High-Speed 6 Chair
+Wild Spur Express Mid-Way Station,False,High-Speed 6 Chair
+Panoramic Express,True,6 Chair
+Eagle Wind,False,Triple Chair
+Cirque Sled,False,Sled
