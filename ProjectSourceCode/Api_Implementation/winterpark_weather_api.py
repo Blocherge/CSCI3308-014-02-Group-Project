@@ -60,7 +60,7 @@ daily_dataframe = pd.DataFrame(data = daily_data)
 print(daily_dataframe)
 
 
-daily_folder_path = os.path.join("CSCI3308-014-02-Group-Project", "ProjectSourceCode", "Api_Implementation", "output","winterpark_daily_weather.csv")
+daily_folder_path = os.path.join("CSCI3308-014-02-Group-Project", "ProjectSourceCode", "Api_Implementation", "output","winter_park_weather.csv")
 
 daily_dataframe.to_csv(daily_folder_path, index=False)
 
