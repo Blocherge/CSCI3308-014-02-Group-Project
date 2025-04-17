@@ -151,14 +151,19 @@ app.get('/home', auth, async (req, res) => {
 
         const trailsData = response.data|| [];
 
-        const trails = trailsData.map(trailsData => ({
-            name: trails.name,
-            trail_id: trails.id,
-            trail_image: trails.trail_image,
-            avg_rating: trails.avg_rating
+        const trails = trailsData.map(trail => ({
+            name: trail.name,
+            trail_id: trail.trail_id,
+            trail_image: trail.image,
+            avg_rating: trail.avg_rating
         }));
 
-        res.render('pages/home', { trails });
+        const copper = trails[0] || {};
+        const winter_park = trails[1] || {};
+        const eldora = trails[2] || {};
+        const steamboat = trails[3] || {};
+
+        res.render('pages/home', { trails, copper, winter_park, eldora, steamboat });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
