@@ -279,43 +279,43 @@ app.get('/eldora', auth, async (req, res) => {
         const query_4 = 'SELECT * FROM eldora_runs'
         const response_4 = await db.query(query_4);
 
-        const trailsData = response.data|| [];
+        const trailsData = response || [];
 
         const trails = trailsData.map(trailsData => ({
-            name: trail.name,
-            trail_id: trail.id,
-            trail_image: trail.trail_image,
-            avg_rating: trail.avg_rating,
-            description: trail.description,
-            location: trail.location
+            name: trailsData.name,
+            trail_id: trailsData.id,
+            trail_image: trailsData.trail_image,
+            avg_rating: trailsData.avg_rating,
+            description: trailsData.description,
+            location: trailsData.location
         }));
 
-        const reviewsData = response_2.data|| [];
+        const reviewsData = response_2 || [];
 
         const eldora_reviews = reviewsData.map(reviewsData => ({
-            username: reviews.username,
-            title: reviews.title,
-            rating: reviews.rating,
-            business: reviews.business,
-            text: reviews.text,
-            date: reviews.date
+            username: reviewsData.username,
+            title: reviewsData.title,
+            rating: reviewsData.rating,
+            business: reviewsData.business,
+            text: reviewsData.text,
+            date: reviewsData.date
         }));
 
-        const liftsData = response_3.data|| [];
+        const liftsData = response_3 || [];
 
         const eldora_lifts = liftsData.map(liftsData => ({
-            name: lifts.name,
-            open: lifts.open,
-            type: lifts.type,
+            name: liftsData.name,
+            open: liftsData.open,
+            type: liftsData.type,
         }));
 
-        const runsData = response_4.data|| [];
+        const runsData = response_4 || [];
 
         const eldora_runs = runsData.map(runsData => ({
-            name: runs.name,
-            open_closed: runs.open_closed,
-            groomed: runs.groomed,
-            difficulty: runs.difficulty
+            name: runsData.name,
+            open_closed: runsData.open_closed,
+            groomed: runsData.groomed,
+            difficulty: runsData.difficulty
         }));
 
         res.render('pages/eldora', { trail: trails[0] , eldora_reviews , eldora_lifts , eldora_runs });
@@ -349,7 +349,7 @@ app.post('/eldora_review', auth, async (req, res) => {
 app.get('/steamboat', auth, async (req, res) => {
     try {
         const query = 'SELECT * FROM trails WHERE name = $1 LIMIT 1'
-        const response = await db.query(query, ['steambooat']);
+        const response = await db.query(query, ['steamboat']);
 
         const query_2 = 'SELECT * FROM steamboat_reviews'
         const response_2 = await db.query(query_2);
@@ -360,43 +360,43 @@ app.get('/steamboat', auth, async (req, res) => {
         const query_4 = 'SELECT * FROM steamboat_runs'
         const response_4 = await db.query(query_4);
 
-        const trailsData = response.data|| [];
+        const trailsData = response || [];
 
         const trails = trailsData.map(trailsData => ({
-            name: trail.name,
-            trail_id: trail.id,
-            trail_image: trail.trail_image,
-            avg_rating: trail.avg_rating,
-            description: trail.description,
-            location: trail.location
+            name: trailsData.name,
+            trail_id: trailsData.id,
+            trail_image: trailsData.trail_image,
+            avg_rating: trailsData.avg_rating,
+            description: trailsData.description,
+            location: trailsData.location
         }));
 
-        const reviewsData = response_2.data|| [];
+        const reviewsData = response_2 || [];
 
         const steamboat_reviews = reviewsData.map(reviewsData => ({
-            username: reviews.username,
-            title: reviews.title,
-            rating: reviews.rating,
-            business: reviews.business,
-            text: reviews.text,
-            date: reviews.date
+            username: reviewsData.username,
+            title: reviewsData.title,
+            rating: reviewsData.rating,
+            business: reviewsData.business,
+            text: reviewsData.text,
+            date: reviewsData.date
         }));
 
-        const liftsData = response_3.data|| [];
+        const liftsData = response_3 || [];
 
         const steamboat_lifts = liftsData.map(liftsData => ({
-            name: lifts.name,
-            open: lifts.open,
-            type: lifts.type,
+            name: liftsData.name,
+            open: liftsData.open,
+            type: liftsData.type,
         }));
 
-        const runsData = response_4.data|| [];
+        const runsData = response_4 || [];
 
         const steamboat_runs = runsData.map(runsData => ({
-            name: runs.name,
-            open_closed: runs.open_closed,
-            groomed: runs.groomed,
-            difficulty: runs.difficulty
+            name: runsData.name,
+            open_closed: runsData.open_closed,
+            groomed: runsData.groomed,
+            difficulty: runsData.difficulty
         }));
 
         res.render('pages/steamboat', { trail: trails[0] , steamboat_reviews , steamboat_lifts , steamboat_runs });
@@ -441,43 +441,43 @@ app.get('/winter_park', auth, async (req, res) => {
         const query_4 = 'SELECT * FROM winter_park_runs'
         const response_4 = await db.query(query_4);
 
-        const trailsData = response.data|| [];
+        const trailsData = response || [];
 
         const trails = trailsData.map(trailsData => ({
-            name: trail.name,
-            trail_id: trail.id,
-            trail_image: trail.trail_image,
-            avg_rating: trail.avg_rating,
-            description: trail.description,
-            location: trail.location
+            name: trailsData.name,
+            trail_id: trailsData.id,
+            trail_image: trailsData.trail_image,
+            avg_rating: trailsData.avg_rating,
+            description: trailsData.description,
+            location: trailsData.location
         }));
 
-        const reviewsData = response_2.data|| [];
+        const reviewsData = response_2 || [];
 
         const winter_park_reviews = reviewsData.map(reviewsData => ({
-            username: reviews.username,
-            title: reviews.title,
-            rating: reviews.rating,
-            business: reviews.business,
-            text: reviews.text,
-            date: reviews.date
+            username: reviewsData.username,
+            title: reviewsData.title,
+            rating: reviewsData.rating,
+            business: reviewsData.business,
+            text: reviewsData.text,
+            date: reviewsData.date
         }));
 
-        const liftsData = response_3.data|| [];
+        const liftsData = response_3 || [];
 
         const winter_park_lifts = liftsData.map(liftsData => ({
-            name: lifts.name,
-            open: lifts.open,
-            type: lifts.type,
+            name: liftsData.name,
+            open: liftsData.open,
+            type: liftsData.type,
         }));
 
-        const runsData = response_4.data|| [];
+        const runsData = response_4 || [];
 
         const winter_park_runs = runsData.map(runsData => ({
-            name: runs.name,
-            open_closed: runs.open_closed,
-            groomed: runs.groomed,
-            difficulty: runs.difficulty
+            name: runsData.name,
+            open_closed: runsData.open_closed,
+            groomed: runsData.groomed,
+            difficulty: runsData.difficulty
         }));
 
         res.render('pages/winter_park', { trail: trails[0], winter_park_reviews , winter_park_lifts , winter_park_runs });
