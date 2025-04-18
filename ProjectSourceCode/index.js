@@ -149,7 +149,7 @@ app.get('/home', auth, async (req, res) => {
         const query = 'SELECT * FROM trails'
         const response = await db.query(query);
 
-        const trailsData = response.data|| [];
+        const trailsData = response || [];
 
         const trails = trailsData.map(trail => ({
             name: trail.name,
