@@ -182,6 +182,7 @@ app.get('/copper', auth, async (req, res) => {
 
         const query_2 = 'SELECT * FROM copper_reviews'
         const response_2 = await db.query(query_2);
+        console.log('Copper Reviews:', response_2);
         
         const query_3 = 'SELECT * FROM copper_lifts'
         const response_3 = await db.query(query_3);
@@ -189,46 +190,46 @@ app.get('/copper', auth, async (req, res) => {
         const query_4 = 'SELECT * FROM copper_runs'
         const response_4 = await db.query(query_4);
 
-        const trailsData = response.data|| [];
+        const trailsData = response || []; // why were we doing response.data? Just response.
 
-        const trails = trailsData.map(trailsData => ({
-            name: trail.name,
-            trail_id: trail.id,
-            trail_image: trail.trail_image,
-            avg_rating: trail.avg_rating,
-            description: trail.description,
-            location: trail.location
+        const trails = trailsData.map(trailsData => ({ // for all of these consts you had written trails.name or reviews.username instead of reviewsData.username. With how you defined your mapping and variable that wouldn't have worked
+            name: trailsData.name,
+            trail_id: trailsData.id,
+            trail_image: trailsData.trail_image,
+            avg_rating: trailsData.avg_rating,
+            description: trailsData.description,
+            location: trailsData.location
         }));
 
-        const reviewsData = response_2.data|| [];
+        const reviewsData = response_2 || [];
 
         const copper_reviews = reviewsData.map(reviewsData => ({
-            username: reviews.username,
-            title: reviews.title,
-            rating: reviews.rating,
-            business: reviews.business,
-            text: reviews.text,
-            date: reviews.date
+            username: reviewsData.username,
+            title: reviewsData.title,
+            rating: reviewsData.rating,
+            business: reviewsData.business,
+            text: reviewsData.text,
+            date: reviewsData.date
         }));
 
-        const liftsData = response_3.data|| [];
+        const liftsData = response_3 || [];
 
         const copper_lifts = liftsData.map(liftsData => ({
-            name: lifts.name,
-            open: lifts.open,
-            type: lifts.type,
+            name: liftsData.name,
+            open: liftsData.open,
+            type: liftsData.type,
         }));
 
-        const runsData = response_4.data|| [];
+        const runsData = response_4 || [];
 
         const copper_runs = runsData.map(runsData => ({
-            name: runs.name,
-            open_closed: runs.open_closed,
-            groomed: runs.groomed,
-            difficulty: runs.difficulty
+            name: runsData.name,
+            open_closed: runsData.open_closed,
+            groomed: runsData.groomed,
+            difficulty: runsData.difficulty
         }));
 
-        res.render('pages/copper', { trail: trails[0] , copper_reviews , copper_lifts , copper_runs });
+        res.render('pages/copper', { trail: trails[0] , copper_reviews, copper_lifts , copper_runs });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
@@ -246,7 +247,7 @@ app.post('/copper_review', auth, async (req, res) => {
 
     const { username = req.session.user, text, rating, business, title, date = formattedDate} = req.body;
 
-    console.log("DATA:", username, text, rating, business, title, date);
+    console.log("DATA:", username, rating, business, title, text, date);
 
     if (!username || rating == undefined || !business || !title || !date) {
         return res.status(400).json({ status: 'error', message: 'All fields are required' });
@@ -256,7 +257,8 @@ app.post('/copper_review', auth, async (req, res) => {
         const query = await db.none('INSERT INTO copper_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
 
         res.status(200);
-        res.render('pages/review_left');
+        res.redirect('/copper');
+        // res.render('pages/review_left');
     } catch (error) {
         console.error("Error adding review:", error);
         res.status(500).json({ error: "Internal server error" });
