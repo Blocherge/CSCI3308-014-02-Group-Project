@@ -255,8 +255,23 @@ app.post('/copper_review', auth, async (req, res) => {
 
     try {
         const query = await db.none('INSERT INTO copper_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
-
+        
         res.status(200);
+
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+
+        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM copper_reviews');
+
+        if(avgrt == null || avgbus == null){
+            console.log('No reviews found or no business found');
+            res.redirect('/copper');
+        }else{
+            console.log('avg rating = ', avgrt);
+            console.log('avg business = ', avgbus)
+            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avgrt, 1]);
+            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avgbus, 1]);
+        }
+
         res.redirect('/copper');
         // res.render('pages/review_left');
     } catch (error) {
@@ -327,20 +342,43 @@ app.get('/eldora', auth, async (req, res) => {
 });
 
 app.post('/eldora_review', auth, async (req, res) => {
-    const { username, text, rating, business, title, date} = req.body;
+    const currentDate = new Date();
+    const year = currentDate.getFullYear(); // Get the full year
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Get the month (zero-based, so add 1) and ensure two digits
+    const day = String(currentDate.getDate()).padStart(2, '0'); // Get the day and ensure two digits
+    
+    const formattedDate = `${year}-${month}-${day}`; // Format as YYYY-MM-DD    
 
-    console.log("RATING", rating)
+    const { username = req.session.user, text, rating, business, title, date = formattedDate} = req.body;
+
+    console.log("DATA:", username, rating, business, title, text, date);
 
     if (!username || rating == undefined || !business || !title || !date) {
         return res.status(400).json({ status: 'error', message: 'All fields are required' });
     }
 
     try {
-        const query = await t.none('INSERT INTO edlora_reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
-
+        const query = await db.none('INSERT INTO eldora_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
+        
         res.status(200);
-        res.render('pages/review_left');
-    } catch {
+
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM eldora_reviews');
+
+        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM eldora_reviews');
+
+        if(avgrt == null || avgbus == null){
+            console.log('No reviews found or no business found');
+            res.redirect('/eldora');
+        }else{
+            console.log('avg rating = ', avgrt);
+            console.log('avg business = ', avgbus)
+            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avgrt, 3]);
+            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avgbus, 3]);
+        }
+
+        res.redirect('/eldora');
+        // res.render('pages/review_left');
+    } catch (error) {
         console.error("Error adding review:", error);
         res.status(500).json({ error: "Internal server error" });
     }
@@ -408,20 +446,43 @@ app.get('/steamboat', auth, async (req, res) => {
 });
 
 app.post('/steamboat_review', auth, async (req, res) => {
-    const { username, text, rating, business, title, date} = req.body;
+    const currentDate = new Date();
+    const year = currentDate.getFullYear(); // Get the full year
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Get the month (zero-based, so add 1) and ensure two digits
+    const day = String(currentDate.getDate()).padStart(2, '0'); // Get the day and ensure two digits
+    
+    const formattedDate = `${year}-${month}-${day}`; // Format as YYYY-MM-DD    
 
-    console.log("RATING", rating)
+    const { username = req.session.user, text, rating, business, title, date = formattedDate} = req.body;
+
+    console.log("DATA:", username, rating, business, title, text, date);
 
     if (!username || rating == undefined || !business || !title || !date) {
         return res.status(400).json({ status: 'error', message: 'All fields are required' });
     }
 
     try {
-        const query = await t.none('INSERT INTO steamboat_reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
-
+        const query = await db.none('INSERT INTO steamboat_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
+        
         res.status(200);
-        res.render('pages/review_left');
-    } catch {
+
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM steamboat_reviews');
+
+        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM steamboat_reviews');
+
+        if(avgrt == null || avgbus == null){
+            console.log('No reviews found or no business found');
+            res.redirect('/steamboat');
+        }else{
+            console.log('avg rating = ', avgrt);
+            console.log('avg business = ', avgbus)
+            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avgrt, 4]);
+            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avgbus, 4]);
+        }
+
+        res.redirect('/steamboat');
+        // res.render('pages/review_left');
+    } catch (error) {
         console.error("Error adding review:", error);
         res.status(500).json({ error: "Internal server error" });
     }
@@ -489,20 +550,43 @@ app.get('/winter_park', auth, async (req, res) => {
 });
 
 app.post('/winter_park_review', auth, async (req, res) => {
-    const { username, text, rating, business, title, date} = req.body;
+    const currentDate = new Date();
+    const year = currentDate.getFullYear(); // Get the full year
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Get the month (zero-based, so add 1) and ensure two digits
+    const day = String(currentDate.getDate()).padStart(2, '0'); // Get the day and ensure two digits
+    
+    const formattedDate = `${year}-${month}-${day}`; // Format as YYYY-MM-DD    
 
-    console.log("RATING", rating)
+    const { username = req.session.user, text, rating, business, title, date = formattedDate} = req.body;
+
+    console.log("DATA:", username, rating, business, title, text, date);
 
     if (!username || rating == undefined || !business || !title || !date) {
         return res.status(400).json({ status: 'error', message: 'All fields are required' });
     }
 
     try {
-        const query = await t.none('INSERT INTO winter_park_reviews (username, title, rating, business, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, text, rating, business, title, date]);
-
+        const query = await db.none('INSERT INTO winter_park_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
+        
         res.status(200);
-        res.render('pages/review_left');
-    } catch {
+
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM winter_park_reviews');
+
+        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM winter_park_reviews');
+
+        if(avgrt == null || avgbus == null){
+            console.log('No reviews found or no business found');
+            res.redirect('/winter_park');
+        }else{
+            console.log('avg rating = ', avgrt);
+            console.log('avg business = ', avgbus)
+            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avgrt, 2]);
+            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avgbus, 2]);
+        }
+
+        res.redirect('/winter_park');
+        // res.render('pages/review_left');
+    } catch (error) {
         console.error("Error adding review:", error);
         res.status(500).json({ error: "Internal server error" });
     }
