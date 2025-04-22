@@ -89,6 +89,11 @@
     function sortMountains() {
       const sort_by = document.getElementById('sortSelect').value;
 
+      let copp_done = false;
+      let eld_done = false;
+      let win_done = false;
+      let stem_done = false;
+
       const container = document.getElementById('mountain-container');
       container.innerHTML = ''; // clear previous cards
 
@@ -101,14 +106,18 @@
         const sorted_vals = [copper_rec, eldora_rec, steamboat_rec, winter_park_rec].sort((x, y) => y - x);
 
         for(i in sorted_vals){
-          if (copper_rec == sorted_vals[i]) {
+          if (copper_rec == sorted_vals[i] && copp_done == false) {
             container.appendChild(createMountainCard('copper'));
-          } else if (eldora_rec == sorted_vals[i]) {
+            copp_done = true;
+          } else if (eldora_rec == sorted_vals[i] && eld_done == false) {
             container.appendChild(createMountainCard('eldora'));
-          } else if (steamboat_rec == sorted_vals[i]) {
+            eld_done = true;
+          } else if (steamboat_rec == sorted_vals[i] && stem_done == false) {
             container.appendChild(createMountainCard('steamboat'));
-          } else if (winter_park_rec == sorted_vals[i]) {
+            stem_done = true;
+          } else if (winter_park_rec == sorted_vals[i] && win_done == false) {
             container.appendChild(createMountainCard('winter_park'));
+            win_done = true;
           }
         }
 
@@ -121,15 +130,19 @@
         const sorted_vals = [copper_rec, eldora_rec, steamboat_rec, winter_park_rec].sort((x, y) => y - x);
 
         for(i in sorted_vals){
-          if (copper_rec == sorted_vals[i]) {
-              container.appendChild(createMountainCard('copper'));
-            } else if (eldora_rec == sorted_vals[i]) {
-              container.appendChild(createMountainCard('eldora'));
-            } else if (steamboat_rec == sorted_vals[i]) {
-              container.appendChild(createMountainCard('steamboat'));
-            } else if (winter_park_rec == sorted_vals[i]) {
-              container.appendChild(createMountainCard('winter_park'));
-            }
+          if (copper_rec == sorted_vals[i] && copp_done == false) {
+            container.appendChild(createMountainCard('copper'));
+            copp_done = true;
+          } else if (eldora_rec == sorted_vals[i] && eld_done == false) {
+            container.appendChild(createMountainCard('eldora'));
+            eld_done = true;
+          } else if (steamboat_rec == sorted_vals[i] && stem_done == false) {
+            container.appendChild(createMountainCard('steamboat'));
+            stem_done = true;
+          } else if (winter_park_rec == sorted_vals[i] && win_done == false) {
+            container.appendChild(createMountainCard('winter_park'));
+            win_done = true;
+          }
         }
 
       }else if(sort_by == 'recommended'){
@@ -141,14 +154,18 @@
         const sorted_vals = [copper_rec, eldora_rec, steamboat_rec, winter_park_rec].sort((x, y) => y - x);
 
         for(i in sorted_vals){
-          if (copper_rec == sorted_vals[i]) {
+          if (copper_rec == sorted_vals[i] && copp_done == false) {
             container.appendChild(createMountainCard('copper'));
-          } else if (eldora_rec == sorted_vals[i]) {
+            copp_done = true;
+          } else if (eldora_rec == sorted_vals[i] && eld_done == false) {
             container.appendChild(createMountainCard('eldora'));
-          } else if (steamboat_rec == sorted_vals[i]) {
+            eld_done = true;
+          } else if (steamboat_rec == sorted_vals[i] && stem_done == false) {
             container.appendChild(createMountainCard('steamboat'));
-          } else if (winter_park_rec == sorted_vals[i]) {
+            stem_done = true;
+          } else if (winter_park_rec == sorted_vals[i] && win_done == false) {
             container.appendChild(createMountainCard('winter_park'));
+            win_done = true;
           }
         }
 
