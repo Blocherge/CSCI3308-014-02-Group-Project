@@ -15,6 +15,11 @@ const hbs = handlebars.create({
     extname: 'hbs',
     layoutsDir: __dirname + '/views/layouts',
     partialsDir: __dirname + '/views/partials',
+    helpers: {
+        json: function (context) {
+          return JSON.stringify(context);
+        }
+    }
 });
 
 //db config will have to be updated when database is actually built
