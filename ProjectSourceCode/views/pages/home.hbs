@@ -68,6 +68,16 @@
 
   <h1>Mountains</h1>
 
+  <div class="mb-3">
+    <label for="sortSelect" class="form-label">Sort by:</label>
+    <select id="sortSelect" class="form-select" onchange="sortMountains()">
+      <option value="recommended">Recommended</option>
+      <option value="name">Name</option>
+      <option value="avg_rating">Rating</option>
+      <option value="avg_business">Business</option>
+    </select>
+  </div>
+
   <div class="mountain" id="copper">
     <div class="header">
       <span>Copper</span>
@@ -78,7 +88,8 @@
     </div>
     <div class="lifts">
       <div class="basic-info">
-      <div class="basic-info-row"><span>Rating</span><span>{{copper.avg_rating}}</span></div>
+      <div class="basic-info-row"><span>Average Rating</span><span>{{copper.avg_rating}}/5</span></div>
+      <div class="basic-info-row"><span>Business Rating</span><span>{{copper.business}}/5</span></div>
       <div class="basic-info-row"><span>Weather</span><span>degrees</span></div>
       <div class="basic-info-row"><span>Wind Speen</span><span>mph</span></div>
     </div>

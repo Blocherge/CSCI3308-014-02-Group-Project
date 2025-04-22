@@ -155,7 +155,9 @@ app.get('/home', auth, async (req, res) => {
             name: trail.name,
             trail_id: trail.trail_id,
             trail_image: trail.image,
-            avg_rating: trail.avg_rating
+            avg_rating: trail.avg_rating,
+            avg_business: trail.avg_business,
+            description: trail.description
         }));
 
         const copper = trails[0] || {};
@@ -170,6 +172,12 @@ app.get('/home', auth, async (req, res) => {
         res.render('pages/home', { trails: [], message: 'Failed to load trail data. Please try again later.' });
     }
 });
+
+//function for dropdown sort on main page
+function sortMountains() {
+    const sort_by = document.getElementById('sortSelect').value;
+
+}
 
 app.get('/welcome', (req, res) => {
     res.json({status: 'success', message: 'Welcome!'});
@@ -259,17 +267,19 @@ app.post('/copper_review', auth, async (req, res) => {
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        let avg_rating = parseFloat(avgrt);
 
         const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM copper_reviews');
+        let avg_business = parseFloat(avgbus);
 
-        if(avgrt == null || avgbus == null){
+        if(avg_rating == null || avg_business == null){
             console.log('No reviews found or no business found');
             res.redirect('/copper');
         }else{
             console.log('avg rating = ', avgrt);
             console.log('avg business = ', avgbus)
-            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avgrt, 1]);
-            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avgbus, 1]);
+            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 1]);
+            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avg_business, 1]);
         }
 
         res.redirect('/copper');
@@ -362,20 +372,21 @@ app.post('/eldora_review', auth, async (req, res) => {
         
         res.status(200);
 
-        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM eldora_reviews');
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM eldora_reviews');
+        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM copper_reviews');
+        let avg_business = parseFloat(avgbus);
 
-        if(avgrt == null || avgbus == null){
+        if(avg_rating == null || avg_business == null){
             console.log('No reviews found or no business found');
-            res.redirect('/eldora');
+            res.redirect('/copper');
         }else{
             console.log('avg rating = ', avgrt);
             console.log('avg business = ', avgbus)
-            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avgrt, 3]);
-            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avgbus, 3]);
+            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 3]);
+            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avg_business, 3]);
         }
-
         res.redirect('/eldora');
         // res.render('pages/review_left');
     } catch (error) {
@@ -466,18 +477,20 @@ app.post('/steamboat_review', auth, async (req, res) => {
         
         res.status(200);
 
-        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM steamboat_reviews');
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM steamboat_reviews');
+        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM copper_reviews');
+        let avg_business = parseFloat(avgbus);
 
-        if(avgrt == null || avgbus == null){
+        if(avg_rating == null || avg_business == null){
             console.log('No reviews found or no business found');
-            res.redirect('/steamboat');
+            res.redirect('/copper');
         }else{
             console.log('avg rating = ', avgrt);
             console.log('avg business = ', avgbus)
-            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avgrt, 4]);
-            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avgbus, 4]);
+            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 4]);
+            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avg_business, 4]);
         }
 
         res.redirect('/steamboat');
@@ -570,20 +583,21 @@ app.post('/winter_park_review', auth, async (req, res) => {
         
         res.status(200);
 
-        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM winter_park_reviews');
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM winter_park_reviews');
+        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM copper_reviews');
+        let avg_business = parseFloat(avgbus);
 
-        if(avgrt == null || avgbus == null){
+        if(avg_rating == null || avg_business == null){
             console.log('No reviews found or no business found');
-            res.redirect('/winter_park');
+            res.redirect('/copper');
         }else{
             console.log('avg rating = ', avgrt);
             console.log('avg business = ', avgbus)
-            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avgrt, 2]);
-            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avgbus, 2]);
+            await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 2]);
+            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avg_business, 2]);
         }
-
         res.redirect('/winter_park');
         // res.render('pages/review_left');
     } catch (error) {
