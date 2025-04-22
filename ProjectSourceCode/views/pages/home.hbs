@@ -78,16 +78,20 @@
     </select>
   </div>
 
+  <div id="mountain-container"></div>
 
   <script>
-    const copper = <%- JSON.stringify(copper) %>;
-    const winter_park = <%- JSON.stringify(winter_park) %>;
-    const eldora = <%- JSON.stringify(eldora) %>;
-    const steamboat = <%- JSON.stringify(steamboat) %>;
+    const copper = {{{json copper}}};
+    const winter_park = {{{json winter_park}}};
+    const eldora = {{{json eldora}}};
+    const steamboat = {{{json steamboat}}};
 
     function sortMountains() {
       const sort_by = document.getElementById('sortSelect').value;
-  
+
+      const container = document.getElementById('mountain-container');
+      container.innerHTML = ''; // clear previous cards
+
       if(sort_by == 'avg_rating'){
         const copper_rec = copper.avg_rating;
         const eldora_rec = eldora.avg_rating;
@@ -96,16 +100,15 @@
 
         const sorted_vals = [copper_rec, eldora_rec, steamboat_rec, winter_park_rec].sort((x, y) => y - x);
 
-        console.log('is running');
         for(i in sorted_vals){
-          if(copper_rec == sorted_vals[i]){
-            createMountainCard('copper');
-          }else if(eldora_rec == sorted_vals[i]){
-            createMountainCard('eldora');
-          }else if(steamboat_rec == sorted_vals[i]){
-            createMountainCard('steamboat');
-          }else if(winter_park_rec == sorted_vals[i]){
-            createMountainCard('winter_park');
+          if (copper_rec == sorted_vals[i]) {
+            container.appendChild(createMountainCard('copper'));
+          } else if (eldora_rec == sorted_vals[i]) {
+            container.appendChild(createMountainCard('eldora'));
+          } else if (steamboat_rec == sorted_vals[i]) {
+            container.appendChild(createMountainCard('steamboat'));
+          } else if (winter_park_rec == sorted_vals[i]) {
+            container.appendChild(createMountainCard('winter_park'));
           }
         }
 
@@ -118,15 +121,15 @@
         const sorted_vals = [copper_rec, eldora_rec, steamboat_rec, winter_park_rec].sort((x, y) => y - x);
 
         for(i in sorted_vals){
-          if(copper_rec == sorted_vals[i]){
-            createMountainCard('copper');
-          }else if(eldora_rec == sorted_vals[i]){
-            createMountainCard('eldora');
-          }else if(steamboat_rec == sorted_vals[i]){
-            createMountainCard('steamboat');
-          }else if(winter_park_rec == sorted_vals[i]){
-            createMountainCard('winter_park');
-          }
+          if (copper_rec == sorted_vals[i]) {
+              container.appendChild(createMountainCard('copper'));
+            } else if (eldora_rec == sorted_vals[i]) {
+              container.appendChild(createMountainCard('eldora'));
+            } else if (steamboat_rec == sorted_vals[i]) {
+              container.appendChild(createMountainCard('steamboat'));
+            } else if (winter_park_rec == sorted_vals[i]) {
+              container.appendChild(createMountainCard('winter_park'));
+            }
         }
 
       }else if(sort_by == 'recommended'){
@@ -138,26 +141,27 @@
         const sorted_vals = [copper_rec, eldora_rec, steamboat_rec, winter_park_rec].sort((x, y) => y - x);
 
         for(i in sorted_vals){
-          if(copper_rec == sorted_vals[i]){
-            createMountainCard('copper');
-          }else if(eldora_rec == sorted_vals[i]){
-            createMountainCard('eldora');
-          }else if(steamboat_rec == sorted_vals[i]){
-            createMountainCard('steamboat');
-          }else if(winter_park_rec == sorted_vals[i]){
-            createMountainCard('winter_park');
+          if (copper_rec == sorted_vals[i]) {
+            container.appendChild(createMountainCard('copper'));
+          } else if (eldora_rec == sorted_vals[i]) {
+            container.appendChild(createMountainCard('eldora'));
+          } else if (steamboat_rec == sorted_vals[i]) {
+            container.appendChild(createMountainCard('steamboat'));
+          } else if (winter_park_rec == sorted_vals[i]) {
+            container.appendChild(createMountainCard('winter_park'));
           }
         }
 
       }else{
-        createMountainCard('copper');
-        createMountainCard('eldora');
-        createMountainCard('steamboat');
-        createMountainCard('winter_park');
+        container.appendChild(createMountainCard('copper'));
+        container.appendChild(createMountainCard('eldora'));
+        container.appendChild(createMountainCard('steamboat'));
+        container.appendChild(createMountainCard('winter_park'));
       }
     }
 
     function createMountainCard(trail){
+      console.log("is running");
       if(trail == 'copper'){
         const card = document.createElement('div');
         card.className = 'mountain';
