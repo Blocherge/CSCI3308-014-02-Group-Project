@@ -99,14 +99,22 @@
     <div class="container mt-4">
         <h2 class="mb-4 text-center">Reviews</h2>
         <div class="card">
+        {{#if eldora_reviews}}
+            {{#each eldora_reviews}}
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <p class="card-text"><strong>User:</strong> {{username}}</p>
+                    <p class="card-text"><strong>Rating:</strong> {{rating}}</p>
+                    <p class="card-text"><strong>Busyness:</strong> {{busyness}}</p>
+                    <p class="card-text"><strong>Review:</strong> {{text}}</p>
+                    <p class="card-text"><strong>Date:</strong> {{date}}</p>
+                </div>
+            {{/each}}
+        {{else}}
             <div class="card-body">
-                <h5 class="card-title">{{reviews.title}}</h5>
-                <p class="card-text"><strong>User:</strong> {{reviews.username}}</p>
-                <p class="card-text"><strong>Rating:</strong> {{reviews.rating}}</p>
-                <p class="card-text"><strong>busyness:</strong> {{reviews.rating}}</p>
-                <p class="card-text"><strong>Review:</strong>{{reviews.text}}</p>
-                <p class="card-text"><strong>Date:</strong>{{reviews.date}}</p>
+                <p class="card-text">No Reviews.</p>
             </div>
+        {{/if}}
         </div>
     </div>
     <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
@@ -117,18 +125,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="/eldora_review" method="POST">
                             <div class="mb-3">
                                 <label for="reviewTitle" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="reviewTitle"required>
+                                <input type="text" class="form-control" id="reviewTitle" name="title" maxlength="100" required>
                             </div>
                             <div class="mb-3">
                                 <label for="reviewText" class="form-label">Your Review</label>
-                                <textarea class="form-control" id="reviewText" rows="4" required></textarea>
+                                <textarea class="form-control" id="reviewText" name="text" rows="4" maxlength="500" required></textarea> <!-- added max length for title and review text. -->
                             </div>
                             <div class="mb-3">
                                 <label for="reviewRating" class="form-label">Rating</label>
-                                <select class="form-select" id="reviewRating" required>
+                                <select class="form-select" id="reviewRating" name="rating" required>
                                     <option value="5">5 - Excellent</option>
                                     <option value="4">4 - Very Good</option>
                                     <option value="3">3 - Good</option>
@@ -138,7 +146,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="reviewbusyness" class="form-label">busyness</label>
-                                <select class="form-select" id="reviewbusyness" required>
+                                <select class="form-select" id="reviewbusyness" name="busyness" required>
                                     <option value="5">5 - Lifts were basically empty</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -146,7 +154,7 @@
                                     <option value="1">1 - Took 15 minutes to get on a lift</option>
                                 </select>
                             </div>
-                            <a href="/review" class="btn btn-secondary">Submit Review</a>
+                            <button type="submit" class="btn btn-secondary">Submit Review</button>
                         </form>
                     </div>
                 </div>

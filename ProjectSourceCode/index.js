@@ -16,6 +16,9 @@ const hbs = handlebars.create({
     layoutsDir: __dirname + '/views/layouts',
     partialsDir: __dirname + '/views/partials',
     helpers: {
+        json: function (context) {
+            return JSON.stringify(context);
+        },
         difficultyIcon: function (difficulty) {
           switch (difficulty) {
             case '1':
@@ -347,7 +350,7 @@ app.get('/eldora', auth, async (req, res) => {
         }));
 
         const reviewsData = response_2 || [];
-
+        
         const eldora_reviews = reviewsData.map(reviewsData => ({
             username: reviewsData.username,
             title: reviewsData.title,
