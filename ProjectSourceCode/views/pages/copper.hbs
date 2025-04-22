@@ -48,9 +48,9 @@
             {{#each copper_runs}}
             <tr>
                 <td>{{run_name}}</td>
-                <td>{{groomed}}</td>
-                <td>{{open_closed}}</td>
-                <td>{{difficulty}}</td>
+                <td><img src="{{openClosed groomed}}" alt={{groomed}} style="height: 30px;" title="Groomed: {{groomed}}"></td>
+                <td><img src="{{openClosed open_closed}}" alt={{open_closed}} style="height: 30px;" title="openClosed: {{open_closed}}"></td>
+                <td><img src="{{difficultyIcon difficulty}}" alt="Difficulty" style="height: 30px;" title="Difficulty: {{difficulty}}"></td>
             </tr>
             {{/each}}
             </tbody>
@@ -83,7 +83,7 @@
                 {{#each copper_lifts}}
                 <tr>
                     <td>{{name}}</td>
-                    <td>{{open}}</td>
+                    <td><img src="{{openClosed open}}" alt={{open}} style="height: 30px;" title="OpenStatus: {{open}}"></td>
                     <td>{{type}}</td>
                 </tr>
                 {{/each}}
