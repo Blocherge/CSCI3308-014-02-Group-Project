@@ -1,0 +1,15 @@
+TA meeting 4-18-25
+
+TO DO:
+Make it pretty with consistent themes
+Complete ranking of mountains
+Finish code to calculate average rating from database
+
+Completed:
+Trail pages working w/ data populating
+review functionality fully completed
+
+Done in meeting:
+Trail page demo
+Review demo on page
+

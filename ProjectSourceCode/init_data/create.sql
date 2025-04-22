@@ -12,6 +12,7 @@ CREATE TABLE trails (
   name VARCHAR(100) NOT NULL,
   location VARCHAR(500),
   avg_rating DECIMAL,
+  avg_busyness DECIMAL,
   image INT,
   description VARCHAR(500) NOT NULL
 );
@@ -21,7 +22,7 @@ CREATE TABLE copper_reviews (
     review_id SERIAL PRIMARY KEY NOT NULL,
     username VARCHAR(50) NOT NULL,
     rating DECIMAL NOT NULL,
-    business DECIMAL NOT NULL,
+    busyness DECIMAL NOT NULL,
     title VARCHAR(100) NOT NULL,
     text VARCHAR(500) NOT NULL,
     date VARCHAR(20)
@@ -32,7 +33,7 @@ CREATE TABLE eldora_reviews (
     review_id SERIAL PRIMARY KEY NOT NULL,
     username VARCHAR(50) NOT NULL,
     rating DECIMAL NOT NULL,
-    business DECIMAL NOT NULL,
+    busyness DECIMAL NOT NULL,
     title VARCHAR(100) NOT NULL,
     text VARCHAR(500) NOT NULL,
     date VARCHAR(20)
@@ -43,7 +44,7 @@ CREATE TABLE steamboat_reviews (
     review_id SERIAL PRIMARY KEY NOT NULL,
     username VARCHAR(50) NOT NULL,
     rating DECIMAL NOT NULL,
-    business DECIMAL NOT NULL,
+    busyness DECIMAL NOT NULL,
     title VARCHAR(100) NOT NULL,
     text VARCHAR(500) NOT NULL,
     date VARCHAR(20)
@@ -54,7 +55,7 @@ CREATE TABLE winter_park_reviews (
     review_id SERIAL PRIMARY KEY NOT NULL,
     username VARCHAR(50) NOT NULL,
     rating DECIMAL NOT NULL,
-    business DECIMAL NOT NULL,
+    busyness DECIMAL NOT NULL,
     title VARCHAR(100) NOT NULL,
     text VARCHAR(500) NOT NULL,
     date VARCHAR(20)
