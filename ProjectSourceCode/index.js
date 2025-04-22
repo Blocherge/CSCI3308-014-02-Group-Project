@@ -316,7 +316,7 @@ app.get('/eldora', auth, async (req, res) => {
         }));
 
         const reviewsData = response_2 || [];
-
+        
         const eldora_reviews = reviewsData.map(reviewsData => ({
             username: reviewsData.username,
             title: reviewsData.title,

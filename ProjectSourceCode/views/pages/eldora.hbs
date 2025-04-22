@@ -83,7 +83,7 @@
                     <h5 class="card-title">{{title}}</h5>
                     <p class="card-text"><strong>User:</strong> {{username}}</p>
                     <p class="card-text"><strong>Rating:</strong> {{rating}}</p>
-                    <p class="card-text"><strong>Busyness:</strong> {{business}}</p>
+                    <p class="card-text"><strong>Busyness:</strong> {{busyness}}</p>
                     <p class="card-text"><strong>Review:</strong> {{text}}</p>
                     <p class="card-text"><strong>Date:</strong> {{date}}</p>
                 </div>
@@ -103,18 +103,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/copper_review" method="POST">
+                        <form action="/eldora_review" method="POST">
                             <div class="mb-3">
                                 <label for="reviewTitle" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="reviewTitle"required>
+                                <input type="text" class="form-control" id="reviewTitle" name="title" maxlength="100" required>
                             </div>
                             <div class="mb-3">
                                 <label for="reviewText" class="form-label">Your Review</label>
-                                <textarea class="form-control" id="reviewText" rows="4" required></textarea>
+                                <textarea class="form-control" id="reviewText" name="text" rows="4" maxlength="500" required></textarea> <!-- added max length for title and review text. -->
                             </div>
                             <div class="mb-3">
                                 <label for="reviewRating" class="form-label">Rating</label>
-                                <select class="form-select" id="reviewRating" required>
+                                <select class="form-select" id="reviewRating" name="rating" required>
                                     <option value="5">5 - Excellent</option>
                                     <option value="4">4 - Very Good</option>
                                     <option value="3">3 - Good</option>
@@ -124,7 +124,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="reviewbusyness" class="form-label">busyness</label>
-                                <select class="form-select" id="reviewbusyness" required>
+                                <select class="form-select" id="reviewbusyness" name="busyness" required>
                                     <option value="5">5 - Lifts were basically empty</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
