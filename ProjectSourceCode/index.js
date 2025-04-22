@@ -17,9 +17,38 @@ const hbs = handlebars.create({
     partialsDir: __dirname + '/views/partials',
     helpers: {
         json: function (context) {
-          return JSON.stringify(context);
+            return JSON.stringify(context);
+        },
+        difficultyIcon: function (difficulty) {
+          switch (difficulty) {
+            case '1':
+            case 1:
+              return 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/1200px-Ski_trail_rating_symbol-green_circle.svg.png';
+            case '2':
+            case 2:
+              return 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/1200px-Ski_trail_rating_symbol-blue_square.svg.png';
+            case '3':
+            case 3:
+              return 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Ski_trail_rating_symbol-black_diamond.svg/1200px-Ski_trail_rating_symbol-black_diamond.svg.png';
+            case '4':
+            case 4:
+            case '5':
+            case 5:
+              return 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ski_trail_rating_symbol-double_black_diamond.svg/1200px-Ski_trail_rating_symbol-double_black_diamond.svg.png';
+            default:
+                return 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ski_trail_rating_symbol-green_circle.svg/1200px-Ski_trail_rating_symbol-green_circle.svg.png';
+          }
+        },
+        openClosed: function(openClosed) {
+            switch (openClosed) {
+                case 'True':
+                case true:
+                    return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqYKWYDtF_ovKm10S7y-rxdOaY1cuj3JD-sQ&s'
+                default:
+                    return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlhv-n_BHNP17Bxs9L9F74b1gwK1bu_CajhQ&s'
+            }
         }
-    }
+      }
 });
 
 //db config will have to be updated when database is actually built
@@ -222,15 +251,15 @@ app.get('/copper', auth, async (req, res) => {
         const liftsData = response_3 || [];
 
         const copper_lifts = liftsData.map(liftsData => ({
-            name: liftsData.name,
-            open: liftsData.open,
-            type: liftsData.type,
+            name: liftsData.lift_name,
+            open: liftsData.open_closed,
+            type: liftsData.lift_type,
         }));
 
         const runsData = response_4 || [];
 
         const copper_runs = runsData.map(runsData => ({
-            name: runsData.name,
+            run_name: runsData.run_name,
             open_closed: runsData.open_closed,
             groomed: runsData.groomed,
             difficulty: runsData.difficulty
@@ -334,15 +363,15 @@ app.get('/eldora', auth, async (req, res) => {
         const liftsData = response_3 || [];
 
         const eldora_lifts = liftsData.map(liftsData => ({
-            name: liftsData.name,
-            open: liftsData.open,
-            type: liftsData.type,
+            name: liftsData.lift_name,
+            open: liftsData.open_closed,
+            type: liftsData.lift_type,
         }));
 
         const runsData = response_4 || [];
 
         const eldora_runs = runsData.map(runsData => ({
-            name: runsData.name,
+            run_name: runsData.run_name,
             open_closed: runsData.open_closed,
             groomed: runsData.groomed,
             difficulty: runsData.difficulty
@@ -444,15 +473,15 @@ app.get('/steamboat', auth, async (req, res) => {
         const liftsData = response_3 || [];
 
         const steamboat_lifts = liftsData.map(liftsData => ({
-            name: liftsData.name,
-            open: liftsData.open,
-            type: liftsData.type,
+            name: liftsData.lift_name,
+            open: liftsData.open_closed,
+            type: liftsData.lift_type,
         }));
 
         const runsData = response_4 || [];
 
         const steamboat_runs = runsData.map(runsData => ({
-            name: runsData.name,
+            run_name: runsData.run_name,
             open_closed: runsData.open_closed,
             groomed: runsData.groomed,
             difficulty: runsData.difficulty
@@ -555,15 +584,15 @@ app.get('/winter_park', auth, async (req, res) => {
         const liftsData = response_3 || [];
 
         const winter_park_lifts = liftsData.map(liftsData => ({
-            name: liftsData.name,
-            open: liftsData.open,
-            type: liftsData.type,
+            name: liftsData.lift_name,
+            open: liftsData.open_closed,
+            type: liftsData.lift_type,
         }));
 
         const runsData = response_4 || [];
 
         const winter_park_runs = runsData.map(runsData => ({
-            name: runsData.name,
+            run_name: runsData.run_name,
             open_closed: runsData.open_closed,
             groomed: runsData.groomed,
             difficulty: runsData.difficulty
