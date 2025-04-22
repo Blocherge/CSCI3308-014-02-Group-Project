@@ -9,12 +9,11 @@
 <body>
     {{> nav}}
     <div class="container mt-4">
-        <h2 class="mb-4 text-center">{{trail.name}}</h2>
+        <h2 class="mb-4 text-center">Copper Mountain</h2>
         <div class="card">
             <img src="{{trail.image}}" class="card-img-top" alt="{{trail.name}}">
             <div class="card-body">
-                <h5 class="card-title">{{trail.name}}</h5>
-                <p class="card-text"><strong>Location:</strong> <a href={{trail.location}}>Click Here</a></p>
+                <p class="card-text"><strong>Location:</strong> <a href={{trail.location}}>Google Maps</a></p>
                 <p class="card-text"><strong>Description:</strong> {{trail.description}}</p>
                 <p class="card-text"><strong>Average Rating:</strong> {{trail.avg_rating}}</p>
                 <p class="card-text"><strong>Weather Forecast:</strong></p>
@@ -24,33 +23,55 @@
         </div>
     </div>
 
-    <div class="container mt-5">
-    <h3 class="mb-3 text-center">Runs</h3>
-    <table class="table table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Run Name</th>
-                <th scope="col">Groomed</th>
-                <th scope="col">Open</th>
-                <th scope="col">Difficulty</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container mt-5">
+    <!-- Table-header-style button -->
+    <button class="btn w-100 text-start fw-bold text-dark bg-white border border-bottom d-flex justify-content-between align-items-center"
+            type="button"
+            id="runsToggle"
+            style="font-size: 1.25rem;">
+        <span class="ms-2">Runs</span>
+        <span id="runsArrow" class="me-3">▼</span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse show" id="runsTable">
+        <table class="table table-striped mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Run Name</th>
+                    <th scope="col">Groomed</th>
+                    <th scope="col">Open</th>
+                    <th scope="col">Difficulty</th>
+                </tr>
+            </thead>
+            <tbody>
             {{#each copper_runs}}
             <tr>
-                <td>{{name}}</td>
+                <td>{{run_name}}</td>
                 <td>{{groomed}}</td>
-                <td>{{open_close}}</td>
+                <td>{{open_closed}}</td>
                 <td>{{difficulty}}</td>
             </tr>
             {{/each}}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
     </div>
+</div>
 
-    <div class="container mt-5">
-        <h3 class="mb-3 text-center">Lifts</h3>
-        <table class="table table-striped">
+
+<div class="container mt-5">
+    <!-- Table-header-style button -->
+    <button class="btn w-100 text-start fw-bold text-dark bg-white border border-bottom d-flex justify-content-between align-items-center"
+            type="button"
+            id="liftsToggle"
+            style="font-size: 1.25rem;">
+        <span class="ms-2">Lifts</span>
+        <span id="liftsArrow" class="me-3">▼</span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse show" id="liftsTable">
+        <table class="table table-striped mb-0">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">Lift Name</th>
@@ -69,6 +90,7 @@
             </tbody>
         </table>
     </div>
+</div>
 
     <div class="text-center mt-4">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Leave a Review</button>
@@ -142,5 +164,47 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const liftsToggle = document.getElementById('liftsToggle');
+    const liftsArrow = document.getElementById('liftsArrow');
+    const liftsTable = document.getElementById('liftsTable');
+
+    const collapseInstance = new bootstrap.Collapse(liftsTable, { toggle: false });
+
+    liftsToggle.addEventListener('click', () => {
+        collapseInstance.toggle();
+    });
+
+    liftsTable.addEventListener('show.bs.collapse', () => {
+        liftsArrow.textContent = '▲';
+    });
+
+    liftsTable.addEventListener('hide.bs.collapse', () => {
+        liftsArrow.textContent = '▼';
+    });
+
+    const runsToggle = document.getElementById('runsToggle');
+    const runsArrow = document.getElementById('runsArrow');
+    const runsTable = document.getElementById('runsTable');
+
+    const runsCollapse = new bootstrap.Collapse(runsTable, { toggle: false });
+
+    runsToggle.addEventListener('click', () => {
+        runsCollapse.toggle();
+    });
+
+    runsTable.addEventListener('show.bs.collapse', () => {
+        runsArrow.textContent = '▲';
+    });
+
+    runsTable.addEventListener('hide.bs.collapse', () => {
+        runsArrow.textContent = '▼';
+    });
+
+});
+</script>
+
+
 </body>
 </html>

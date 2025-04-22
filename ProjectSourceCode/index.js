@@ -17,6 +17,28 @@ const hbs = handlebars.create({
     partialsDir: __dirname + '/views/partials',
 });
 
+// Switch on run difficulty
+hbs.registerHelper('difficultyIcon', function(difficulty) {
+    switch (difficulty) {
+      case '1':
+      case 1:
+        return '/images/difficulty/green.png';
+      case '2':
+      case 2:
+        return '/images/difficulty/blue.png';
+      case '3':
+      case 3:
+        return '/images/difficulty/black.png';
+      case '4':
+      case 4:
+        case '5':
+        case 5:
+        return '/images/difficulty/double-black.png';
+      default:
+        return '/images/difficulty/green.png';
+    }
+  });
+
 //db config will have to be updated when database is actually built
 // database configuration
 const dbConfig = {
@@ -230,8 +252,10 @@ app.get('/copper', auth, async (req, res) => {
 
         const runsData = response_4 || [];
 
+        console.log(runsData)
+
         const copper_runs = runsData.map(runsData => ({
-            name: runsData.name,
+            run_name: runsData.run_name,
             open_closed: runsData.open_closed,
             groomed: runsData.groomed,
             difficulty: runsData.difficulty
