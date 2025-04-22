@@ -156,7 +156,7 @@ app.get('/home', auth, async (req, res) => {
             trail_id: trail.trail_id,
             trail_image: trail.image,
             avg_rating: trail.avg_rating,
-            avg_business: trail.avg_business,
+            avg_busyness: trail.avg_busyness,
             description: trail.description
         }));
 
@@ -172,12 +172,6 @@ app.get('/home', auth, async (req, res) => {
         res.render('pages/home', { trails: [], message: 'Failed to load trail data. Please try again later.' });
     }
 });
-
-//function for dropdown sort on main page
-function sortMountains() {
-    const sort_by = document.getElementById('sortSelect').value;
-
-}
 
 app.get('/welcome', (req, res) => {
     res.json({status: 'success', message: 'Welcome!'});
@@ -215,7 +209,7 @@ app.get('/copper', auth, async (req, res) => {
             username: reviewsData.username,
             title: reviewsData.title,
             rating: reviewsData.rating,
-            business: reviewsData.business,
+            busyness: reviewsData.busyness,
             text: reviewsData.text,
             date: reviewsData.date
         }));
@@ -253,33 +247,39 @@ app.post('/copper_review', auth, async (req, res) => {
     
     const formattedDate = `${year}-${month}-${day}`; // Format as YYYY-MM-DD    
 
-    const { username = req.session.user, text, rating, business, title, date = formattedDate} = req.body;
+    const { username = req.session.user, text, rating, busyness, title, date = formattedDate} = req.body;
 
-    console.log("DATA:", username, rating, business, title, text, date);
+    console.log("DATA:", username, rating, busyness, title, text, date);
 
-    if (!username || rating == undefined || !business || !title || !date) {
+    if (!username || rating == undefined || !busyness || !title || !date) {
         return res.status(400).json({ status: 'error', message: 'All fields are required' });
     }
 
     try {
-        const query = await db.none('INSERT INTO copper_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
+        const test_q = await db.query('SELECT * FROM copper_reviews WHERE username = $1', [username]);
+        console.log(test_q);
+        if(test_q.length == 0){
+            const query = await db.none('INSERT INTO copper_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
+        }else{
+            const query = await db.none('UPDATE copper_reviews SET rating = $1, busyness = $2, title = $3, text = $4, date = $5 WHERE username = $6', [rating, busyness, title, text, date, username]);
+        }
         
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
         let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM copper_reviews');
-        let avg_business = parseFloat(avgbus);
+        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM copper_reviews');
+        let avg_busyness = parseFloat(avgbus);
 
-        if(avg_rating == null || avg_business == null){
-            console.log('No reviews found or no business found');
+        if(avg_rating == null || avg_busyness == null){
+            console.log('No reviews found or no busyness found');
             res.redirect('/copper');
         }else{
             console.log('avg rating = ', avgrt);
-            console.log('avg business = ', avgbus)
+            console.log('avg busyness = ', avgbus)
             await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 1]);
-            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avg_business, 1]);
+            await db.query('UPDATE trails SET avg_busyness = $1 WHERE trail_id = $2', [avg_busyness, 1]);
         }
 
         res.redirect('/copper');
@@ -321,7 +321,7 @@ app.get('/eldora', auth, async (req, res) => {
             username: reviewsData.username,
             title: reviewsData.title,
             rating: reviewsData.rating,
-            business: reviewsData.business,
+            busyness: reviewsData.busyness,
             text: reviewsData.text,
             date: reviewsData.date
         }));
@@ -359,33 +359,38 @@ app.post('/eldora_review', auth, async (req, res) => {
     
     const formattedDate = `${year}-${month}-${day}`; // Format as YYYY-MM-DD    
 
-    const { username = req.session.user, text, rating, business, title, date = formattedDate} = req.body;
+    const { username = req.session.user, text, rating, busyness, title, date = formattedDate} = req.body;
 
-    console.log("DATA:", username, rating, business, title, text, date);
+    console.log("DATA:", username, rating, busyness, title, text, date);
 
-    if (!username || rating == undefined || !business || !title || !date) {
+    if (!username || rating == undefined || !busyness || !title || !date) {
         return res.status(400).json({ status: 'error', message: 'All fields are required' });
     }
 
     try {
-        const query = await db.none('INSERT INTO eldora_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
-        
+        const test_q = await db.query('SELECT * FROM eldora_reviews WHERE username = $1', [username]);
+        console.log(test_q);
+        if(test_q.length == 0){
+            const query = await db.none('INSERT INTO eldora_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
+        }else{
+            const query = await db.none('UPDATE eldora_reviews SET rating = $1, busyness = $2, title = $3, text = $4, date = $5 WHERE username = $6', [rating, busyness, title, text, date, username]);
+        }
         res.status(200);
 
-        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM eldora_reviews');
         let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM copper_reviews');
-        let avg_business = parseFloat(avgbus);
+        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM eldora_reviews');
+        let avg_busyness = parseFloat(avgbus);
 
-        if(avg_rating == null || avg_business == null){
-            console.log('No reviews found or no business found');
+        if(avg_rating == null || avg_busyness == null){
+            console.log('No reviews found or no busyness found');
             res.redirect('/copper');
         }else{
             console.log('avg rating = ', avgrt);
-            console.log('avg business = ', avgbus)
+            console.log('avg busyness = ', avgbus)
             await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 3]);
-            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avg_business, 3]);
+            await db.query('UPDATE trails SET avg_busyness = $1 WHERE trail_id = $2', [avg_busyness, 3]);
         }
         res.redirect('/eldora');
         // res.render('pages/review_left');
@@ -426,7 +431,7 @@ app.get('/steamboat', auth, async (req, res) => {
             username: reviewsData.username,
             title: reviewsData.title,
             rating: reviewsData.rating,
-            business: reviewsData.business,
+            busyness: reviewsData.busyness,
             text: reviewsData.text,
             date: reviewsData.date
         }));
@@ -464,33 +469,38 @@ app.post('/steamboat_review', auth, async (req, res) => {
     
     const formattedDate = `${year}-${month}-${day}`; // Format as YYYY-MM-DD    
 
-    const { username = req.session.user, text, rating, business, title, date = formattedDate} = req.body;
+    const { username = req.session.user, text, rating, busyness, title, date = formattedDate} = req.body;
 
-    console.log("DATA:", username, rating, business, title, text, date);
+    console.log("DATA:", username, rating, busyness, title, text, date);
 
-    if (!username || rating == undefined || !business || !title || !date) {
+    if (!username || rating == undefined || !busyness || !title || !date) {
         return res.status(400).json({ status: 'error', message: 'All fields are required' });
     }
 
     try {
-        const query = await db.none('INSERT INTO steamboat_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
-        
+        const test_q = await db.query('SELECT * FROM steamboat_reviews WHERE username = $1', [username]);
+        console.log(test_q);
+        if(test_q.length == 0){
+            const query = await db.none('INSERT INTO steamboat_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
+        }else{
+            const query = await db.none('UPDATE steamboat_reviews SET rating = $1, busyness = $2, title = $3, text = $4, date = $5 WHERE username = $6', [rating, busyness, title, text, date, username]);
+        }
         res.status(200);
 
-        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM steamboat_reviews');
         let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM copper_reviews');
-        let avg_business = parseFloat(avgbus);
+        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM steamboat_reviews');
+        let avg_busyness = parseFloat(avgbus);
 
-        if(avg_rating == null || avg_business == null){
-            console.log('No reviews found or no business found');
+        if(avg_rating == null || avg_busyness == null){
+            console.log('No reviews found or no busyness found');
             res.redirect('/copper');
         }else{
             console.log('avg rating = ', avgrt);
-            console.log('avg business = ', avgbus)
+            console.log('avg busyness = ', avgbus)
             await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 4]);
-            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avg_business, 4]);
+            await db.query('UPDATE trails SET avg_busyness = $1 WHERE trail_id = $2', [avg_busyness, 4]);
         }
 
         res.redirect('/steamboat');
@@ -532,7 +542,7 @@ app.get('/winter_park', auth, async (req, res) => {
             username: reviewsData.username,
             title: reviewsData.title,
             rating: reviewsData.rating,
-            business: reviewsData.business,
+            busyness: reviewsData.busyness,
             text: reviewsData.text,
             date: reviewsData.date
         }));
@@ -570,33 +580,39 @@ app.post('/winter_park_review', auth, async (req, res) => {
     
     const formattedDate = `${year}-${month}-${day}`; // Format as YYYY-MM-DD    
 
-    const { username = req.session.user, text, rating, business, title, date = formattedDate} = req.body;
+    const { username = req.session.user, text, rating, busyness, title, date = formattedDate} = req.body;
 
-    console.log("DATA:", username, rating, business, title, text, date);
+    console.log("DATA:", username, rating, busyness, title, text, date);
 
-    if (!username || rating == undefined || !business || !title || !date) {
+    if (!username || rating == undefined || !busyness || !title || !date) {
         return res.status(400).json({ status: 'error', message: 'All fields are required' });
     }
 
     try {
-        const query = await db.none('INSERT INTO winter_park_reviews (username, rating, business, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, business, title, text, date]);
-        
+        const test_q = await db.query('SELECT * FROM winter_park_reviews WHERE username = $1', [username]);
+        console.log(test_q);
+        if(test_q.length == 0){
+            const query = await db.none('INSERT INTO winter_park_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
+        }else{
+            const query = await db.none('UPDATE winter_park_reviews SET rating = $1, busyness = $2, title = $3, text = $4, date = $5 WHERE username = $6', [rating, busyness, title, text, date, username]);
+        }
+
         res.status(200);
 
-        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM winter_park_reviews');
         let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(business)::numeric(5,1) AS average FROM copper_reviews');
-        let avg_business = parseFloat(avgbus);
+        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM winter_park_reviews');
+        let avg_busyness = parseFloat(avgbus);
 
-        if(avg_rating == null || avg_business == null){
-            console.log('No reviews found or no business found');
+        if(avg_rating == null || avg_busyness == null){
+            console.log('No reviews found or no busyness found');
             res.redirect('/copper');
         }else{
             console.log('avg rating = ', avgrt);
-            console.log('avg business = ', avgbus)
+            console.log('avg busyness = ', avgbus)
             await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 2]);
-            await db.query('UPDATE trails SET avg_business = $1 WHERE trail_id = $2', [avg_business, 2]);
+            await db.query('UPDATE trails SET avg_busyness = $1 WHERE trail_id = $2', [avg_busyness, 2]);
         }
         res.redirect('/winter_park');
         // res.render('pages/review_left');
