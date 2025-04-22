@@ -12,6 +12,7 @@ CREATE TABLE trails (
   name VARCHAR(100) NOT NULL,
   location VARCHAR(500),
   avg_rating DECIMAL,
+  avg_business DECIMAL,
   image INT,
   description VARCHAR(500) NOT NULL
 );
