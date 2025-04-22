@@ -261,7 +261,7 @@ app.post('/copper_review', auth, async (req, res) => {
         if(test_q.length == 0){
             const query = await db.none('INSERT INTO copper_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
         }else{
-            const query = await db.none('UPDATE copper_reviews SET rating = $1, busyness = $2, title = $3, text = $4, date = $5, ON username = $6', [rating, busyness, title, text, date, username]);
+            const query = await db.none('UPDATE copper_reviews SET rating = $1, busyness = $2, title = $3, text = $4, date = $5 WHERE username = $6', [rating, busyness, title, text, date, username]);
         }
         
         res.status(200);
@@ -368,14 +368,19 @@ app.post('/eldora_review', auth, async (req, res) => {
     }
 
     try {
-        const query = await db.none('INSERT INTO eldora_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
-        
+        const test_q = await db.query('SELECT * FROM eldora_reviews WHERE username = $1', [username]);
+        console.log(test_q);
+        if(test_q.length == 0){
+            const query = await db.none('INSERT INTO eldora_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
+        }else{
+            const query = await db.none('UPDATE eldora_reviews SET rating = $1, busyness = $2, title = $3, text = $4, date = $5 WHERE username = $6', [rating, busyness, title, text, date, username]);
+        }
         res.status(200);
 
-        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM eldora_reviews');
         let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM copper_reviews');
+        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM eldora_reviews');
         let avg_busyness = parseFloat(avgbus);
 
         if(avg_rating == null || avg_busyness == null){
@@ -473,14 +478,19 @@ app.post('/steamboat_review', auth, async (req, res) => {
     }
 
     try {
-        const query = await db.none('INSERT INTO steamboat_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
-        
+        const test_q = await db.query('SELECT * FROM steamboat_reviews WHERE username = $1', [username]);
+        console.log(test_q);
+        if(test_q.length == 0){
+            const query = await db.none('INSERT INTO steamboat_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
+        }else{
+            const query = await db.none('UPDATE steamboat_reviews SET rating = $1, busyness = $2, title = $3, text = $4, date = $5 WHERE username = $6', [rating, busyness, title, text, date, username]);
+        }
         res.status(200);
 
-        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM steamboat_reviews');
         let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM copper_reviews');
+        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM steamboat_reviews');
         let avg_busyness = parseFloat(avgbus);
 
         if(avg_rating == null || avg_busyness == null){
@@ -579,14 +589,20 @@ app.post('/winter_park_review', auth, async (req, res) => {
     }
 
     try {
-        const query = await db.none('INSERT INTO winter_park_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
-        
+        const test_q = await db.query('SELECT * FROM winter_park_reviews WHERE username = $1', [username]);
+        console.log(test_q);
+        if(test_q.length == 0){
+            const query = await db.none('INSERT INTO winter_park_reviews (username, rating, busyness, title, text, date) VALUES ($1, $2, $3, $4, $5, $6)', [username, rating, busyness, title, text, date]);
+        }else{
+            const query = await db.none('UPDATE winter_park_reviews SET rating = $1, busyness = $2, title = $3, text = $4, date = $5 WHERE username = $6', [rating, busyness, title, text, date, username]);
+        }
+
         res.status(200);
 
-        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
+        const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM winter_park_reviews');
         let avg_rating = parseFloat(avgrt);
 
-        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM copper_reviews');
+        const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM winter_park_reviews');
         let avg_busyness = parseFloat(avgbus);
 
         if(avg_rating == null || avg_busyness == null){
