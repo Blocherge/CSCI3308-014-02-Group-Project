@@ -9,48 +9,69 @@
 <body>
     {{> nav}}
     <div class="container mt-4">
-        <h2 class="mb-4 text-center">{{trail.name}}</h2>
+        <h2 class="mb-4 text-center">Steamboat</h2>
         <div class="card">
             <img src="{{trail.image}}" class="card-img-top" alt="{{trail.name}}">
             <div class="card-body">
-                <h5 class="card-title">{{trail.name}}</h5>
-                <p class="card-text"><strong>Location:</strong> <a href={{trail.location}}>Click Here</a></p>
+                <p class="card-text"><strong>Location:</strong> <a href={{trail.location}}>Google Maps</a></p>
                 <p class="card-text"><strong>Description:</strong> {{trail.description}}</p>
                 <p class="card-text"><strong>Average Rating:</strong> {{trail.avg_rating}}</p>
                 <p class="card-text"><strong>Weather Forecast:</strong></p>
-                <p class="card-text"><strong>busyness:</strong></p>
+                <p class="card-text"><strong>Busyness:</strong></p>
                 <a href="/home" class="btn btn-secondary">Back to Home</a>
             </div>
         </div>
     </div>
 
-    <div class="container mt-5">
-    <h3 class="mb-3 text-center">Runs</h3>
-    <table class="table table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Run Name</th>
-                <th scope="col">Groomed</th>
-                <th scope="col">Open</th>
-                <th scope="col">Difficulty</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container mt-5">
+    <!-- Table-header-style button -->
+    <button class="btn w-100 text-start fw-bold text-dark bg-white border border-bottom d-flex justify-content-between align-items-center"
+            type="button"
+            id="runsToggle"
+            style="font-size: 1.25rem;">
+        <span class="ms-2">Runs</span>
+        <span id="runsArrow" class="me-3">▼</span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse show" id="runsTable">
+        <table class="table table-striped mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Run Name</th>
+                    <th scope="col">Groomed</th>
+                    <th scope="col">Open</th>
+                    <th scope="col">Difficulty</th>
+                </tr>
+            </thead>
+            <tbody>
             {{#each steamboat_runs}}
             <tr>
-                <td>{{this.name}}</td>
-                <td>{{this.groomed}}</td>
-                <td>{{this.open_close}}</td>
-                <td>{{this.difficulty}}</td>
+                <td>{{run_name}}</td>
+                <td><img src="{{openClosed groomed}}" alt={{groomed}} style="height: 30px;" title="Groomed: {{groomed}}"></td>
+                <td><img src="{{openClosed open_closed}}" alt={{open_closed}} style="height: 30px;" title="openClosed: {{open_closed}}"></td>
+                <td><img src="{{difficultyIcon difficulty}}" alt="Difficulty" style="height: 30px;" title="Difficulty: {{difficulty}}"></td>
             </tr>
             {{/each}}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
     </div>
+</div>
 
-    <div class="container mt-5">
-        <h3 class="mb-3 text-center">Lifts</h3>
-        <table class="table table-striped">
+
+<div class="container mt-5">
+    <!-- Table-header-style button -->
+    <button class="btn w-100 text-start fw-bold text-dark bg-white border border-bottom d-flex justify-content-between align-items-center"
+            type="button"
+            id="liftsToggle"
+            style="font-size: 1.25rem;">
+        <span class="ms-2">Lifts</span>
+        <span id="liftsArrow" class="me-3">▼</span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse show" id="liftsTable">
+        <table class="table table-striped mb-0">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">Lift Name</th>
@@ -61,14 +82,15 @@
             <tbody>
                 {{#each steamboat_lifts}}
                 <tr>
-                    <td>{{this.name}}</td>
-                    <td>{{this.open}}</td>
-                    <td>{{this.type}}</td>
+                    <td>{{name}}</td>
+                    <td><img src="{{openClosed open}}" alt={{open}} style="height: 30px;" title="OpenStatus: {{open}}"></td>
+                    <td>{{type}}</td>
                 </tr>
                 {{/each}}
             </tbody>
         </table>
     </div>
+</div>
 
     <div class="text-center mt-4">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Leave a Review</button>
@@ -77,14 +99,22 @@
     <div class="container mt-4">
         <h2 class="mb-4 text-center">Reviews</h2>
         <div class="card">
+        {{#if steamboat_reviews}}
+            {{#each steamboat_reviews}}
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <p class="card-text"><strong>User:</strong> {{username}}</p>
+                    <p class="card-text"><strong>Rating:</strong> {{rating}}</p>
+                    <p class="card-text"><strong>Busyness:</strong> {{busyness}}</p>
+                    <p class="card-text"><strong>Review:</strong> {{text}}</p>
+                    <p class="card-text"><strong>Date:</strong> {{date}}</p>
+                </div>
+            {{/each}}
+        {{else}}
             <div class="card-body">
-                <h5 class="card-title">{{reviews.title}}</h5>
-                <p class="card-text"><strong>User:</strong> {{reviews.username}}</p>
-                <p class="card-text"><strong>Rating:</strong> {{reviews.rating}}</p>
-                <p class="card-text"><strong>busyness:</strong> {{reviews.rating}}</p>
-                <p class="card-text"><strong>Review:</strong>{{reviews.text}}</p>
-                <p class="card-text"><strong>Date:</strong>{{reviews.date}}</p>
+                <p class="card-text">No Reviews.</p>
             </div>
+        {{/if}}
         </div>
     </div>
 
@@ -96,18 +126,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="/steamboat_review" method="POST">
                             <div class="mb-3">
                                 <label for="reviewTitle" class="form-label">Title</label>
-                                <input type="text" class="form-control" id="reviewTitle"required>
+                                <input type="text" class="form-control" id="reviewTitle" name="title" maxlength="100" required>
                             </div>
                             <div class="mb-3">
                                 <label for="reviewText" class="form-label">Your Review</label>
-                                <textarea class="form-control" id="reviewText" rows="4" required></textarea>
+                                <textarea class="form-control" id="reviewText" name="text" rows="4" maxlength="500" required></textarea> <!-- added max length for title and review text. -->
                             </div>
                             <div class="mb-3">
                                 <label for="reviewRating" class="form-label">Rating</label>
-                                <select class="form-select" id="reviewRating" required>
+                                <select class="form-select" id="reviewRating" name="rating" required>
                                     <option value="5">5 - Excellent</option>
                                     <option value="4">4 - Very Good</option>
                                     <option value="3">3 - Good</option>
@@ -117,7 +147,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="reviewbusyness" class="form-label">busyness</label>
-                                <select class="form-select" id="reviewbusyness" required>
+                                <select class="form-select" id="reviewbusyness" name="busyness" required>
                                     <option value="5">5 - Lifts were basically empty</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -125,7 +155,7 @@
                                     <option value="1">1 - Took 15 minutes to get on a lift</option>
                                 </select>
                             </div>
-                            <a href="/review" class="btn btn-secondary">Submit Review</a>
+                            <button type="submit" class="btn btn-secondary">Submit Review</button>
                         </form>
                     </div>
                 </div>
@@ -134,5 +164,45 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const liftsToggle = document.getElementById('liftsToggle');
+    const liftsArrow = document.getElementById('liftsArrow');
+    const liftsTable = document.getElementById('liftsTable');
+
+    const collapseInstance = new bootstrap.Collapse(liftsTable, { toggle: false });
+
+    liftsToggle.addEventListener('click', () => {
+        collapseInstance.toggle();
+    });
+
+    liftsTable.addEventListener('show.bs.collapse', () => {
+        liftsArrow.textContent = '▲';
+    });
+
+    liftsTable.addEventListener('hide.bs.collapse', () => {
+        liftsArrow.textContent = '▼';
+    });
+
+    const runsToggle = document.getElementById('runsToggle');
+    const runsArrow = document.getElementById('runsArrow');
+    const runsTable = document.getElementById('runsTable');
+
+    const runsCollapse = new bootstrap.Collapse(runsTable, { toggle: false });
+
+    runsToggle.addEventListener('click', () => {
+        runsCollapse.toggle();
+    });
+
+    runsTable.addEventListener('show.bs.collapse', () => {
+        runsArrow.textContent = '▲';
+    });
+
+    runsTable.addEventListener('hide.bs.collapse', () => {
+        runsArrow.textContent = '▼';
+    });
+
+});
+</script>
 </body>
 </html>
