@@ -195,12 +195,16 @@ app.get('/home', auth, async (req, res) => {
         const response = await db.query(query);
 
         const cp_wt = await db.query('SELECT * FROM copper_weather');
+        const cp_temp = (Math.round(cp_wt[cp_wt.length - 1].temperature_max) + Math.round(cp_wt[cp_wt.length - 1].temperature_min)) / 2;
 
         const el_wt = await db.query('SELECT * FROM eldora_weather');
+        const el_temp = (Math.round(el_wt[el_wt.length - 1].temperature_max) + Math.round(el_wt[el_wt.length - 1].temperature_min)) / 2;
 
         const st_wt = await db.query('SELECT * FROM steamboat_weather');
+        const st_temp = (Math.round(st_wt[st_wt.length - 1].temperature_max) + Math.round(st_wt[st_wt.length - 1].temperature_min)) / 2;
 
         const wp_wt = await db.query('SELECT * FROM winter_park_weather');
+        const wp_temp = (Math.round(wp_wt[wp_wt.length - 1].temperature_max) + Math.round(wp_wt[wp_wt.length - 1].temperature_min)) / 2;
 
         const trailsData = response || [];
 
@@ -212,12 +216,12 @@ app.get('/home', auth, async (req, res) => {
             description: trail.description
         }));
 
-        const copper = trails[0] || {};
-        const winter_park = trails[1] || {};
-        const eldora = trails[2] || {};
+        const copper = trails[2] || {}; // you had the wrong indices, they weren't added to the database in the way you had thought
+        const winter_park = trails[0] || {};
+        const eldora = trails[1] || {};
         const steamboat = trails[3] || {};
 
-        res.render('pages/home', { trails, copper, winter_park, eldora, steamboat });
+        res.render('pages/home', { trails, copper, winter_park, eldora, steamboat, cp_temp, el_temp, st_temp, wp_temp });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);

@@ -17,9 +17,9 @@
             <div class="card-body">
                 <p class="card-text"><strong>Location:</strong> <a href={{trail.location}}>Google Maps</a></p>
                 <p class="card-text"><strong>Description:</strong> {{trail.description}}</p>
-                <p class="card-text"><strong>Average Rating:</strong> {{trail.avg_rating}}</p>
-                <p class="card-text"><strong>Busyness:</strong> {{trail.avg_busyness}}</p>
-                <p class="card-text"><strong>Weather Forecast:</strong>Max:{{round copper_weathe.temperature_max}}°, Min:{{round copper_weathe.temperature_min}}°</p>
+                <p class="card-text"><strong>Average Rating:</strong>{{#if trail.avg_rating}} {{trail.avg_rating}}{{else}} N/A{{/if}}</p>
+                <p class="card-text"><strong>Busyness:</strong>{{#if trail.avg_busyness}} {{trail.avg_busyness}}{{else}} N/A{{/if}}</p>
+                <p class="card-text"><strong>Weather Forecast:</strong> Max:{{round copper_weathe.temperature_max}}°, Min:{{round copper_weathe.temperature_min}}°</p>
                 <p class="card-text"><strong>UV Index:</strong> {{copper_weathe.uv_index_max}}</p>
                 <p class="card-text"><strong>Wind Speed:</strong> {{round copper_weathe.wind_speed_max}} mph</p>
                 <p class="card-text"><strong>Snowfall:</strong> {{copper_weathe.snowfall_sum}} inches</p>
@@ -103,24 +103,26 @@
     
     <div class="container mt-4">
         <h2 class="mb-4 text-center">Reviews</h2>
-        <div class="card">
         {{#if copper_reviews}}
             {{#each copper_reviews}}
-                <div class="card-body">
-                    <h5 class="card-title">{{title}}</h5>
-                    <p class="card-text"><strong>User:</strong> {{username}}</p>
-                    <p class="card-text"><strong>Rating:</strong> {{rating}}</p>
-                    <p class="card-text"><strong>Busyness:</strong> {{busyness}}</p>
-                    <p class="card-text"><strong>Review:</strong> {{text}}</p>
-                    <p class="card-text"><strong>Date:</strong> {{date}}</p>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text"><strong>User:</strong> {{username}}</p>
+                        <p class="card-text"><strong>Rating:</strong> {{rating}}</p>
+                        <p class="card-text"><strong>Busyness:</strong> {{busyness}}</p>
+                        <p class="card-text"><strong>Review:</strong> {{text}}</p>
+                        <p class="card-text"><strong>Date:</strong> {{date}}</p>
+                    </div>
                 </div>
             {{/each}}
         {{else}}
-            <div class="card-body">
-                <p class="card-text">No Reviews.</p>
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">Be the first to review this mountain!</p>
+                </div>
             </div>
         {{/if}}
-        </div>
     </div>
 
     <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
