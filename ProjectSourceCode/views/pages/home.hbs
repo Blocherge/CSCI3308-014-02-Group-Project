@@ -104,7 +104,6 @@
     container.innerHTML = ''; // clear previous cards
 
     container.appendChild(createMountainCard('copper'));
-    document.getElementById('copper-busyness').textContent = `${parseFloat(copper.avg_busyness) || '-'}/5`;
     container.appendChild(createMountainCard('eldora'));
     container.appendChild(createMountainCard('steamboat'));
     container.appendChild(createMountainCard('winter_park'));
