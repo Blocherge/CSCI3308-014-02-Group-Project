@@ -11,13 +11,18 @@
     <div class="container mt-4">
         <h2 class="mb-4 text-center">Winter Park</h2>
         <div class="card">
-            <img src="{{trail.image}}" class="card-img-top" alt="{{trail.name}}">
+            <div class="text-center pt-5">
+                <img src="/winter_park_trail_map.avif" class="card-img-top w-50 rounded" alt="{{trail.name}}">
+            </div>
             <div class="card-body">
                 <p class="card-text"><strong>Location:</strong> <a href={{trail.location}}>Google Maps</a></p>
                 <p class="card-text"><strong>Description:</strong> {{trail.description}}</p>
                 <p class="card-text"><strong>Average Rating:</strong> {{trail.avg_rating}}</p>
-                <p class="card-text"><strong>Weather Forecast:</strong></p>
-                <p class="card-text"><strong>busyness:</strong></p>
+                <p class="card-text"><strong>Busyness:</strong> {{trail.avg_busyness}}</p>
+                <p class="card-text"><strong>Weather Forecast:</strong>Max:{{round winter_park_weathe.temperature_max}}°, Min:{{round winter_park_weathe.temperature_min}}°</p>
+                <p class="card-text"><strong>UV Index:</strong> {{winter_park_weathe.uv_index_max}}</p>
+                <p class="card-text"><strong>Wind Speed:</strong> {{round winter_park_weathe.wind_speed_max}} mph</p>
+                <p class="card-text"><strong>Snowfall:</strong> {{winter_park_weathe.snowfall_sum}} inches</p>
                 <a href="/home" class="btn btn-secondary">Back to Home</a>
             </div>
         </div>
@@ -34,7 +39,7 @@
     </button>
 
     <!-- Collapsible content -->
-    <div class="collapse show" id="runsTable">
+    <div class="collapse" id="runsTable">
         <table class="table table-striped mb-0">
             <thead class="table-dark">
                 <tr>
@@ -70,7 +75,7 @@
     </button>
 
     <!-- Collapsible content -->
-    <div class="collapse show" id="liftsTable">
+    <div class="collapse" id="liftsTable">
         <table class="table table-striped mb-0">
             <thead class="table-dark">
                 <tr>
@@ -146,7 +151,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="reviewbusyness" class="form-label">busyness</label>
+                                <label for="reviewbusyness" class="form-label">Busyness</label>
                                 <select class="form-select" id="reviewbusyness" name="busyness" required>
                                     <option value="5">5 - Lifts were basically empty</option>
                                     <option value="4">4</option>

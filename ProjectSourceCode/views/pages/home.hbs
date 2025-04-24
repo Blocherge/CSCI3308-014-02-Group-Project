@@ -12,6 +12,10 @@
       line-height: 1.6;
     }
 
+    nav {
+        margin-top: -20px;  /* or whatever the body padding is */
+    }
+
     h1 {
       font-size: 2rem;
       border-bottom: 2px solid black;
@@ -20,9 +24,10 @@
     }
 
     .mountain {
-      border: 2px solid #000;
+      border: 1px solid #dee2e6;
       padding: 10px;
       margin-bottom: 20px;
+      border-radius: .375rem;
     }
 
     .header {
@@ -30,7 +35,6 @@
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      font-weight: bold;
     }
 
     .info-button {
@@ -60,6 +64,16 @@
     .mountain.open .lifts {
       display: block;
     }
+
+    .btn-primary {
+        background-color: #0d6efd !important; /* Bootstrap's blue */
+        border-color: #0d6efd !important;
+    }
+
+    .btn-primary:hover {
+        background-color: #61b5ff !important;
+        border-color: #61b5ff !important;
+    }
     
   </style>
 </head>
@@ -71,10 +85,10 @@
   <div class="mb-3">
     <label for="sortSelect" class="form-label">Sort by:</label>
     <select id="sortSelect" class="form-select" onchange="sortMountains()">
-      <option value="recommended">Recommended</option>
       <option value="name">Name</option>
+      <option value="recommended">Recommended</option>
       <option value="avg_rating">Rating</option>
-      <option value="avg_busyness">busyness</option>
+      <option value="avg_busyness">Busyness</option>
     </select>
   </div>
 
@@ -85,6 +99,15 @@
     const winter_park = {{{json winter_park}}};
     const eldora = {{{json eldora}}};
     const steamboat = {{{json steamboat}}};
+
+    const container = document.getElementById('mountain-container');
+    container.innerHTML = ''; // clear previous cards
+
+    container.appendChild(createMountainCard('copper'));
+    document.getElementById('copper-busyness').textContent = `${parseFloat(copper.avg_busyness) || '-'}/5`;
+    container.appendChild(createMountainCard('eldora'));
+    container.appendChild(createMountainCard('steamboat'));
+    container.appendChild(createMountainCard('winter_park'));
 
     function sortMountains() {
       const sort_by = document.getElementById('sortSelect').value;
@@ -146,24 +169,31 @@
         }
 
       }else if(sort_by == 'recommended'){
-        const copper_rec = copper.avg_rating + copper.avg_busyness;
-        const eldora_rec = eldora.avg_rating + eldora.avg_busyness;
-        const steamboat_rec = steamboat.avg_rating + steamboat.avg_busyness;
-        const winter_park_rec = winter_park.avg_rating + winter_park.avg_busyness;
+        const copper_rec = (copper.avg_rating + copper.avg_busyness);
+        const eldora_rec = (eldora.avg_rating + eldora.avg_busyness);
+        const steamboat_rec = (steamboat.avg_rating + steamboat.avg_busyness);
+        const winter_park_rec = (winter_park.avg_rating + winter_park.avg_busyness);
+
+        const scores = [
+          { name: 'copper', value: copper_rec },
+          { name: 'eldora', value: eldora_rec },
+          { name: 'steamboat', value: steamboat_rec },
+          { name: 'winter_park', value: winter_park_rec },
+        ];
 
         const sorted_vals = [copper_rec, eldora_rec, steamboat_rec, winter_park_rec].sort((x, y) => y - x);
 
-        for(i in sorted_vals){
-          if (copper_rec == sorted_vals[i] && copp_done == false) {
+        for (const score of scores) {
+          if (score.name === 'copper' && !copp_done) {
             container.appendChild(createMountainCard('copper'));
             copp_done = true;
-          } else if (eldora_rec == sorted_vals[i] && eld_done == false) {
+          } else if (score.name === 'eldora' && !eld_done) {
             container.appendChild(createMountainCard('eldora'));
             eld_done = true;
-          } else if (steamboat_rec == sorted_vals[i] && stem_done == false) {
+          } else if (score.name === 'steamboat' && !stem_done) {
             container.appendChild(createMountainCard('steamboat'));
             stem_done = true;
-          } else if (winter_park_rec == sorted_vals[i] && win_done == false) {
+          } else if (score.name === 'winter_park' && !win_done) {
             container.appendChild(createMountainCard('winter_park'));
             win_done = true;
           }
@@ -178,32 +208,31 @@
     }
 
     function createMountainCard(trail){
-      console.log("is running");
+      console.log(copper.avg_busyness);
       if(trail == 'copper'){
         const card = document.createElement('div');
         card.className = 'mountain';
         card.id = 'copper';
+
       
         card.innerHTML = `
-          <div class="mountain" id="copper">
-            <div class="header">
-              <span>"Copper"</span>
-              <span>
-                <a href="copper" class="info-button btn btn-primary">More Info</a>
-                <span class="arrow" onclick="toggleMountain('copper')}')">▼</span>
-              </span>
-            </div>
-            <div class="lifts">
-              <div class="basic-info">
-                <div class="basic-info-row"><span>Average Rating</span><span>${copper.avg_rating || 0}/5</span></div>
-                <div class="basic-info-row"><span>busyness Rating</span><span>${copper.avg_busyness || 0}/5</span></div>
-                <div class="basic-info-row"><span>Weather</span><span></span></div>
-                <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
-              </div>
+          <div class="header">
+            <span>Copper</span>
+            <span>
+              <a href="copper" class="info-button btn btn-primary">More Info</a>
+              <span class="arrow" onclick="toggleMountain('copper')">▼</span>
+            </span>
+          </div>
+          <div class="lifts">
+            <div class="basic-info">
+              <div class="basic-info-row"><span>Average Rating</span><span>${copper.avg_rating || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Busyness Rating</span><span>${copper.avg_busyness || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Weather</span><span></span></div>
+              <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
           </div>
         `;
-      
+
         return card;
 
       }else if(trail == 'eldora'){
@@ -212,21 +241,19 @@
         card.id = 'eldora';
       
         card.innerHTML = `
-          <div class="mountain" id="eldora">
-            <div class="header">
-              <span>"Eldora"</span>
-              <span>
-                <a href="eldora" class="info-button btn btn-primary">More Info</a>
-                <span class="arrow" onclick="toggleMountain('eldora')}')">▼</span>
-              </span>
-            </div>
-            <div class="lifts">
-              <div class="basic-info">
-                <div class="basic-info-row"><span>Average Rating</span><span>${eldora.avg_rating || 0}/5</span></div>
-                <div class="basic-info-row"><span>busyness Rating</span><span>${eldora.avg_busyness || 0}/5</span></div>
-                <div class="basic-info-row"><span>Weather</span><span></span></div>
-                <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
-              </div>
+          <div class="header">
+            <span>Eldora</span>
+            <span>
+              <a href="eldora" class="info-button btn btn-primary">More Info</a>
+              <span class="arrow" onclick="toggleMountain('eldora')">▼</span>
+            </span>
+          </div>
+          <div class="lifts">
+            <div class="basic-info">
+              <div class="basic-info-row"><span>Average Rating</span><span>${eldora.avg_rating || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Busyness Rating</span><span>${eldora.avg_busyness || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Weather</span><span></span></div>
+              <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
           </div>
         `;
@@ -238,21 +265,19 @@
         card.id = 'steamboat';
       
         card.innerHTML = `
-          <div class="mountain" id="steamboat">
-            <div class="header">
-              <span>"Steamboat"</span>
-              <span>
-                <a href="steamboat" class="info-button btn btn-primary">More Info</a>
-                <span class="arrow" onclick="toggleMountain('steamboat')}')">▼</span>
-              </span>
-            </div>
-            <div class="collapse">
-              <div class="basic-info">
-                <div class="basic-info-row"><span>Average Rating</span><span>${steamboat.avg_rating || 0}/5</span></div>
-                <div class="basic-info-row"><span>busyness Rating</span><span>${steamboat.avg_busyness || 0}/5</span></div>
-                <div class="basic-info-row"><span>Weather</span><span></span></div>
-                <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
-              </div>
+          <div class="header">
+            <span>Steamboat</span>
+            <span>
+              <a href="steamboat" class="info-button btn btn-primary">More Info</a>
+              <span class="arrow" onclick="toggleMountain('steamboat')">▼</span>
+            </span>
+          </div>
+          <div class="lifts">
+            <div class="basic-info">
+              <div class="basic-info-row"><span>Average Rating</span><span>${steamboat.avg_rating || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Busyness Rating</span><span>${steamboat.avg_busyness || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Weather</span><span></span></div>
+              <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
           </div>
         `;
@@ -265,21 +290,19 @@
         card.id = 'winter_park';
       
         card.innerHTML = `
-          <div class="mountain" id="copper">
-            <div class="header">
-              <span>"Winter Park"</span>
-              <span>
-                <a href="winter park" class="info-button btn btn-primary">More Info</a>
-                <span class="arrow" onclick="toggleMountain('winter_park')}')">▼</span>
-              </span>
-            </div>
-            <div class="lifts">
-              <div class="basic-info">
-                <div class="basic-info-row"><span>Average Rating</span><span>${winter_park.avg_rating || 0}/5</span></div>
-                <div class="basic-info-row"><span>busyness Rating</span><span>${winter_park.avg_busyness || 0}/5</span></div>
-                <div class="basic-info-row"><span>Weather</span><span></span></div>
-                <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
-              </div>
+          <div class="header">
+            <span>Winter Park</span>
+            <span>
+              <a href="winter park" class="info-button btn btn-primary">More Info</a>
+              <span class="arrow" onclick="toggleMountain('winter_park')">▼</span>
+            </span>
+          </div>
+          <div class="lifts">
+            <div class="basic-info">
+              <div class="basic-info-row"><span>Average Rating</span><span>${winter_park.avg_rating || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Busyness Rating</span><span>${winter_park.avg_busyness || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Weather</span><span></span></div>
+              <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
           </div>
         `;
