@@ -62,8 +62,8 @@ hbs.handlebars.registerHelper('round', function(value) {
 //db config will have to be updated when database is actually built
 // database configuration
 const dbConfig = {
-    host: 'db', // the database server
-    port: 5432,
+    host: process.env.HOST, // the database server
+    port: process.env.POSTGRES_PORT || 5432,
     database: process.env.POSTGRES_DB, // the database name
     user: process.env.POSTGRES_USER, // the user account to connect with
     password: process.env.POSTGRES_PASSWORD, // the password of the user account

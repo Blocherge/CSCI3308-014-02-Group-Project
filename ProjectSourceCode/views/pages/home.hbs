@@ -104,7 +104,6 @@
     container.innerHTML = ''; // clear previous cards
 
     container.appendChild(createMountainCard('copper'));
-    document.getElementById('copper-busyness').textContent = `${parseFloat(copper.avg_busyness) || '-'}/5`;
     container.appendChild(createMountainCard('eldora'));
     container.appendChild(createMountainCard('steamboat'));
     container.appendChild(createMountainCard('winter_park'));
@@ -169,24 +168,31 @@
         }
 
       }else if(sort_by == 'recommended'){
-        const copper_rec = (copper.avg_rating + copper.avg_busyness).toFixed(2);
-        const eldora_rec = (eldora.avg_rating + eldora.avg_busyness).toFixed(2);
-        const steamboat_rec = (steamboat.avg_rating + steamboat.avg_busyness).toFixed(2);
-        const winter_park_rec = (winter_park.avg_rating + winter_park.avg_busyness).toFixed(2);
+        const copper_rec = (copper.avg_rating + copper.avg_busyness);
+        const eldora_rec = (eldora.avg_rating + eldora.avg_busyness);
+        const steamboat_rec = (steamboat.avg_rating + steamboat.avg_busyness);
+        const winter_park_rec = (winter_park.avg_rating + winter_park.avg_busyness);
+
+        const scores = [
+          { name: 'copper', value: copper_rec },
+          { name: 'eldora', value: eldora_rec },
+          { name: 'steamboat', value: steamboat_rec },
+          { name: 'winter_park', value: winter_park_rec },
+        ];
 
         const sorted_vals = [copper_rec, eldora_rec, steamboat_rec, winter_park_rec].sort((x, y) => y - x);
 
-        for(i in sorted_vals){
-          if (copper_rec == sorted_vals[i] && copp_done == false) {
+        for (const score of scores) {
+          if (score.name === 'copper' && !copp_done) {
             container.appendChild(createMountainCard('copper'));
             copp_done = true;
-          } else if (eldora_rec == sorted_vals[i] && eld_done == false) {
+          } else if (score.name === 'eldora' && !eld_done) {
             container.appendChild(createMountainCard('eldora'));
             eld_done = true;
-          } else if (steamboat_rec == sorted_vals[i] && stem_done == false) {
+          } else if (score.name === 'steamboat' && !stem_done) {
             container.appendChild(createMountainCard('steamboat'));
             stem_done = true;
-          } else if (winter_park_rec == sorted_vals[i] && win_done == false) {
+          } else if (score.name === 'winter_park' && !win_done) {
             container.appendChild(createMountainCard('winter_park'));
             win_done = true;
           }
@@ -219,7 +225,7 @@
           <div class="lifts">
             <div class="basic-info">
               <div class="basic-info-row"><span>Average Rating</span><span>${copper.avg_rating || '-'}/5</span></div>
-              <div class="basic-info-row"><span>Busyness Rating</span><span id='copper-busyness'></span></div>
+              <div class="basic-info-row"><span>Busyness Rating</span><span>${copper.avg_busyness || '-'}/5</span></div>
               <div class="basic-info-row"><span>Average Temperature</span><span>{{cp_temp}}</span></div>
               <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
