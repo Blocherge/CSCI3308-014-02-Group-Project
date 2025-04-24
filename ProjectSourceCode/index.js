@@ -81,6 +81,9 @@ const dbConfig = {
       console.log('ERROR:', error.message || error);
     });
 
+// Use images folder
+app.use(express.static('images'));
+
 //final hbs requirements
 // Register `hbs` as our view engine using its bound `engine()` function.
 app.engine('hbs', hbs.engine);

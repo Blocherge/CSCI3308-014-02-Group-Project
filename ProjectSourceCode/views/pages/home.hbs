@@ -12,6 +12,10 @@
       line-height: 1.6;
     }
 
+    nav {
+        margin-top: -20px;  /* or whatever the body padding is */
+    }
+
     h1 {
       font-size: 2rem;
       border-bottom: 2px solid black;
@@ -20,9 +24,10 @@
     }
 
     .mountain {
-      border: 2px solid #000;
+      border: 1px solid #dee2e6;
       padding: 10px;
       margin-bottom: 20px;
+      border-radius: .375rem;
     }
 
     .header {
@@ -30,7 +35,6 @@
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      font-weight: bold;
     }
 
     .info-button {
@@ -60,6 +64,16 @@
     .mountain.open .lifts {
       display: block;
     }
+
+    .btn-primary {
+        background-color: #0d6efd !important; /* Bootstrap's blue */
+        border-color: #0d6efd !important;
+    }
+
+    .btn-primary:hover {
+        background-color: #61b5ff !important;
+        border-color: #61b5ff !important;
+    }
     
   </style>
 </head>
@@ -74,7 +88,7 @@
       <option value="name">Name</option>
       <option value="recommended">Recommended</option>
       <option value="avg_rating">Rating</option>
-      <option value="avg_busyness">busyness</option>
+      <option value="avg_busyness">Busyness</option>
     </select>
   </div>
 
@@ -205,7 +219,7 @@
           <div class="lifts">
             <div class="basic-info">
               <div class="basic-info-row"><span>Average Rating</span><span>${copper.avg_rating || '-'}/5</span></div>
-              <div class="basic-info-row"><span>busyness Rating</span><span id="copper-busyness"></span></div>
+              <div class="basic-info-row"><span>Busyness Rating</span><span id="copper-busyness"></span></div>
               <div class="basic-info-row"><span>Weather</span><span></span></div>
               <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
@@ -230,7 +244,7 @@
           <div class="lifts">
             <div class="basic-info">
               <div class="basic-info-row"><span>Average Rating</span><span>${eldora.avg_rating || '-'}/5</span></div>
-              <div class="basic-info-row"><span>busyness Rating</span><span>${eldora.avg_busyness || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Busyness Rating</span><span>${eldora.avg_busyness || '-'}/5</span></div>
               <div class="basic-info-row"><span>Weather</span><span></span></div>
               <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
@@ -254,7 +268,7 @@
           <div class="lifts">
             <div class="basic-info">
               <div class="basic-info-row"><span>Average Rating</span><span>${steamboat.avg_rating || '-'}/5</span></div>
-              <div class="basic-info-row"><span>busyness Rating</span><span>${steamboat.avg_busyness || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Busyness Rating</span><span>${steamboat.avg_busyness || '-'}/5</span></div>
               <div class="basic-info-row"><span>Weather</span><span></span></div>
               <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
@@ -279,7 +293,7 @@
           <div class="lifts">
             <div class="basic-info">
               <div class="basic-info-row"><span>Average Rating</span><span>${winter_park.avg_rating || '-'}/5</span></div>
-              <div class="basic-info-row"><span>busyness Rating</span><span>${winter_park.avg_busyness || '-'}/5</span></div>
+              <div class="basic-info-row"><span>Busyness Rating</span><span>${winter_park.avg_busyness || '-'}/5</span></div>
               <div class="basic-info-row"><span>Weather</span><span></span></div>
               <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
