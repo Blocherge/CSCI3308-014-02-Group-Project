@@ -62,8 +62,8 @@ hbs.handlebars.registerHelper('round', function(value) {
 //db config will have to be updated when database is actually built
 // database configuration
 const dbConfig = {
-    host: process.env.HOST, // the database server
-    port: process.env.POSTGRES_PORT || 5432,
+    host: 'db', // the database server
+    port: 5432,
     database: process.env.POSTGRES_DB, // the database name
     user: process.env.POSTGRES_USER, // the user account to connect with
     password: process.env.POSTGRES_PASSWORD, // the password of the user account
@@ -191,8 +191,17 @@ app.get('/logout', (req, res) => {
 //main page data
 app.get('/home', auth, async (req, res) => {
     try {
-        const query = 'SELECT * FROM trails'
-        const response = await db.query(query);
+        const copp_query = 'SELECT * FROM trails WHERE name = $1 LIMIT 1'
+        const copp_resp = await db.query(copp_query, ['copper']);
+
+        const eld_query = 'SELECT * FROM trails WHERE name = $1 LIMIT 1'
+        const eld_resp = await db.query(eld_query, ['eldora']);
+
+        const steam_query = 'SELECT * FROM trails WHERE name = $1 LIMIT 1'
+        const steam_resp = await db.query(steam_query, ['steamboat']);
+
+        const win_query = 'SELECT * FROM trails WHERE name = $1 LIMIT 1'
+        const win_resp = await db.query(win_query, ['winter park']);
 
         const cp_wt = await db.query('SELECT * FROM copper_weather');
         const cp_temp = (Math.round(cp_wt[cp_wt.length - 1].temperature_max) + Math.round(cp_wt[cp_wt.length - 1].temperature_min)) / 2;
@@ -206,22 +215,52 @@ app.get('/home', auth, async (req, res) => {
         const wp_wt = await db.query('SELECT * FROM winter_park_weather');
         const wp_temp = (Math.round(wp_wt[wp_wt.length - 1].temperature_max) + Math.round(wp_wt[wp_wt.length - 1].temperature_min)) / 2;
 
-        const trailsData = response || [];
+        const coppData = copp_resp || [];
 
-        const trails = trailsData.map(trail => ({
+        const coppe= coppData.map(trail => ({
             name: trail.name,
             trail_id: trail.trail_id,
             avg_rating: trail.avg_rating,
             avg_busyness: trail.avg_busyness,
             description: trail.description
         }));
-        console.log(trailsData);
-        const copper = trails[3] || {}; // you had the wrong indices, they weren't added to the database in the way you had thought
-        const winter_park = trails[1] || {};
-        const eldora = trails[2] || {};
-        const steamboat = trails[0] || {};
 
-        res.render('pages/home', { trails, copper, winter_park, eldora, steamboat, cp_temp, el_temp, st_temp, wp_temp });
+        const steamData = steam_resp || [];
+
+        const steamboa = steamData.map(trail => ({
+            name: trail.name,
+            trail_id: trail.trail_id,
+            avg_rating: trail.avg_rating,
+            avg_busyness: trail.avg_busyness,
+            description: trail.description
+        }));
+
+        const eldData = eld_resp || [];
+
+        const eldor= eldData.map(trail => ({
+            name: trail.name,
+            trail_id: trail.trail_id,
+            avg_rating: trail.avg_rating,
+            avg_busyness: trail.avg_busyness,
+            description: trail.description
+        }));
+
+        const winData = win_resp || [];
+
+        const winter_par = winData.map(trail => ({
+            name: trail.name,
+            trail_id: trail.trail_id,
+            avg_rating: trail.avg_rating,
+            avg_busyness: trail.avg_busyness,
+            description: trail.description
+        }));
+
+        const copper = coppe[0] || {}; // you had the wrong indices, they weren't added to the database in the way you had thought
+        const winter_park = winter_par[0] || {};
+        const eldora = eldor[0] || {};
+        const steamboat = steamboa[0] || {};
+
+        res.render('pages/home', { copper, winter_park, eldora, steamboat, cp_temp, el_temp, st_temp, wp_temp });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
