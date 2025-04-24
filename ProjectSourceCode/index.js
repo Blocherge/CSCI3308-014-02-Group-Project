@@ -215,11 +215,11 @@ app.get('/home', auth, async (req, res) => {
             avg_busyness: trail.avg_busyness,
             description: trail.description
         }));
-
-        const copper = trails[2] || {}; // you had the wrong indices, they weren't added to the database in the way you had thought
-        const winter_park = trails[0] || {};
-        const eldora = trails[1] || {};
-        const steamboat = trails[3] || {};
+        console.log(trailsData);
+        const copper = trails[3] || {}; // you had the wrong indices, they weren't added to the database in the way you had thought
+        const winter_park = trails[1] || {};
+        const eldora = trails[2] || {};
+        const steamboat = trails[0] || {};
 
         res.render('pages/home', { trails, copper, winter_park, eldora, steamboat, cp_temp, el_temp, st_temp, wp_temp });
 
