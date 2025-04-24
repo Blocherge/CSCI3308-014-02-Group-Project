@@ -55,11 +55,15 @@ hbs.handlebars.registerHelper('dashify', function(name) {
     return name.toLowerCase().replace(/\s+/g, '_');
   });
 
+hbs.handlebars.registerHelper('round', function(value) {
+    return Math.round(value);
+});
+
 //db config will have to be updated when database is actually built
 // database configuration
 const dbConfig = {
-    host: process.env.HOST, // the database server
-    port: process.env.POSTGRES_PORT || 5432,
+    host: 'db', // the database server
+    port: 5432,
     database: process.env.POSTGRES_DB, // the database name
     user: process.env.POSTGRES_USER, // the user account to connect with
     password: process.env.POSTGRES_PASSWORD, // the password of the user account
@@ -76,6 +80,9 @@ const dbConfig = {
     .catch(error => {
       console.log('ERROR:', error.message || error);
     });
+
+// Use images folder
+app.use(express.static('images'));
 
 //final hbs requirements
 // Register `hbs` as our view engine using its bound `engine()` function.
@@ -187,12 +194,19 @@ app.get('/home', auth, async (req, res) => {
         const query = 'SELECT * FROM trails'
         const response = await db.query(query);
 
+        const cp_wt = await db.query('SELECT * FROM copper_weather');
+
+        const el_wt = await db.query('SELECT * FROM eldora_weather');
+
+        const st_wt = await db.query('SELECT * FROM steamboat_weather');
+
+        const wp_wt = await db.query('SELECT * FROM winter_park_weather');
+
         const trailsData = response || [];
 
         const trails = trailsData.map(trail => ({
             name: trail.name,
             trail_id: trail.trail_id,
-            trail_image: trail.image,
             avg_rating: trail.avg_rating,
             avg_busyness: trail.avg_busyness,
             description: trail.description
@@ -222,7 +236,6 @@ app.get('/copper', auth, async (req, res) => {
 
         const query_2 = 'SELECT * FROM copper_reviews'
         const response_2 = await db.query(query_2);
-        console.log('Copper Reviews:', response_2);
         
         const query_3 = 'SELECT * FROM copper_lifts'
         const response_3 = await db.query(query_3);
@@ -230,13 +243,16 @@ app.get('/copper', auth, async (req, res) => {
         const query_4 = 'SELECT * FROM copper_runs'
         const response_4 = await db.query(query_4);
 
+        const query_5 = 'SELECT * FROM copper_weather'
+        const response_5 = await db.query(query_5);
+
         const trailsData = response || []; // why were we doing response.data? Just response.
 
         const trails = trailsData.map(trailsData => ({ // for all of these consts you had written trails.name or reviews.username instead of reviewsData.username. With how you defined your mapping and variable that wouldn't have worked
             name: trailsData.name,
             trail_id: trailsData.id,
-            trail_image: trailsData.trail_image,
             avg_rating: trailsData.avg_rating,
+            avg_busyness: trailsData.avg_busyness,
             description: trailsData.description,
             location: trailsData.location
         }));
@@ -269,7 +285,17 @@ app.get('/copper', auth, async (req, res) => {
             difficulty: runsData.difficulty
         }));
 
-        res.render('pages/copper', { trail: trails[0] , copper_reviews, copper_lifts , copper_runs });
+        const weatherData = response_5 || [];
+
+        const copper_weather = weatherData.map(weatherData => ({
+            temperature_max: weatherData.temperature_max,
+            temperature_min: weatherData.temperature_min,
+            wind_speed_max: weatherData.wind_speed_max,
+            snowfall_sum: weatherData.snowfall_sum,
+            uv_index_max: weatherData.uv_index_max
+        }));
+
+        res.render('pages/copper', { trail: trails[0] , copper_reviews, copper_lifts , copper_runs, copper_weathe: copper_weather[0] });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
@@ -305,17 +331,17 @@ app.post('/copper_review', auth, async (req, res) => {
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
-        let avg_rating = parseFloat(avgrt);
+        let avg_rating = parseFloat(avgrt[0].average);
 
         const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM copper_reviews');
-        let avg_busyness = parseFloat(avgbus);
+        let avg_busyness = parseFloat(avgbus[0].average);
 
         if(avg_rating == null || avg_busyness == null){
             console.log('No reviews found or no busyness found');
             res.redirect('/copper');
         }else{
-            console.log('avg rating = ', avgrt);
-            console.log('avg busyness = ', avgbus)
+            console.log('avg rating = ', avg_rating);
+            console.log('avg busyness = ', avg_busyness)
             await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 1]);
             await db.query('UPDATE trails SET avg_busyness = $1 WHERE trail_id = $2', [avg_busyness, 1]);
         }
@@ -342,13 +368,16 @@ app.get('/eldora', auth, async (req, res) => {
         const query_4 = 'SELECT * FROM eldora_runs'
         const response_4 = await db.query(query_4);
 
+        const query_5 = 'SELECT * FROM eldora_weather'
+        const response_5 = await db.query(query_5);
+
         const trailsData = response || [];
 
         const trails = trailsData.map(trailsData => ({
             name: trailsData.name,
             trail_id: trailsData.id,
-            trail_image: trailsData.trail_image,
             avg_rating: trailsData.avg_rating,
+            avg_busyness: trailsData.avg_busyness,
             description: trailsData.description,
             location: trailsData.location
         }));
@@ -381,7 +410,17 @@ app.get('/eldora', auth, async (req, res) => {
             difficulty: runsData.difficulty
         }));
 
-        res.render('pages/eldora', { trail: trails[0] , eldora_reviews , eldora_lifts , eldora_runs });
+        const weatherData = response_5 || [];
+
+        const eldora_weather = weatherData.map(weatherData => ({
+            temperature_max: weatherData.temperature_max,
+            temperature_min: weatherData.temperature_min,
+            wind_speed_max: weatherData.wind_speed_max,
+            snowfall_sum: weatherData.snowfall_sum,
+            uv_index_max: weatherData.uv_index_max
+        }));
+
+        res.render('pages/eldora', { trail: trails[0] , eldora_reviews , eldora_lifts , eldora_runs, eldora_weathe: eldora_weather[0] });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
@@ -416,10 +455,10 @@ app.post('/eldora_review', auth, async (req, res) => {
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM eldora_reviews');
-        let avg_rating = parseFloat(avgrt);
+        let avg_rating = parseFloat(avgrt[0].average);
 
         const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM eldora_reviews');
-        let avg_busyness = parseFloat(avgbus);
+        let avg_busyness = parseFloat(avgbus[0].average);
 
         if(avg_rating == null || avg_busyness == null){
             console.log('No reviews found or no busyness found');
@@ -452,13 +491,16 @@ app.get('/steamboat', auth, async (req, res) => {
         const query_4 = 'SELECT * FROM steamboat_runs'
         const response_4 = await db.query(query_4);
 
+        const query_5 = 'SELECT * FROM steamboat_weather'
+        const response_5 = await db.query(query_5);
+
         const trailsData = response || [];
 
         const trails = trailsData.map(trailsData => ({
             name: trailsData.name,
             trail_id: trailsData.id,
-            trail_image: trailsData.trail_image,
             avg_rating: trailsData.avg_rating,
+            avg_busyness: trailsData.avg_busyness,
             description: trailsData.description,
             location: trailsData.location
         }));
@@ -491,7 +533,17 @@ app.get('/steamboat', auth, async (req, res) => {
             difficulty: runsData.difficulty
         }));
 
-        res.render('pages/steamboat', { trail: trails[0] , steamboat_reviews , steamboat_lifts , steamboat_runs });
+        const weatherData = response_5 || [];
+
+        const steamboat_weather = weatherData.map(weatherData => ({
+            temperature_max: weatherData.temperature_max,
+            temperature_min: weatherData.temperature_min,
+            wind_speed_max: weatherData.wind_speed_max,
+            snowfall_sum: weatherData.snowfall_sum,
+            uv_index_max: weatherData.uv_index_max
+        }));
+
+        res.render('pages/steamboat', { trail: trails[0] , steamboat_reviews , steamboat_lifts , steamboat_runs, steamboat_weathe: steamboat_weather[0] });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
@@ -526,10 +578,10 @@ app.post('/steamboat_review', auth, async (req, res) => {
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM steamboat_reviews');
-        let avg_rating = parseFloat(avgrt);
+        let avg_rating = parseFloat(avgrt[0].average);
 
         const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM steamboat_reviews');
-        let avg_busyness = parseFloat(avgbus);
+        let avg_busyness = parseFloat(avgbus[0].average);
 
         if(avg_rating == null || avg_busyness == null){
             console.log('No reviews found or no busyness found');
@@ -563,13 +615,16 @@ app.get('/winter_park', auth, async (req, res) => {
         const query_4 = 'SELECT * FROM winter_park_runs'
         const response_4 = await db.query(query_4);
 
+        const query_5 = 'SELECT * FROM winter_park_weather'
+        const response_5 = await db.query(query_5);
+
         const trailsData = response || [];
 
         const trails = trailsData.map(trailsData => ({
             name: trailsData.name,
             trail_id: trailsData.id,
-            trail_image: trailsData.trail_image,
             avg_rating: trailsData.avg_rating,
+            avg_busyness: trailsData.avg_busyness,
             description: trailsData.description,
             location: trailsData.location
         }));
@@ -602,7 +657,17 @@ app.get('/winter_park', auth, async (req, res) => {
             difficulty: runsData.difficulty
         }));
 
-        res.render('pages/winter_park', { trail: trails[0], winter_park_reviews , winter_park_lifts , winter_park_runs });
+        const weatherData = response_5 || [];
+
+        const winter_park_weather = weatherData.map(weatherData => ({
+            temperature_max: weatherData.temperature_max,
+            temperature_min: weatherData.temperature_min,
+            wind_speed_max: weatherData.wind_speed_max,
+            snowfall_sum: weatherData.snowfall_sum,
+            uv_index_max: weatherData.uv_index_max
+        }));
+
+        res.render('pages/winter_park', { trail: trails[0], winter_park_reviews , winter_park_lifts , winter_park_runs, winter_park_weathe: winter_park_weather[0] });
 
     } catch (error) {
         console.error("Error fetching trail data:", error);
@@ -638,10 +703,10 @@ app.post('/winter_park_review', auth, async (req, res) => {
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM winter_park_reviews');
-        let avg_rating = parseFloat(avgrt);
+        let avg_rating = parseFloat(avgrt[0].average);
 
         const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM winter_park_reviews');
-        let avg_busyness = parseFloat(avgbus);
+        let avg_busyness = parseFloat(avgbus[0].average);
 
         if(avg_rating == null || avg_busyness == null){
             console.log('No reviews found or no busyness found');

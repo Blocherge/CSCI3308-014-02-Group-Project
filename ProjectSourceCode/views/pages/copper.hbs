@@ -11,13 +11,18 @@
     <div class="container mt-4">
         <h2 class="mb-4 text-center">Copper Mountain</h2>
         <div class="card">
-            <img src="../../images/copper_trail_map.avif" class="card-img-top" alt="{{trail.name}}">
+            <div class="text-center pt-5">
+                <img src="/copper_trail_map.avif" class="card-img-top w-50 rounded" alt="{{trail.name}}">
+            </div>
             <div class="card-body">
                 <p class="card-text"><strong>Location:</strong> <a href={{trail.location}}>Google Maps</a></p>
                 <p class="card-text"><strong>Description:</strong> {{trail.description}}</p>
                 <p class="card-text"><strong>Average Rating:</strong> {{trail.avg_rating}}</p>
-                <p class="card-text"><strong>Weather Forecast:</strong></p>
-                <p class="card-text"><strong>Busyness:</strong></p>
+                <p class="card-text"><strong>Busyness:</strong> {{trail.avg_busyness}}</p>
+                <p class="card-text"><strong>Weather Forecast:</strong>Max:{{round copper_weathe.temperature_max}}°, Min:{{round copper_weathe.temperature_min}}°</p>
+                <p class="card-text"><strong>UV Index:</strong> {{copper_weathe.uv_index_max}}</p>
+                <p class="card-text"><strong>Wind Speed:</strong> {{round copper_weathe.wind_speed_max}} mph</p>
+                <p class="card-text"><strong>Snowfall:</strong> {{copper_weathe.snowfall_sum}} inches</p>
                 <a href="/home" class="btn btn-secondary">Back to Home</a>
             </div>
         </div>
@@ -183,6 +188,8 @@ document.addEventListener("DOMContentLoaded", function () {
     liftsTable.addEventListener('hide.bs.collapse', () => {
         liftsArrow.textContent = '▼';
     });
+
+    console.log({{trail.avg_rating}});
 
     const runsToggle = document.getElementById('runsToggle');
     const runsArrow = document.getElementById('runsArrow');
