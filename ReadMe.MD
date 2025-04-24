@@ -11,7 +11,7 @@ Instructions on how to run the application locally.
 
 How to run the tests
 
-Link to the deployed application
+Link to the deployed application: https://csci3308-014-02-group-project.onrender.com
 
 Github: https://github.com/Blocherge/CSCI3308-014-02-Group-Project
 
