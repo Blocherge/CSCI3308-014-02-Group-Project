@@ -71,8 +71,8 @@
   <div class="mb-3">
     <label for="sortSelect" class="form-label">Sort by:</label>
     <select id="sortSelect" class="form-select" onchange="sortMountains()">
-      <option value="recommended">Recommended</option>
       <option value="name">Name</option>
+      <option value="recommended">Recommended</option>
       <option value="avg_rating">Rating</option>
       <option value="avg_busyness">busyness</option>
     </select>
@@ -85,6 +85,15 @@
     const winter_park = {{{json winter_park}}};
     const eldora = {{{json eldora}}};
     const steamboat = {{{json steamboat}}};
+
+    const container = document.getElementById('mountain-container');
+    container.innerHTML = ''; // clear previous cards
+
+    container.appendChild(createMountainCard('copper'));
+    document.getElementById('copper-busyness').textContent = `${parseFloat(copper.avg_busyness) || '-'}/5`;
+    container.appendChild(createMountainCard('eldora'));
+    container.appendChild(createMountainCard('steamboat'));
+    container.appendChild(createMountainCard('winter_park'));
 
     function sortMountains() {
       const sort_by = document.getElementById('sortSelect').value;
@@ -146,10 +155,10 @@
         }
 
       }else if(sort_by == 'recommended'){
-        const copper_rec = copper.avg_rating + copper.avg_busyness;
-        const eldora_rec = eldora.avg_rating + eldora.avg_busyness;
-        const steamboat_rec = steamboat.avg_rating + steamboat.avg_busyness;
-        const winter_park_rec = winter_park.avg_rating + winter_park.avg_busyness;
+        const copper_rec = (copper.avg_rating + copper.avg_busyness).toFixed(2);
+        const eldora_rec = (eldora.avg_rating + eldora.avg_busyness).toFixed(2);
+        const steamboat_rec = (steamboat.avg_rating + steamboat.avg_busyness).toFixed(2);
+        const winter_park_rec = (winter_park.avg_rating + winter_park.avg_busyness).toFixed(2);
 
         const sorted_vals = [copper_rec, eldora_rec, steamboat_rec, winter_park_rec].sort((x, y) => y - x);
 
@@ -178,30 +187,31 @@
     }
 
     function createMountainCard(trail){
-      console.log("is running");
+      console.log(copper.avg_busyness);
       if(trail == 'copper'){
         const card = document.createElement('div');
         card.className = 'mountain';
         card.id = 'copper';
+
       
         card.innerHTML = `
           <div class="header">
             <span>Copper</span>
             <span>
               <a href="copper" class="info-button btn btn-primary">More Info</a>
-              <span class="arrow" onclick="toggleMountain('copper')}')">▼</span>
+              <span class="arrow" onclick="toggleMountain('copper')">▼</span>
             </span>
           </div>
           <div class="lifts">
             <div class="basic-info">
-              <div class="basic-info-row"><span>Average Rating</span><span>${copper.avg_rating || 0}/5</span></div>
-              <div class="basic-info-row"><span>busyness Rating</span><span>${copper.avg_busyness || 0}/5</span></div>
+              <div class="basic-info-row"><span>Average Rating</span><span>${copper.avg_rating || '-'}/5</span></div>
+              <div class="basic-info-row"><span>busyness Rating</span><span id="copper-busyness"></span></div>
               <div class="basic-info-row"><span>Weather</span><span></span></div>
               <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
           </div>
         `;
-      
+
         return card;
 
       }else if(trail == 'eldora'){
@@ -214,13 +224,13 @@
             <span>Eldora</span>
             <span>
               <a href="eldora" class="info-button btn btn-primary">More Info</a>
-              <span class="arrow" onclick="toggleMountain('eldora')}')">▼</span>
+              <span class="arrow" onclick="toggleMountain('eldora')">▼</span>
             </span>
           </div>
           <div class="lifts">
             <div class="basic-info">
-              <div class="basic-info-row"><span>Average Rating</span><span>${eldora.avg_rating || 0}/5</span></div>
-              <div class="basic-info-row"><span>busyness Rating</span><span>${eldora.avg_busyness || 0}/5</span></div>
+              <div class="basic-info-row"><span>Average Rating</span><span>${eldora.avg_rating || '-'}/5</span></div>
+              <div class="basic-info-row"><span>busyness Rating</span><span>${eldora.avg_busyness || '-'}/5</span></div>
               <div class="basic-info-row"><span>Weather</span><span></span></div>
               <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
@@ -238,13 +248,13 @@
             <span>Steamboat</span>
             <span>
               <a href="steamboat" class="info-button btn btn-primary">More Info</a>
-              <span class="arrow" onclick="toggleMountain('steamboat')}')">▼</span>
+              <span class="arrow" onclick="toggleMountain('steamboat')">▼</span>
             </span>
           </div>
           <div class="lifts">
             <div class="basic-info">
-              <div class="basic-info-row"><span>Average Rating</span><span>${steamboat.avg_rating || 0}/5</span></div>
-              <div class="basic-info-row"><span>busyness Rating</span><span>${steamboat.avg_busyness || 0}/5</span></div>
+              <div class="basic-info-row"><span>Average Rating</span><span>${steamboat.avg_rating || '-'}/5</span></div>
+              <div class="basic-info-row"><span>busyness Rating</span><span>${steamboat.avg_busyness || '-'}/5</span></div>
               <div class="basic-info-row"><span>Weather</span><span></span></div>
               <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>
@@ -263,13 +273,13 @@
             <span>Winter Park</span>
             <span>
               <a href="winter park" class="info-button btn btn-primary">More Info</a>
-              <span class="arrow" onclick="toggleMountain('winter_park')}')">▼</span>
+              <span class="arrow" onclick="toggleMountain('winter_park')">▼</span>
             </span>
           </div>
           <div class="lifts">
             <div class="basic-info">
-              <div class="basic-info-row"><span>Average Rating</span><span>${winter_park.avg_rating || 0}/5</span></div>
-              <div class="basic-info-row"><span>busyness Rating</span><span>${winter_park.avg_busyness || 0}/5</span></div>
+              <div class="basic-info-row"><span>Average Rating</span><span>${winter_park.avg_rating || '-'}/5</span></div>
+              <div class="basic-info-row"><span>busyness Rating</span><span>${winter_park.avg_busyness || '-'}/5</span></div>
               <div class="basic-info-row"><span>Weather</span><span></span></div>
               <div class="basic-info-row"><span>Wind Speed</span><span>mph</span></div>
             </div>

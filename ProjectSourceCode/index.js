@@ -373,8 +373,8 @@ app.get('/eldora', auth, async (req, res) => {
         const trails = trailsData.map(trailsData => ({
             name: trailsData.name,
             trail_id: trailsData.id,
-            trail_image: trailsData.trail_image,
             avg_rating: trailsData.avg_rating,
+            avg_busyness: trailsData.avg_busyness,
             description: trailsData.description,
             location: trailsData.location
         }));
@@ -406,6 +406,8 @@ app.get('/eldora', auth, async (req, res) => {
             groomed: runsData.groomed,
             difficulty: runsData.difficulty
         }));
+
+        const weatherData = response_5 || [];
 
         const eldora_weather = weatherData.map(weatherData => ({
             temperature_max: weatherData.temperature_max,
@@ -494,8 +496,8 @@ app.get('/steamboat', auth, async (req, res) => {
         const trails = trailsData.map(trailsData => ({
             name: trailsData.name,
             trail_id: trailsData.id,
-            trail_image: trailsData.trail_image,
             avg_rating: trailsData.avg_rating,
+            avg_busyness: trailsData.avg_busyness,
             description: trailsData.description,
             location: trailsData.location
         }));
@@ -527,6 +529,8 @@ app.get('/steamboat', auth, async (req, res) => {
             groomed: runsData.groomed,
             difficulty: runsData.difficulty
         }));
+
+        const weatherData = response_5 || [];
 
         const steamboat_weather = weatherData.map(weatherData => ({
             temperature_max: weatherData.temperature_max,
@@ -616,8 +620,8 @@ app.get('/winter_park', auth, async (req, res) => {
         const trails = trailsData.map(trailsData => ({
             name: trailsData.name,
             trail_id: trailsData.id,
-            trail_image: trailsData.trail_image,
             avg_rating: trailsData.avg_rating,
+            avg_busyness: trailsData.avg_busyness,
             description: trailsData.description,
             location: trailsData.location
         }));
@@ -649,6 +653,8 @@ app.get('/winter_park', auth, async (req, res) => {
             groomed: runsData.groomed,
             difficulty: runsData.difficulty
         }));
+
+        const weatherData = response_5 || [];
 
         const winter_park_weather = weatherData.map(weatherData => ({
             temperature_max: weatherData.temperature_max,
