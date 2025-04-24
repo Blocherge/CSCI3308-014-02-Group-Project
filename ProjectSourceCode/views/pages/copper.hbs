@@ -17,7 +17,7 @@
                 <p class="card-text"><strong>Description:</strong> {{trail.description}}</p>
                 <p class="card-text"><strong>Average Rating:</strong> {{trail.avg_rating}}</p>
                 <p class="card-text"><strong>Weather Forecast:</strong></p>
-                <p class="card-text"><strong>busyness:</strong></p>
+                <p class="card-text"><strong>busyness:</strong> {{trail.avg_busyness}}</p>
                 <a href="/home" class="btn btn-secondary">Back to Home</a>
             </div>
         </div>
@@ -183,6 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
     liftsTable.addEventListener('hide.bs.collapse', () => {
         liftsArrow.textContent = '▼';
     });
+
+    console.log({{trail.avg_rating}});
 
     const runsToggle = document.getElementById('runsToggle');
     const runsArrow = document.getElementById('runsArrow');

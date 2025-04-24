@@ -58,8 +58,8 @@ hbs.handlebars.registerHelper('dashify', function(name) {
 //db config will have to be updated when database is actually built
 // database configuration
 const dbConfig = {
-    host: process.env.HOST, // the database server
-    port: process.env.POSTGRES_PORT || 5432,
+    host: 'db', // the database server
+    port: 5432,
     database: process.env.POSTGRES_DB, // the database name
     user: process.env.POSTGRES_USER, // the user account to connect with
     password: process.env.POSTGRES_PASSWORD, // the password of the user account
@@ -305,17 +305,17 @@ app.post('/copper_review', auth, async (req, res) => {
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM copper_reviews');
-        let avg_rating = parseFloat(avgrt);
+        let avg_rating = parseFloat(avgrt[0].average);
 
         const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM copper_reviews');
-        let avg_busyness = parseFloat(avgbus);
+        let avg_busyness = parseFloat(avgbus[0].average);
 
         if(avg_rating == null || avg_busyness == null){
             console.log('No reviews found or no busyness found');
             res.redirect('/copper');
         }else{
-            console.log('avg rating = ', avgrt);
-            console.log('avg busyness = ', avgbus)
+            console.log('avg rating = ', avg_rating);
+            console.log('avg busyness = ', avg_busyness)
             await db.query('UPDATE trails SET avg_rating = $1 WHERE trail_id = $2', [avg_rating, 1]);
             await db.query('UPDATE trails SET avg_busyness = $1 WHERE trail_id = $2', [avg_busyness, 1]);
         }
@@ -416,10 +416,10 @@ app.post('/eldora_review', auth, async (req, res) => {
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM eldora_reviews');
-        let avg_rating = parseFloat(avgrt);
+        let avg_rating = parseFloat(avgrt[0].average);
 
         const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM eldora_reviews');
-        let avg_busyness = parseFloat(avgbus);
+        let avg_busyness = parseFloat(avgbus[0].average);
 
         if(avg_rating == null || avg_busyness == null){
             console.log('No reviews found or no busyness found');
@@ -526,10 +526,10 @@ app.post('/steamboat_review', auth, async (req, res) => {
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM steamboat_reviews');
-        let avg_rating = parseFloat(avgrt);
+        let avg_rating = parseFloat(avgrt[0].average);
 
         const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM steamboat_reviews');
-        let avg_busyness = parseFloat(avgbus);
+        let avg_busyness = parseFloat(avgbus[0].average);
 
         if(avg_rating == null || avg_busyness == null){
             console.log('No reviews found or no busyness found');
@@ -638,10 +638,10 @@ app.post('/winter_park_review', auth, async (req, res) => {
         res.status(200);
 
         const avgrt = await db.query('SELECT AVG(rating)::numeric(5,1) AS average FROM winter_park_reviews');
-        let avg_rating = parseFloat(avgrt);
+        let avg_rating = parseFloat(avgrt[0].average);
 
         const avgbus = await db.query('SELECT AVG(busyness)::numeric(5,1) AS average FROM winter_park_reviews');
-        let avg_busyness = parseFloat(avgbus);
+        let avg_busyness = parseFloat(avgbus[0].average);
 
         if(avg_rating == null || avg_busyness == null){
             console.log('No reviews found or no busyness found');
