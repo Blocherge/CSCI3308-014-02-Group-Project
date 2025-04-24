@@ -18,8 +18,10 @@
                 <p class="card-text"><strong>Location:</strong> <a href={{trail.location}}>Google Maps</a></p>
                 <p class="card-text"><strong>Description:</strong> {{trail.description}}</p>
                 <p class="card-text"><strong>Average Rating:</strong> {{trail.avg_rating}}</p>
-                <p class="card-text"><strong>Weather Forecast:</strong></p>
-                <p class="card-text"><strong>Busyness:</strong></p>
+                <p class="card-text"><strong>Weather Forecast:</strong>Max:{{round steamboat_weathe.temperature_max}}°, Min:{{round steamboat_weathe.temperature_min}}°</p>
+                <p class="card-text"><strong>Busyness:</strong>{{steamboat_weathe.uv_index_max}}</p>
+                <p class="card-text"><strong>Wind Speed:</strong> {{round steamboat_weathe.wind_speed_max}} mph</p>
+                <p class="card-text"><strong>Snowfall:</strong> {{steamboat_weathe.snowfall_sum}} inches</p>
                 <a href="/home" class="btn btn-secondary">Back to Home</a>
             </div>
         </div>
