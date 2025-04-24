@@ -199,7 +199,7 @@ app.get('/home', auth, async (req, res) => {
 
         const wp_wt = await db.query('SELECT * FROM winter_park_weather');
 
-        const trailsData = response.data|| [];
+        const trailsData = response || [];
 
         const trails = trailsData.map(trail => ({
             name: trail.name,
