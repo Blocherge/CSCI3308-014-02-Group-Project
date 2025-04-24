@@ -224,8 +224,16 @@ app.get('/home', auth, async (req, res) => {
             avg_busyness: trail.avg_busyness,
             description: trail.description
         }));
+<<<<<<< HEAD
 
         const steamData = steam_resp || [];
+=======
+        console.log(trailsData);
+        const copper = trails[3] || {}; // you had the wrong indices, they weren't added to the database in the way you had thought
+        const winter_park = trails[1] || {};
+        const eldora = trails[2] || {};
+        const steamboat = trails[0] || {};
+>>>>>>> 30984259969a4c8cc5d0a6bac5834e7697f8628e
 
         const steamboa = steamData.map(trail => ({
             name: trail.name,
