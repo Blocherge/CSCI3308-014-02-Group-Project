@@ -11,13 +11,13 @@
     <div class="container mt-4">
         <h2 class="mb-4 text-center">Copper Mountain</h2>
         <div class="card">
-            <img src="{{trail.image}}" class="card-img-top" alt="{{trail.name}}">
+            <img src="../../images/copper_trail_map.avif" class="card-img-top" alt="{{trail.name}}">
             <div class="card-body">
                 <p class="card-text"><strong>Location:</strong> <a href={{trail.location}}>Google Maps</a></p>
                 <p class="card-text"><strong>Description:</strong> {{trail.description}}</p>
                 <p class="card-text"><strong>Average Rating:</strong> {{trail.avg_rating}}</p>
                 <p class="card-text"><strong>Weather Forecast:</strong></p>
-                <p class="card-text"><strong>busyness:</strong></p>
+                <p class="card-text"><strong>Busyness:</strong></p>
                 <a href="/home" class="btn btn-secondary">Back to Home</a>
             </div>
         </div>
@@ -34,7 +34,7 @@
     </button>
 
     <!-- Collapsible content -->
-    <div class="collapse show" id="runsTable">
+    <div class="collapse" id="runsTable">
         <table class="table table-striped mb-0">
             <thead class="table-dark">
                 <tr>
@@ -70,7 +70,7 @@
     </button>
 
     <!-- Collapsible content -->
-    <div class="collapse show" id="liftsTable">
+    <div class="collapse" id="liftsTable">
         <table class="table table-striped mb-0">
             <thead class="table-dark">
                 <tr>
@@ -146,7 +146,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="reviewbusyness" class="form-label">busyness</label>
+                                <label for="reviewbusyness" class="form-label">Busyness</label>
                                 <select class="form-select" id="reviewbusyness" name="busyness" required>
                                     <option value="5">5 - Lifts were basically empty</option>
                                     <option value="4">4</option>
