@@ -1,5 +1,103 @@
 User Acceptance Testing Plan
+Project Name: Liftability
+Purpose: Validate that key features work correctly from an end-user perspective. 
+Test Period: [Start Date – End Date] 
+Test Environment: [Localhost/Cloud]
 ============================
+Feature: [Enter Feature Name]
+    Test Environment: [Localhost or Cloud]
+
+    Test Data Required:
+
+        List specific test data (e.g., valid and invalid credentials for Login, sample trail records, API keys/data for integrations)
+
+    Tester(s): [Name(s)/Team responsible]
+
+User Acceptance Test Cases:
+
+    Test Case 1 (Positive Scenario):
+
+        Steps:
+    
+            FOR EXAMPLE: Navigate to the feature page (e.g., /login for authentication).
+    
+            Enter valid details (e.g., valid username and password).
+    
+            Submit the form.
+    
+        Input: [Detail the data used, e.g., username: “user@example.com”, password: “validPass123”]
+    
+        Expected Result:
+    
+            Successful authentication with a confirmation message or redirection to the dashboard.
+    
+        Actual Result: (To be filled during testing)
+
+    Test Case 2 (Negative Scenario):
+
+        Steps:
+
+            FOR EXAMPLE:     Navigate to the feature page (e.g., /login).
+
+            Enter invalid data (e.g., wrong password or malformed email).
+
+            Submit the form.
+
+        Input: [Provide example data, e.g., username: “bademail”, password: “123”]
+
+        Expected Result:
+
+            Error message, proper HTTP error code (e.g., 400) and prevented login.
+
+        Actual Result: (To be filled during testing)
+
+Pass/Fail Criteria
+    Pass: A test case is successful if critical features behave as specified (correct messages, operations, status codes, etc.).
+    
+    Fail: A test case fails if the feature does not respond according to the expected result or if errors occur; any bug or misalignment that prevents task completion
+
+Documentation & Reporting
+    Test Results Documentation:
+
+        Record inputs, expected results, and actual outcomes for each test case.
+        
+        Use a spreadsheet or designated file to capture all observations.
+
+    Artifact Location: Include results and notes in the final project report.
+
+Tester Information
+    Testers: List team members responsible for UAT.
+    
+    Contact: Provide email or phone details if necessary.
+    
+    Responsibilities: Assign who monitors which feature area.
+
+Timeline & Execution Plan
+    Schedule:   
+        Start Date: [Insert date]
+        
+        End Date: [Insert date]
+    
+    Execution:
+        Order of testing features, frequency of tests, and how often test results will be reviewed
+
+Risks
+    Technical Risks:
+
+        Untested code areas, insufficient test data, or integration issues.
+
+    Organizational Risks:
+
+        Limited resources or scheduling conflicts.
+
+    Business Risks:
+
+        External dependencies impacting test timelines (e.g., API rate limits)
+
+
+
+
+
 Ratings/Reviews:
     To test the ratings and reviews system a user will attempt to leave a review which should be added to the reviews table and appear on other users pages. We will have to test through the cloud as the ultimate goal of the feature is to be able to see other user's real reviews.
     Testers:
